@@ -1,0 +1,55 @@
+{extend name="public:base"/}
+{block name="title"}我的简历{/block}
+{block name="main"}
+<div id="main" class="inner">
+<div class="job-box">
+    <div class="resume">
+        <div class="resume-box">
+            <div class="resume-item" id="resume-userinfo">
+                <div class="item-primary">
+                {include file="resume/info_show" /}
+                </div>
+                
+                <div class="item-form" style="display: block;">
+                    {//include file="resume/info_edit" /}
+                </div>
+            </div>
+            
+            <!------------------------------------------------------->
+            <div class="resume-item" id="resume-summary">
+                <div class="item-primary">
+                    {include file="resume/adventage_show" /}
+                </div>
+                <div class="item-form" style="display: block;">
+                    {include file="resume/adventage_edit" /}
+                </div>
+            </div>
+            
+            <!----------------------------------------------------------------->
+            <div class="resume-item" id="resume-history">
+                <div class="item-primary">
+                    {include file="resume/history_show" /}
+                </div>
+                <div class="item-form" style="display:block;">
+                    {include file="resume/history_edit" /}
+                </div>
+            </div>
+            
+            <!------------------------------------------------------->
+            <div class="resume-item" id="resume-education">
+                <div class="item-primary">
+                    {include file="resume/education_show" /}
+
+                </div>
+                <div class="item-form" style="display:block;">
+                    {include file="resume/education_edit" /}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{/block}
+
+

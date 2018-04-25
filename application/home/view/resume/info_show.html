@@ -1,0 +1,46 @@
+<form upload-base64-url="" upload="" action="" method="post" data-action="" data-form="form-avatar">
+    <div class="profile_form zw_form figure">
+        <dl class="clearfix avatar_line">
+            <dd class="txt Rcheck avatar_box">
+                <img src="" class="avatar">
+                <div class="sel_avatar">
+                    <a ka="choose-avatar" data-title="头像设置" class="upload-layer"></a>
+                </div>
+                <input name="large" value="https://img.bosszhipin.com/beijin/mcs/useravatar/20180413/45c2fe73c89ffd50cb77fd5188ff50b1cfcd208495d565ef66e7dff9f98764da.jpg" type="hidden" class="kz_input required avatar_url" datatype="z" nullmsg="请上传头像！">
+                <input name="tiny" value="https://img.bosszhipin.com/beijin/mcs/useravatar/20180413/45c2fe73c89ffd50cb77fd5188ff50b1cfcd208495d565ef66e7dff9f98764da_s.jpg" type="hidden" class="kz_input required avatar_url" datatype="z" nullmsg="请上传头像！">
+            </dd>
+        </dl>
+    </div>
+</form>
+
+<h2 class="name">{$info.in_name} <i class="fz-resume {$info.in_sex==1?'fz-male':'fz-female'}"></i>
+    <div class="op">
+        <a data-url="" href="javascript:;" ka="user-resume-edit-userinfo" class="link-edit" data-func="func-edit" data-action="/employee/ResumeInfoEdit" data-id="{$info.in_id}"><i class="fz-resume fz-edit"></i>编辑</a>
+    </div>
+</h2>
+<div class="info-labels">
+    <p class="row-base">
+        <span class="label-text">
+            <i class="fz-resume fz-experience"></i>{$info.years}年以内经验
+        </span>
+        <em class="vline"></em>
+        <span class="label-text">
+            <i class="fz-resume fz-status"></i>{$info.applyStatus}
+        </span>
+    </p>
+
+    <p class="row-contact">
+        <span class="label-text"><i class="fz-resume fz-tel"></i>{$info.phone}</span>
+    
+        {notempty name="$info.in_wx"}
+        <em class="vline"></em>
+        <span class="label-text span-wechat"><i class="fz-resume fz-weixin"></i>{$info.in_wx}</span>
+        {/notempty}
+        
+        {notempty name="$info.in_email"}
+        <em class="vline"></em>
+        <span class="label-text span-email"><i class="fz-resume fz-mail"></i>{$info.in_email}</span>
+        {/notempty}
+    </p>
+
+</div>

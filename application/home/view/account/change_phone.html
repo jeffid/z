@@ -1,0 +1,102 @@
+{extend name="public:base"/}
+{block name="title"}更改手机号{/block}
+{block name="main"}
+<div id="main" class="inner home-inner">
+    <div class="account-container">
+        <div class="set-page">
+            <div class="set-nav">
+                <div class="account-manager">账户管理</div>
+                <ul>
+                    <li ka="account_mobile_change" data-tab="phone" data-url="/geek/account/mobile.json" class="cur">
+                        手机号码
+                    </li>
+                    <li ka="account_pwd" data-tab="pwd" data-url="/geek/account/password.json">密码管理</li>
+                    <li ka="account_chatwords" data-tab="usalchat" data-url="/geek/account/reply.json">聊天常用语</li>
+                    <li ka="account_icebreaker" data-tab="sayhello" data-url="/geek/account/greeting.json">设置打招呼语</li>
+                </ul>
+            </div>
+            <div class="set-content">
+                <div class="set-box sign-form">
+                    <form action="https://www.zhipin.com/geek/account/management?ka=account_manage"
+                          class="account-form phone-form">
+                        <div class="bind-phone">
+                            <span class="txt-msg">当前绑定手机号</span>
+                            <div class="operate-area"><span class="phone-num">176****0001</span></div>
+                        </div>
+                        <div>
+                            <span class="txt-msg">更改绑定手机号</span>
+                            <div class="operate-area">
+                                <div class="form-row row-select sub-select">
+                                    <span class="dropdown-select">
+                                        <i class="icon-select-arrow"></i>
+                                        <em class="text-select">+86</em>
+                                        <input type="hidden" name="regionCode" value="+86">
+                                    </span>
+                                    <span class="ipt-wrap">
+                                        <input type="tel" class="ipt ipt-phone required" placeholder="手机号"  maxlength="50" name="account" data-blank="请输入手机号" data-format="请输入正确的手机号">
+                                    </span>
+                                    
+                                    <div class="dropdown-menu">
+                                        <ul>
+                                            <li class="regionCodeOptions" data-val="+86"><span class="num">+86</span>中国大陆</li>
+                                            <li class="regionCodeOptions" data-val="+1"><span class="num">+1</span>美国</li>
+                                            <li class="regionCodeOptions" data-val="+852"><span class="num">+852</span>香港</li>
+                                            <li class="regionCodeOptions" data-val="+81"><span class="num">+81</span>日本</li>
+                                            <li class="regionCodeOptions" data-val="+886"><span class="num">+886</span>台湾</li>
+                                            <li class="regionCodeOptions" data-val="+44"><span class="num">+44</span>英国</li>
+                                            <li class="regionCodeOptions" data-val="+82"><span class="num">+82</span>韩国</li>
+                                            <li class="regionCodeOptions" data-val="+33"><span class="num">+33</span>法国</li>
+                                            <li class="regionCodeOptions" data-val="+7"><span class="num">+7</span>俄罗斯</li>
+                                            <li class="regionCodeOptions" data-val="+39"><span class="num">+39</span>意大利</li>
+                                            <li class="regionCodeOptions" data-val="+65"><span class="num">+65</span>新加坡</li>
+                                            <li class="regionCodeOptions" data-val="+63"><span class="num">+63</span>菲律宾</li>
+                                            <li class="regionCodeOptions" data-val="+60"><span class="num">+60</span>马来西亚</li>
+                                            <li class="regionCodeOptions" data-val="+64"><span class="num">+64</span>新西兰</li>
+                                            <li class="regionCodeOptions" data-val="+34"><span class="num">+34</span>西班牙</li>
+                                            <li class="regionCodeOptions" data-val="+95"><span class="num">+95</span>缅甸</li>
+                                            <li class="regionCodeOptions" data-val="+230"><span class="num">+230</span>毛里求斯</li>
+                                            <li class="regionCodeOptions" data-val="+263"><span class="num">+263</span>津巴布韦</li>
+                                            <li class="regionCodeOptions" data-val="+20"><span class="num">+20</span>埃及</li>
+                                            <li class="regionCodeOptions" data-val="+92"><span class="num">+92</span>巴基斯坦</li>
+                                            <li class="regionCodeOptions" data-val="+880"><span class="num">+880</span>孟加拉国</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-row row-code">
+                        <span class="cell-wrap">
+                            <input type="text" data-blank="请输入图片验证码" data-format="图片验证码错误"
+                                   class="ipt ipt-code ipt-image-code" name="captcha" maxlength="4"
+                                   placeholder="请输入图片验证码" data-url="/captcha/randkey.json">
+                        </span>
+                                    <span class="cell-wrap">
+                            <img src="./account_files/saved_resource" class="verifyimg">
+                        </span>
+                                    <input type="hidden" name="randomKey" class="randomkey"
+                                           value="1JRrtuSleullUSJmR31LEuRmWLvpaN5x">
+                                </div>
+                                <div class="form-row row-code">
+                        <span class="cell-wrap">
+                            <input type="text" class="ipt ipt-code ipt-message-code" name="captcha" maxlength="4"
+                                   data-blank="请输入短信验证码" data-format="短信验证码错误" placeholder="请输入验证码" "="">
+                        </span>
+                                    <span class="cell-wrap get-message-code">获取验证码</span>
+                                </div>
+                                <div class="form-btn">
+                                    <button type="submit" class="btn btn-change-phone" ka="mobile_change_sure">确认更改手机号
+                                    </button>
+                                </div>
+                                <div class="text-tip">
+                                    <span class="ps">注：</span>
+                                    <span class="ps-info">修改手机号后，可以使用新手机登录Boss直聘；聊天时“交换电话” 功能的手机号会一同修改</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+
