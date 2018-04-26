@@ -1,10 +1,10 @@
-<form data-action="/employee/resumeInfoEditExec" method="post" class="form-resume" data-form="form-info-edit">
+<form data-action="/employee/resumeInfoAddExec" method="post" class="form-resume" data-form="form-info-add">
     <h3 class="title">个人信息</h3>
     <div class="form-row">
         <dl>
             <dt>姓名 <span class="gray"></span></dt>
             <dd>
-                <input type="text" class="ipt required" placeholder="输入您的姓名" data-range="1,12" data-blank="请输入姓名" data-format="请填写真实姓名" maxlength="12" ka="et-uname" name="name" value="{$in_name}" required>
+                <input type="text" class="ipt required" placeholder="输入您的姓名" data-range="1,12" data-blank="请输入姓名" data-format="请填写真实姓名" maxlength="12" ka="et-uname" name="name"  minlength="2" required>
             </dd>
         </dl>
         <dl>
@@ -12,13 +12,13 @@
             <dd>
                 <span class="dropdown-select">
                     <i class="icon-select-arrow"></i>
-                    <input value="{$applyStatus}" type="text" class="ipt" placeholder="请选择" readonly="">
-                    <input type="hidden" class="required" data-blank="请选择求职状态" name="applyStatus" value="{$in_status}" required>
+                    <input value="离职-随时到岗"  type="text" class="ipt" placeholder="请选择" readonly="" minlength="1" required>
+                    <input value="0" type="hidden" class="required" data-blank="请选择求职状态" name="applyStatus"  minlength="1" required>
                 </span>
                 <div class="dropdown-menu">
                     <ul>
-                        <li data-val="0">离职-随时到岗</li>
-                        <li data-val="1" class="selected">在职-暂不考虑</li>
+                        <li data-val="0" class="selected">离职-随时到岗</li>
+                        <li data-val="1" >在职-暂不考虑</li>
                         <li data-val="2">在职-考虑机会</li>
                         <li data-val="3">在职-月内到岗</li>
                     </ul>
@@ -35,7 +35,7 @@
                 <div class="radio-list">
                     <label class="radio-square radio-checked" data-val="1">男</label>
                     <label class="radio-square " data-val="0">女</label>
-                    <input type="hidden" name="gender" class="required" data-blank="请选择性别" value="{$in_sex}" required>
+                    <input value="1" type="hidden" name="gender" class="required" data-blank="请选择性别"  minlength="1" required>
                 </div>
             </dd>
         </dl>
@@ -45,8 +45,8 @@
             <dd>
                 <span class="dropdown-select">
                     <i class="icon-select-arrow"></i>
-                    <input type="text"  value="{$in_start_work_year}" class="ipt ipt-range" data-range="start" data-type="y" placeholder="选择年份" readonly="">
-                    <input type="hidden" name="startWorkYear" value="{$in_start_work_year}" class="required" required>
+                    <input value="2018" type="text"   class="ipt ipt-range" data-range="start" data-type="y" placeholder="选择年份" readonly="" minlength="4" required>
+                    <input value="2018" type="hidden" name="startWorkYear"  class="required" minlength="4" required>
                 </span>
                 <div class="dropdown-menu">
                     <ul>
@@ -92,12 +92,12 @@
             <dd>
                 <span class="dropdown-select">
                     <i class="icon-select-arrow"></i>
-                    <input type="text"  value="{$in_birthday}" class="ipt ipt-range" data-range="start" data-type="y" placeholder="选择年份" readonly="">
-                    <input type="hidden" name="birthday" value="{$in_birthday}" class="required" required>
+                    <input value="1990" type="text"   class="ipt ipt-range" data-range="start" data-type="y" placeholder="选择年份" readonly="" minlength="4" required>
+                    <input value="1990" type="hidden" name="birthday" minlength="4" class="required" required>
                 </span>
                 <div class="dropdown-menu">
                     <ul>
-                        {for start="1960" end="2019"}
+                        {for start="1950" end="2019"}
                         <li data-val="{$i}">{$i}</li>
                         {/for}
                     </ul>
@@ -108,18 +108,17 @@
         <dl>
             <dt>微信号</dt>
             <dd>
-                <input name="weixin" value="{$in_wx??''}" type="text" class="ipt" placeholder="输入微信号" data-range="0,50" data-blank="请填写微信号" data-format="请填写真实的微信号" maxlength="50">
+                <input name="weixin"  type="text" class="ipt" placeholder="输入微信号" data-range="0,50" data-blank="请填写微信号" data-format="请填写真实的微信号" maxlength="50">
             </dd>
         </dl>
     </div>
     <div class="form-row">
         <dl>
             <dt>邮箱</dt>
-            <dd><input name="email" ka="email_edit" value="{$in_email??''}" type="text" class="ipt" placeholder="请输入您的邮箱" data-range="0,40" data-blank="请填写邮箱" data-format="请填写真实的邮箱" maxlength="50"></dd>
+            <dd><input name="email" ka="email_edit"  type="text" class="ipt" placeholder="请输入您的邮箱" data-range="0,40" data-blank="请填写邮箱" data-format="请填写真实的邮箱" maxlength="40" ></dd>
         </dl>
     </div>
     <div class="form-btns">
-        <input name="id" type="hidden" value="{$id}">
         <button class="btn btn-back" type="button" ka="user-resume-user-info-cancel" data-func="func-cancel">取消</button>
         <button class="btn" type="submit" data-btn="submit">完成</button>
     </div>

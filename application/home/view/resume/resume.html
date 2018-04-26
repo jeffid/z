@@ -2,53 +2,113 @@
 {block name="title"}我的简历{/block}
 {block name="main"}
 <div id="main" class="inner">
-<div class="job-box">
-    <div class="resume">
-        <div class="resume-box">
-            <div class="resume-item" id="resume-userinfo">
-                <div class="item-primary">
-                {include file="resume/info_show" /}
+    <div class="job-box" style="margin-top: 20px;">
+        <div class="sider deliver-sider" style="margin-top: 0;">
+            <div class="sider-resume">
+                <!--<div class="resume-attachment">-->
+                <!--<h3 class="title">附件简历-->
+                <!--</h3>-->
+                <!--<div class="upload">-->
+                <!--<div class="file-result" style="background: rgb(247, 247, 247);">-->
+                <!--上传附件简历-->
+                <!--</div>-->
+                <!--<div class="file-btn"><a class="btn-upload-file"><input id="fileupload" type="file" name="file" ka="user-resume-upload-file"></a></div>-->
+                <!--<div class="file-tip">-->
+                <!--<p>支持 doc，docx，pdf，jpg，png 格式附件，文件大小不超过10M</p>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!---->
+                <!---->
+                <!--</div>-->
+                <!--<div class="tit">简历完成度<span class="progress-score">80%</span></div>
+                <div class="progress"><p></p></div>-->
+                <div class="resume-nav">
+                    <h3 class="title">在线简历</h3>
+                    <ul>
+                        <li>
+                            <i class="fz-resume fz-info"></i>
+                            <a href="#resume-userinfo">
+                                <span>个人信息</span>
+                            </a>
+                        
+                        </li>
+                        
+                        <li>
+                            <i class="fz-resume fz-adventage"></i>
+                            <a href="#resume-summary">
+                                <span>我的优势</span>
+                            </a>
+                        
+                        </li>
+                        
+                        <li>
+                            <i class="fz-resume fz-history"></i>
+                            <a href="#resume-history">
+                                <span>工作经历</span>
+                            </a>
+                        
+                        </li>
+                        
+                        <li>
+                            <i class="fz-resume fz-eaducation"></i>
+                            <a href="#resume-education">
+                                <span>教育经历</span>
+                            </a>
+                        
+                        </li>
+                    
+                    </ul>
                 </div>
                 
-                <div class="item-form" style="display: block;">
-                    {//include file="resume/info_edit" /}
-                </div>
+                <!-- <div class="btns"><a href="#" class="btn btn-download">下载电子简历</a><a href="#" class="btn btn-download">微信版本简历</a></div>-->
             </div>
-            
-            <!------------------------------------------------------->
-            <div class="resume-item" id="resume-summary">
-                <div class="item-primary">
-                    {include file="resume/adventage_show" /}
+        </div>
+        <div class="resume">
+            <div class="resume-box">
+                <div class="update-time"><span class="prv-view-btn" ka="user_resume_preview"></span></div>
+                <div class="resume-item" id="resume-userinfo">
+                    <div class="item-primary">
+                        {include file="resume/info_show" /}
+                    </div>
+                    
+                    <div class="item-form" style="display: block;">
+                        {//include file="resume/info_edit" /}
+                    </div>
                 </div>
-                <div class="item-form" style="display: block;">
-                    {include file="resume/adventage_edit" /}
+                
+                <!------------------------------------------------------->
+                <div class="resume-item" id="resume-summary">
+                    <div class="item-primary">
+                        {include file="resume/adventage_show" /}
+                    </div>
+                    <div class="item-form" style="display: block;">
+                        {//include file="resume/adventage_edit" /}
+                    </div>
                 </div>
-            </div>
-            
-            <!----------------------------------------------------------------->
-            <div class="resume-item" id="resume-history">
-                <div class="item-primary">
-                    {include file="resume/history_show" /}
+                
+                <!----------------------------------------------------------------->
+                <div class="resume-item" id="resume-history">
+                    <div class="item-primary">
+                        {include file="resume/history_show" /}
+                    </div>
+                    <div class="item-form" style="display:block;">
+                        {//include file="resume/history_edit" /}
+                    </div>
                 </div>
-                <div class="item-form" style="display:block;">
-                    {include file="resume/history_edit" /}
-                </div>
-            </div>
-            
-            <!------------------------------------------------------->
-            <div class="resume-item" id="resume-education">
-                <div class="item-primary">
-                    {include file="resume/education_show" /}
-
-                </div>
-                <div class="item-form" style="display:block;">
-                    {include file="resume/education_edit" /}
-
+                
+                <!------------------------------------------------------->
+                <div class="resume-item" id="resume-education">
+                    <div class="item-primary">
+                        {include file="resume/education_show" /}
+                    
+                    </div>
+                    <div class="item-form" style="display:block;">
+                        {//include file="resume/education_edit" /}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 {/block}
 

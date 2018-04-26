@@ -5,9 +5,13 @@
     <title>【官网】Boss直聘-互联网招聘神器！官方IP:直直</title>
     <meta name="keywords" content="Boss直聘,直直,招聘,求职,找工作">
     <meta name="description" content="Boss直聘是一款互联网求职招聘找工作软件，让求职者与Boss直接开聊、加快面试、即时反馈，找工作就用Boss直聘。直直为Boss直聘IP，下载APP让直直带你轻松找工作！">
-    <link href="./css/main_guide1.css" type="text/css" rel="stylesheet">
+    <link href="/static/home/css/main.css" type="text/css" rel="stylesheet">
     
-    <script charset="utf-8" src="./js/v.js"></script><script src="./js/hm.js"></script><script src="./js/ka.js"></script><script>
+    <script charset="utf-8" src="./js/v.js"></script>
+    <script src="./js/hm.js"></script><script src="./js/ka.js">
+    
+    </script>
+    <script>
         _PAGE={
             checkMobileUrl:"/registe/sendSms.json",
             regMobileUrl:"/registe/save.json",
@@ -44,16 +48,16 @@
                         <form action="https://www.zhipin.com/geek/user/save.json" method="post">
                             <input type="hidden" name="edit" value="complete">
                             <input type="hidden" name="weixin" value="">
-                            <div>
-                                <dd class="avatar_box">
-                                    <div class="avatar" upload-base64-url="/geek/upload/avatar64.json" ka="upload-avatar" upload="uploadURL=/user/upload/avatar/?c=uploadPortrit&amp;jsCallback=uploadOk" action="/boss/update/headImg.json" method="post">
-                                        <img src="./img/avatar-default.png">
-                                        <div class="sel-avatar" ka="boss-profile-avatar"><input type="file" name="file" data-blank="请上传头像！"></div>
-                                        <input name="large" value="" class="required" data-blank="请设置头像" type="hidden">
-                                        <input name="tiny" value="" class="required" data-blank="请设置头像" type="hidden">
-                                    </div>
-                                </dd>
-                            </div>
+                            <!--<div>-->
+                                <!--<dd class="avatar_box">-->
+                                    <!--<div class="avatar" upload-base64-url="/geek/upload/avatar64.json" ka="upload-avatar" upload="uploadURL=/user/upload/avatar/?c=uploadPortrit&amp;jsCallback=uploadOk" action="/boss/update/headImg.json" method="post">-->
+                                        <!--<img src="./img/avatar-default.png">-->
+                                        <!--<div class="sel-avatar" ka="boss-profile-avatar"><input type="file" name="file" data-blank="请上传头像！"></div>-->
+                                        <!--<input name="large" value="" class="required" data-blank="请设置头像" type="hidden">-->
+                                        <!--<input name="tiny" value="" class="required" data-blank="请设置头像" type="hidden">-->
+                                    <!--</div>-->
+                                <!--</dd>-->
+                            <!--</div>-->
                             <div class="form-row">
                                 <dd>
                                     <input type="text" value="" ka="name" class="ipt ipt-short required" placeholder="输入您的姓名" data-range="1,12" data-blank="请输入姓名" data-format="请填写真实姓名" maxlength="24" name="name">
@@ -695,8 +699,8 @@
     </div>
 </div>
 
-<script src="./js/jquery-1.12.2.min.js"></script>
-<script src="./js/main.js"></script>
+<script src="/static/home/js/jquery-1.12.2.min.js"></script>
+<script src="/static/home/js/main.js"></script>
 <input type="hidden" id="page_key_name" value="cpc_user_comp">
 
 

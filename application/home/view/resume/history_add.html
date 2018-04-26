@@ -1,10 +1,10 @@
-<form data-action="/employee/resumeHistoryEditExec"  method="post" class="form-resume" data-form="form-history-edit">
-    <h3 class="title">编辑工作经历</h3>
+<form data-action="/employee/resumeHistoryAddExec" method="post" class="form-resume" data-form="form-history-add">
+    <h3 class="title">添加工作经历</h3>
     <div class="form-row">
         <dl>
             <dt>公司名称</dt>
             <dd>
-                <input type="text" ka="work-company" name="company" value="{$hi_company}" class="ipt required"
+                <input type="text" ka="work-company" name="company" value="" class="ipt required"
                        placeholder="例如：北京百度科技有限公司" data-range="1,46" data-blank="必填" data-format="请输入不超过 46 个中文字符"
                        maxlength="92" required>
             </dd>
@@ -14,7 +14,7 @@
             <dd>
                 <span class="dropdown-select">
                     <i class="icon-select-arrow"></i>
-                    <input type="text" ka="work-position" name="positionType" value="{$hi_type}" class="ipt" placeholder="选择职位类型" readonly="">
+                    <input type="text" ka="work-position" name="positionType" value="" class="ipt" placeholder="选择职位类型" readonly="">
                     <input type="hidden" value="" level2="" name="position" class="required"
                            data-blank="必选">
                 </span>
@@ -57,7 +57,7 @@
         <dl>
             <dt>职位名称</dt>
             <dd>
-                <input type="text" ka="work-position-name" name="positionName" value="{$hi_position}" class="ipt required"
+                <input type="text" ka="work-position-name" name="positionName" value="" class="ipt required"
                        placeholder="例如：UI设计师" data-range="1,12" data-blank="必填" data-format="请输入 12 字以内的职位名称"
                        maxlength="24" required>
             </dd>
@@ -66,7 +66,7 @@
             <dt>所属行业</dt>
             <dd>
                 <span class="">
-                    <input type="text" ka="work-industry" value="{$hi_industry}" name="industryCategory" class="ipt ipt-industry"
+                    <input type="text" ka="work-industry" value="" name="industryCategory" class="ipt ipt-industry"
                            placeholder="选择行业" readonly="">
                     <input type="hidden" value="0" name="industryCode" class="required" data-blank="必选">
                 </span>
@@ -81,9 +81,9 @@
             <dd>
                 <span class="dropdown-select">
                     <i class="icon-select-arrow"></i>
-                    <input type="text" value="{$hi_startdate}" class="ipt ipt-range" data-range="start" data-type="y"
-                           placeholder="选择年份" readonly="" name="startDateName">
-                    <input type="hidden" name="startDate" value="{$hi_startdate}" class="required" data-blank="请选择时间段">
+                    <input name="startDateName" type="text" value="" class="ipt ipt-range" data-range="start" data-type="y"
+                           placeholder="选择年份" readonly="">
+                    <input type="hidden" name="startDate" value="" class="required" data-blank="请选择时间段">
                 </span>
                 <div class="dropdown-menu">
                     <ul>
@@ -127,9 +127,9 @@
                 <span class="prefix-day">至</span>
                 <span class="dropdown-select">
                     <i class="icon-select-arrow"></i>
-                    <input type="text" value="{$hi_enddate}" class="ipt ipt-range" data-range="end" data-type="y" placeholder="选择年份"
-                           readonly="" name="endDateName">
-                    <input type="hidden" name="endDate" value="{$hi_enddate}" class="required" data-blank="请选择时间段">
+                    <input name="endDateName" type="text" value="" class="ipt ipt-range" data-range="end" data-type="y" placeholder="选择年份"
+                           readonly="">
+                    <input type="hidden" name="endDate" value="" class="required" data-blank="请选择时间段">
                 </span>
                 <div class="dropdown-menu">
                     <ul>
@@ -173,7 +173,7 @@
         <dl>
             <dt>所属部门</dt>
             <dd>
-                <input type="text" ka="work-department" name="department" value="{$hi_department}" class="ipt" placeholder="选填"
+                <input type="text" ka="work-department" name="department" value="" class="ipt" placeholder="选填"
                        data-range="0,6" data-blank="选填" data-format="请输入 6 字以内的部门名称" maxlength="12" required>
             </dd>
         </dl>
@@ -185,7 +185,7 @@
                 <textarea name="responsibility" ka="work-responsibility"
                           placeholder="例如： 1、主要负责新员工入职培训； 2、分析制定员工每个月个人销售业绩； 3、帮助员工提高每日客单价，整体店面管理等工作； "
                           class="ipt ipt-area required" data-range="1,1600" data-blank="必填"
-                          data-format="请输入 1600 字以内的工作内容" maxlength="3200" value="{$hi_work}">{$hi_work}</textarea>
+                          data-format="请输入 1600 字以内的工作内容" maxlength="3200" value=""></textarea>
                 <span class="count-num"><em>0</em>/1600</span>
             </dd>
         </dl>
@@ -197,7 +197,7 @@
                 <textarea name="workPerformance" ka="work-performance"
                           placeholder="(选填)填写完整、有吸引力的工作业绩，有助于您更多地吸引Boss的关注 例如：1.取得的成绩… 2.实现的突破… 3.获得的表彰…"
                           class="ipt ipt-area" data-range="0,300" data-blank="必填" data-format="请输入 300 字以内的工作业绩"
-                          maxlength="600" value="{$hi_results}">{$hi_results}</textarea>
+                          maxlength="600" value=""></textarea>
                 <div class="hidden-row">
                     <label class="checkbox">
                         <input type="checkbox" ka="work-hide" name="isPublic" value="1" checked="checked">
@@ -209,7 +209,7 @@
         </dl>
     </div>
     <div class="form-btns">
-        <input type="hidden" name="id" value="{$id}">
+        <input type="hidden" name="id" value="">
         <button class="btn btn-back" ka="work-cancel" type="button" data-func="func-cancel">取消</button>
         <button class="btn" ka="work-save" type="submit">完成</button>
     </div>

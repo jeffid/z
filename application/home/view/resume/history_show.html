@@ -1,73 +1,42 @@
 <h3 class="title">
     工作经历
     <div class="op">
-        <a data-url="/geek/getWorkExperienceForm.json" href="javascript:;" ka="user-resume-add-workexp"
-           class="link-add">
+        <a data-url="" href="javascript:;" ka="user-resume-add-workexp"
+           class="link-add" data-action="/employee/resumeHistoryAdd" data-func="func-add">
             <i class="fz-resume fz-add"></i>添加
         </a>
     </div>
 </h3>
 <div class="history-project">
-    <div class="history-item" id="row-f5446a23250fac101nB92NW8F1c~">
+    
+    {volist name="his" id="item"}
+    <div class="history-item" >
         <div class="op">
-            <a href="javascript:;" data-url="/geek/getWorkExperienceForm.json?id=f5446a23250fac101nB92NW8F1c~"
-               ka="user-resume-edit-workexp1" class="link-edit">
+            <a href="javascript:;" data-url=""
+               ka="user-resume-edit-workexp1" class="link-edit" data-action="/employee/resumeHistoryEdit" data-func="func-edit" data-id="{$item.hi_id}">
                 <i class="fz-resume fz-edit"></i>编辑
             </a>
             
             <em class="vline"></em>
-            <a href="javascript:;" data-url="/geek/delWorkExperience.json?id=f5446a23250fac101nB92NW8F1c~"
-               ka="user-resume-del-workexp1" class="link-delete">
+            <a href="javascript:;" data-url=""
+               ka="user-resume-del-workexp1" class="link-delete" data-action="/employee/resumeHistoryDelete" data-func="func-delete" data-id="{$item.hi_id}">
                 <i class="fz-resume fz-delete"></i>删除
             </a>
         </div>
-        <span class="period">2017.10-至今</span>
-        <h4 class="name">杰杰斐奥科技</h4>
+        <span class="period">{$item.hi_startdate}-{$item.hi_enddate}</span>
+        {//公司名}
+        <h4 class="name">{$item.hi_company}</h4>
         <div class="text">
-            <h4>PHP</h4>
+            {//职业名称}
+            <h4>{$item.hi_position}</h4>
             <div class="text">
-                <h4>工作内容</h4>
-                <p>基础代码</p>
+                {//工作内容}
+                <h4>{$item.hi_work}</h4>
+                {//工作业绩}
+                <p>{$item.hi_results}</p>
             </div>
-        </div>
-        <div class="text">
-            <h4>
-                <span>PHP</span>
-                <span>HTML/CSS</span>
-                <span>JS</span>
-            </h4>
         </div>
     </div>
-    <div class="history-item" id="row-5a1382f3195815d81nF60t20FVc~">
-        <div class="op">
-            <a href="javascript:;" data-url="/geek/getWorkExperienceForm.json?id=5a1382f3195815d81nF60t20FVc~"
-               ka="user-resume-edit-workexp2" class="link-edit"><i class="fz-resume fz-edit"></i>编辑
-            </a>
-            <em class="vline"></em>
-            <a href="javascript:;" data-url="/geek/delWorkExperience.json?id=5a1382f3195815d81nF60t20FVc~"
-               ka="user-resume-del-workexp2" class="link-delete"><i class="fz-resume fz-delete"></i>删除
-            </a>
-        
-        </div>
-        <span class="period">2009.02-2010.04</span>
-        <h4 class="name">天下科技</h4>
-        <div class="text">
-            <h4>123</h4>
-            <div class="text">
-                <h4>工作内容</h4>
-                <p>工作内容</p>
-            </div>
-            <div class="text">
-                <h4>工作业绩</h4>
-                <p>工作业绩</p>
-            </div>
-        </div>
-        <div class="text">
-            <h4>
-                <span>Hadoop</span>
-                <span>HTML/CSS</span>
-            </h4>
-        </div>
-    </div>
+    {/volist}
 </div>
-                
+

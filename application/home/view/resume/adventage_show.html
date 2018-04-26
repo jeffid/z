@@ -1,11 +1,25 @@
+{notempty name="$adv"}
 <h3 class="title">我的优势
     <div class="op">
-        <a data-url="/geek/getUserDescForm.json" href="javascript:;" ka="user-resume-edit-desc" class="link-edit">
+        <a data-url="" href="javascript:;" ka="user-resume-edit-desc" class="link-edit" data-action="/employee/resumeAdventageEdit" data-func="func-edit" data-id="{$adv.ad_id}">
             <i class="fz-resume fz-edit"></i>编辑
         </a>
     </div>
 </h3>
 <div class="text">
-    <p>努力444</p>
+    <p>{$adv.ad_text}</p>
 </div>
-                
+
+{else/}
+
+<h3 class="title">我的优势
+    <div class="op">
+        <a data-url="" href="javascript:;" ka="user-resume-edit-desc" class="link-edit" data-action="/employee/resumeAdventageAdd" data-func="func-add">
+            <i class="fz-resume fz-add"></i>添加
+        </a>
+    </div>
+</h3>
+<div class="text">
+    <p></p>
+</div>
+{/notempty}

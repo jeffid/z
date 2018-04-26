@@ -6,16 +6,22 @@
                 <div class="sel_avatar">
                     <a ka="choose-avatar" data-title="头像设置" class="upload-layer"></a>
                 </div>
-                <input name="large" value="https://img.bosszhipin.com/beijin/mcs/useravatar/20180413/45c2fe73c89ffd50cb77fd5188ff50b1cfcd208495d565ef66e7dff9f98764da.jpg" type="hidden" class="kz_input required avatar_url" datatype="z" nullmsg="请上传头像！">
-                <input name="tiny" value="https://img.bosszhipin.com/beijin/mcs/useravatar/20180413/45c2fe73c89ffd50cb77fd5188ff50b1cfcd208495d565ef66e7dff9f98764da_s.jpg" type="hidden" class="kz_input required avatar_url" datatype="z" nullmsg="请上传头像！">
+                <input name="large"
+                       value="https://img.bosszhipin.com/beijin/mcs/useravatar/20180413/45c2fe73c89ffd50cb77fd5188ff50b1cfcd208495d565ef66e7dff9f98764da.jpg"
+                       type="hidden" class="kz_input required avatar_url" datatype="z" nullmsg="请上传头像！">
+                <input name="tiny"
+                       value="https://img.bosszhipin.com/beijin/mcs/useravatar/20180413/45c2fe73c89ffd50cb77fd5188ff50b1cfcd208495d565ef66e7dff9f98764da_s.jpg"
+                       type="hidden" class="kz_input required avatar_url" datatype="z" nullmsg="请上传头像！">
             </dd>
         </dl>
     </div>
 </form>
 
-<h2 class="name">{$info.in_name} <i class="fz-resume {$info.in_sex==1?'fz-male':'fz-female'}"></i>
+{present name="$info.in_name"}
+<h2 class="name">{$info.in_name??'未填写资料'} <i class="fz-resume {$info.in_sex==1?'fz-male':'fz-female'}"></i>
     <div class="op">
-        <a data-url="" href="javascript:;" ka="user-resume-edit-userinfo" class="link-edit" data-func="func-edit" data-action="/employee/ResumeInfoEdit" data-id="{$info.in_id}"><i class="fz-resume fz-edit"></i>编辑</a>
+        <a data-url="" href="javascript:;" ka="user-resume-edit-userinfo" class="link-edit" data-func="func-edit"
+           data-action="/employee/ResumeInfoEdit" data-id="{$info.in_id}"><i class="fz-resume fz-edit"></i>编辑</a>
     </div>
 </h2>
 <div class="info-labels">
@@ -28,10 +34,10 @@
             <i class="fz-resume fz-status"></i>{$info.applyStatus}
         </span>
     </p>
-
+    
     <p class="row-contact">
         <span class="label-text"><i class="fz-resume fz-tel"></i>{$info.phone}</span>
-    
+        
         {notempty name="$info.in_wx"}
         <em class="vline"></em>
         <span class="label-text span-wechat"><i class="fz-resume fz-weixin"></i>{$info.in_wx}</span>
@@ -42,5 +48,14 @@
         <span class="label-text span-email"><i class="fz-resume fz-mail"></i>{$info.in_email}</span>
         {/notempty}
     </p>
-
 </div>
+
+{else/}
+
+<h2 class="name">个人信息
+    <div class="op">
+        <a data-url="" href="javascript:;" class="link-edit" data-func="func-edit" data-action="/employee/ResumeInfoAdd" data-id=""><i class="fz-resume fz-add"></i>添加</a>
+    </div>
+    <div style="height: 60px;font-size: 14px;">请添加个人信息</div>
+</h2>
+{/present}

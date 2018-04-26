@@ -66,4 +66,8 @@ class Signup extends Controller
         }
     }
     
+    function getGuide(){
+        return $this->fetch('/guide');
+    }
+    
 }

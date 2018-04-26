@@ -40,19 +40,31 @@ class Employee extends Permit0
          * */
         $data = [
             'info' => $this->getResumeInfoData(),
+            'adv' => $this->getResumeAdventageData(),
+            'his' => $this->getResumeHistoryData(),
+            'edu' => $this->getResumeEducationData(),
         ];
+        session('uid', 1);
+        session('username', '邓华华');
+        session('userStatus', 0);
+        session('phone', '+8617665450001');
+        
         return $this->fetch('/resume/resume', $data);
     }
     
-    
+    /*简历,个人信息部份*********************************************/
     function getResumeInfoData()
     {
-        $uid = session('uid') || 1;
-        $phone = session('phone') || 17665450001;
+        $uid = session('uid');
+        $phone = session('phone');
         $applyStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑机会', '在职-月内到岗'];
         $sexText = ['女', '男'];
+        /*如果记录不存在,此方法返回空数组*/
+        $data = Db::table('resume_info')->where('uid', $uid)->select()[0] ?? [];
+        if (count($data) < 1) {
+            return $data;
+        }
         
-        $data = Db::table('resume_info')->where('uid', $uid)->select()[0];
         /*求职状态，对应文本*/
         $data['applyStatus'] = $applyStatus[$data['in_status']];
         /*从数据库里记录的开始工作时间，得出工作经验年数*/
@@ -71,8 +83,7 @@ class Employee extends Permit0
         $data = [
             'info' => $this->getResumeInfoData(),
         ];
-        $res = ['msg' => 'ok', $this->fetch('/resume/info_show', $data)];
-        return $res;
+        return ['msg' => 'ok', 'html' => $this->fetch('/resume/info_show', $data)];
     }
     
     function postResumeInfoEdit()
@@ -90,12 +101,241 @@ class Employee extends Permit0
     function postResumeInfoEditExec()
     {
         $rq = request();
-        var_dump($rq->param());
-        $res=Db::table('resume_info')->strict(false)->update($rq->param());
+//        var_dump($rq->param());
+        $res = Db::table('resume_info')->strict(false)->update($rq->param());
         if ($res) {
-            $this->postResumeInfoShow();
+            return $this->postResumeInfoShow();
         } else {
-            return ['msg' => '信息表数据更新失败','res'=>$res];
+            return ['msg' => '信息表数据更新失败', 'res' => $res];
+        }
+    }
+    
+    function postResumeInfoAdd()
+    {
+        $rq = request();
+        if ($rq->isAjax()) {
+            return ['msg' => 'ok', 'html' => $this->fetch('/resume/info_add')];
+        }
+    }
+    
+    function postResumeInfoAddExec()
+    {
+        $rq = request();
+        $data = $rq->except(['in_id']);//历史遗留的in_id
+        $data['uid'] = session('uid');
+//        print_r($data);
+        $res = Db::table('resume_info')->strict(false)->insert($data);
+        if ($res) {
+            return $this->postResumeInfoShow();
+        } else {
+            return ['msg' => '添加信息失败,请完整填写字段再提交', 'res' => $res];
+        }
+    }
+    
+    
+    /*简历,个人优势部份********************************************/
+    function getResumeAdventageData()
+    {
+        $uid = session('uid');
+        /*如果记录不存在,此方法返回空数组*/
+        $data = Db::table('resume_adventage')->where('uid', $uid)->select()[0] ?? [];
+        return $data;
+    }
+    
+    function postResumeAdventageShow()
+    {
+        $data = [
+            'adv' => $this->getResumeAdventageData(),
+        ];
+        return ['msg' => 'ok', 'html' => $this->fetch('/resume/adventage_show', $data)];
+    }
+    
+    function postResumeAdventageAdd()
+    {
+        return ['msg' => 'ok', 'html' => $this->fetch('/resume/adventage_add')];
+    }
+    
+    function postResumeAdventageAddExec()
+    {
+        $rq = request();
+        $data = $rq->except('ad_id');
+        $data['uid'] = session('uid');
+        
+        /*防止添加多条数*/
+        if (!Db::table('resume_adventage')->where('uid', $data['uid'])->find()) {
+            return ['msg' => '记录已存在'];
+        }
+        
+        /*插入数据库*/
+        if (Db::table('resume_adventage')->strict(false)->insert($data)) {
+            return $this->postResumeAdventageShow();
+        } else {
+            return ['msg' => '添加信息失败,请完整填写字段再提交'];
+        }
+    }
+    
+    function postResumeAdventageEdit()
+    {
+        $rq = request();
+        /*个人信息表是唯一的,可以根据uid获取数据*/
+        $data = $this->getResumeAdventageData();
+        /*前台传过来的信息表id,存到表单的隐藏域中,修改提交时可用*/
+        $data['id'] = $rq->param('id');
+        return ['msg' => 'ok', 'html' => $this->fetch('/resume/adventage_edit', $data)];
+        
+    }
+    
+    function postResumeAdventageEditExec()
+    {
+        $rq = request();
+        $res = Db::table('resume_adventage')->strict(false)->update($rq->param());
+        if ($res) {
+            return $this->postResumeAdventageShow();
+        } else {
+            return ['msg' => '数据更新失败', 'res' => $res];
+        }
+    }
+    
+    
+    /*简历,工作经历 部份********************************************/
+    function getResumeHistoryData()
+    {
+        $uid = session('uid');
+        /*如果记录不存在,此方法返回空数组*/
+        $data = Db::table('resume_history')->where('uid', $uid)->select();
+        return $data;
+    }
+    
+    function postResumeHistoryShow()
+    {
+        $data = [
+            'his' => $this->getResumeHistoryData(),
+        ];
+        return ['msg' => 'ok', 'html' => $this->fetch('/resume/history_show', $data)];
+    }
+    
+    function postResumeHistoryAdd()
+    {
+        return ['msg' => 'ok', 'html' => $this->fetch('/resume/history_add')];
+    }
+    
+    function postResumeHistoryAddExec()
+    {
+        $rq = request();
+        $data = $rq->except('hi_id');
+        $data['uid'] = session('uid');
+        /*插入数据库*/
+        $res = Db::table('resume_history')->strict(false)->insert($data);
+        
+        if ($res) {
+            return $this->postResumeHistoryShow();
+        } else {
+            return ['msg' => '添加信息失败,请完整填写字段再提交'];
+        }
+    }
+    
+    function postResumeHistoryEdit()
+    {
+        $rq = request();
+        /*个人信息表是唯一的,可以根据uid获取数据*/
+        $data = Db::table('resume_history')->find($rq->param('id'));
+        /*前台传过来的信息表id,存到表单的隐藏域中,修改提交时可用*/
+        $data['id'] = $rq->param('id');
+        return ['msg' => 'ok', 'html' => $this->fetch('/resume/history_edit', $data)];
+        
+    }
+    
+    function postResumeHistoryEditExec()
+    {
+        $rq = request();
+        $res = Db::table('resume_history')->strict(false)->update($rq->param());
+        if ($res) {
+            return $this->postResumeHistoryShow();
+        } else {
+            return ['msg' => '数据更新失败', 'res' => $res];
+        }
+    }
+    
+    function postResumeHistoryDelete()
+    {
+        $rq = request();
+        
+        /*删除记录*/
+        if (Db::table('resume_history')->delete($rq->param('id'))) {
+            return $this->postResumeHistoryShow();
+        } else {
+            return ['msg' => '删除操作未执行'];
+        }
+    }
+    
+    
+    /*简历,个人教育背景部份*******************************/
+    function getResumeEducationData()
+    {
+        $uid = session('uid');
+        /*如果记录不存在,此方法返回空数组*/
+        $data = Db::table('resume_education')->where('uid', $uid)->select();
+        return $data;
+    }
+    
+    function postResumeEducationShow()
+    {
+        $data = [
+            'edu' => $this->getResumeEducationData(),
+        ];
+        return ['msg' => 'ok', 'html' => $this->fetch('/resume/education_show', $data)];
+    }
+    
+    function postResumeEducationAdd()
+    {
+        return ['msg' => 'ok', 'html' => $this->fetch('/resume/education_add')];
+    }
+    
+    function postResumeEducationAddExec()
+    {
+        $rq = request();
+        $data = $rq->except('hi_id');
+        $data['uid'] = session('uid');
+        /*插入数据库*/
+        $res = Db::table('resume_education')->strict(false)->insert($data);
+        
+        if ($res) {
+            return $this->postResumeEducationShow();
+        } else {
+            return ['msg' => '添加信息失败,请完整填写字段再提交'];
+        }
+    }
+    
+    function postResumeEducationEdit()
+    {
+        $rq = request();
+        $data = Db::table('resume_education')->find($rq->param('id'));
+        /*前台传过来的信息表id,存到表单的隐藏域中,修改提交时可用*/
+        $data['id'] = $rq->param('id');
+        return ['msg' => 'ok', 'html' => $this->fetch('/resume/education_edit', $data)];
+        
+    }
+    
+    function postResumeEducationEditExec()
+    {
+        $rq = request();
+        $res = Db::table('resume_education')->strict(false)->update($rq->param());
+        if ($res) {
+            return $this->postResumeEducationShow();
+        } else {
+            return ['msg' => '数据更新失败', 'res' => $res];
+        }
+    }
+    
+    function postResumeEducationDelete()
+    {
+        $rq = request();
+        
+        /*删除记录*/
+        if (Db::table('resume_education')->delete($rq->param('id'))) {
+            return $this->postResumeEducationShow();
+        } else {
+            return ['msg' => '删除操作未执行'];
         }
     }
     

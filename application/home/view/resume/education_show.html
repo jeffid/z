@@ -1,46 +1,33 @@
-
 <h3 class="title">教育经历
     <div class="op">
-        <a href="javascript:;" data-url="/geek/getEduExperienceForm.json" ka="user-resume-add-eduexp" class="link-add"><i class="fz-resume fz-add"></i>添加</a>
+        <a href="javascript:;" data-url= ka="user-resume-add-eduexp" class="link-add" data-action="/employee/resumeEducationAdd" data-func="func-add">
+            <i class="fz-resume fz-add"></i>添加
+        </a>
     </div>
 </h3>
 <div class="history-education">
-    
-    
+    {volist name="edu" id="item"}
     <div class="history-item" id="row-846a940cfc2fe5551nZ539u8EFs~">
         <div class="op">
-            <a href="javascript:;" data-url="/geek/getEduExperienceForm.json?id=846a940cfc2fe5551nZ539u8EFs~" ka="user-resume-edit-eduexp1" class="link-edit"><i class="fz-resume fz-edit"></i>编辑</a>
+            <a href="javascript:;" data-url=""
+               ka="user-resume-edit-eduexp1" class="link-edit" data-action="/employee/resumeEducationEdit" data-func="func-edit" data-id="{$item.ed_id}">
+                <i class="fz-resume fz-edit"  ></i>编辑
+            </a>
             
             <em class="vline"></em>
-            <a href="javascript:;" data-url="/geek/delEduExperience.json?id=846a940cfc2fe5551nZ539u8EFs~" ka="user-resume-del-eduexp1" class="link-delete"><i class="fz-resume fz-delete"></i>删除</a>
+            <a href="javascript:;" data-url=""
+               ka="user-resume-del-eduexp1" class="link-delete" data-action="/employee/resumeEducationDelete" data-func="func-delete" data-id="{$item.ed_id}">
+                <i class="fz-resume fz-delete" ></i>删除
+            </a>
         
         </div>
-        <span class="period">2012-2015</span>
-        <h4 class="name">广东岭南职业技术学院</h4>
+        <span class="period">{$item.ed_startdate}-{$item.ed_enddate}</span>
+        <h4 class="name">{$item.ed_school}</h4>
         <div class="text">
-            <h4>数控技术<em class="vline"></em>大专</h4>
-        
+            <h4>{$item.ed_subject}<em class="vline"></em>{$item.ed_degree}</h4>
+            <p>{$item.ed_experience??''}</p>
         </div>
     </div>
-    
-    <div class="history-item" id="row-2bc96c95dc8dec101nZ83ty9GVI~">
-        <div class="op">
-            <a href="javascript:;" data-url="/geek/getEduExperienceForm.json?id=2bc96c95dc8dec101nZ83ty9GVI~" ka="user-resume-edit-eduexp2" class="link-edit"><i class="fz-resume fz-edit"></i>编辑</a>
-            
-            <em class="vline"></em>
-            <a href="javascript:;" data-url="/geek/delEduExperience.json?id=2bc96c95dc8dec101nZ83ty9GVI~" ka="user-resume-del-eduexp2" class="link-delete"><i class="fz-resume fz-delete"></i>删除</a>
-        
-        </div>
-        <span class="period">2012-2015</span>
-        <h4 class="name">岭南学院</h4>
-        <div class="text">
-            <h4>数控技术<em class="vline"></em>大专</h4>
-            
-            <p>11111111111</p>
-        
-        </div>
-    </div>
-
-
+    {/volist}
 </div>
                 
