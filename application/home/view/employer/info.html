@@ -1,0 +1,74 @@
+{extend name="public:base"/}
+{block name="main"}
+<div id="main" class="inner home-inner">
+    <div class="account-container">
+        <div class="set-page">
+            <div class="set-nav">
+                <div class="account-manager">账户管理</div>
+                <ul>
+                    <a href="/employer/info">
+                        <li class="cur">个人信息</li>
+                    </a>
+                    <a href="/employer/add">
+                        <li>发布工作</li>
+                    </a>
+                    <a href="/employer/index">
+                        <li>已发布工作</li>
+                    </a>
+                    <a href="/employer/reindex">
+                        <li>已收简历</li>
+                    </a>
+                    <a href="/employer/editphone">
+                        <li>手机号码</li>
+                    </a>
+                    <a href="/employer/editpwd">
+                        <li>密码管理</li>
+                    </a>
+                    <a href="/employer/companyindex">
+                        <li >公司</li>
+                    </a>
+                </ul>
+            </div>
+    
+            <div class="" style="margin-left: 300px;width: 800px;height: 660px">
+                <div class="resume-item resume-item-open" id="resume-userinfo" style="margin-right: 100px">
+            
+                    <div class="item-form"><form action="/geek/user/save.json" method="post" class="form-resume">
+                        <input type="hidden" name="id" value="">
+                        <h3 class="title">公司信息</h3>
+                        <div class="form-row">
+                            <dl>
+                                <dt>姓名 <span class="gray"></span></dt>
+                                <dd><input type="text" disabled class="ipt required" placeholder=""  data-blank="" data-format="" maxlength="24" ka="et-uname" name="username" value="{$row['username'] ?? ''}"></dd>
+                            </dl>
+                            <dl>
+                                <dt>当前职业</dt>
+                                <dd>
+                            
+                                    <input type="text" disabled class="ipt required" placeholder="" data-blank="" data-format="" maxlength="24" ka="et-uname" name="position" value="{$row['position']??''}">
+                                </dd>
+                            </dl>
+                        </div>
+                       
+                        <div class="form-row">
+                            
+                        
+                                    <div class="form-row" style="float: right">
+                        
+                                {empty name="$row"}
+                                <a href="/employer/addinfo"><button class="btn btn-back" type="button" ka="user-resume-user-info-cancel">添加</button></a>
+                                {/empty}
+                                {notempty name="row"}
+                                <a href="/employer/addinfo"><button class="btn vali_btn" type="button" ka="user-resume-user-info-ok">修改</button></a>
+                                {/notempty}
+                            </div>
+                        </div>
+            
+            
+                    </form></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

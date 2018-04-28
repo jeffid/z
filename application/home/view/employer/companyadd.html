@@ -1,0 +1,99 @@
+{extend name="public:base"/}
+{block name="main"}
+
+    
+            <div class="" style="margin-left: 300px;width: 800px">
+                <div class="resume-item resume-item-open" id="resume-userinfo">
+            
+                    <div class="item-form">
+                        <form class="data-form-resume" action="/employer/companyinsert" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id" >
+                        <h3 class="title">公司信息</h3>
+                        <div class="form-row">
+                            <dl>
+                                <dt>简称(品牌) <span class="gray"></span></dt>
+                                <dd><input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="name" maxlength="24" minlength="1" required></dd>
+                            </dl>
+                            <dl>
+                                <dt>品牌全称</dt>
+                                <dd>
+                            
+                                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format=""  ka="et-uname" name="fullname" maxlength="24" minlength="1" required>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="form-row">
+                            <dl>
+                                <dt>主体背景图</dt>
+                                <dd><input type="file" class="medium" name="bg"/></dd>
+                            </dl>
+                            <dl>
+                                <dt>品牌</dt>
+                                <dd><input type="file" class="medium" name="logo"/></dd>
+                            </dl>
+                        </div>
+                        <div class="form-row">
+                            <dl>
+                                <dt>融资情况</dt>
+                                <dd>
+                                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format=""  ka="et-uname" name="financing" maxlength="24" minlength="1" required>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>供职人数</dt>
+                                <dd><input name="employees"  type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50" minlength="1" required></dd>
+                            </dl>
+                        </div>
+                        <div class="form-row">
+                            <dl>
+                                <dt>所在行业</dt>
+                                <dd><input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format=""  ka="et-uname" name="industry" maxlength="24" minlength="1" required></dd>
+                            </dl>
+                            <dl>
+                                <dt>简介</dt>
+                                <dd><input type="text"  class="ipt required" placeholder=""  data-blank="" data-format="" ka="et-uname" name="profile" maxlength="24" minlength="1" required></dd>
+                            </dl>
+
+                        </div>
+                        <div class="form-row">
+                            <dl>
+                                <dt>官网</dt>
+                                <dd><input type="text"  class="ipt required" placeholder=""  data-blank="" data-format="" ka="et-uname" name="homepage" maxlength="24" minlength="1" required></dd>
+                            </dl>
+                
+                        </div>
+
+                        <div class="form-row">
+                            
+                            <dl>
+                                <dt>公司地址</dt>
+                                <dd><input name="addr"  type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"  minlength="1" required></dd>
+                            </dl>
+                        </div>
+                        <div class="form-row">
+                            <dl>
+                                <dt>高管名</dt>
+                                <dd>
+                                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format=""  ka="et-uname" name="ce_name" maxlength="24" minlength="1" required>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>高管履历</dt>
+                                <dd>
+                                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" minlength="1" required  ka="et-uname" name="profile" >
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>品牌</dt>
+                                <dd><input type="file" class="medium" name="src"/></dd>
+                            </dl>
+                
+                        </div>
+                        <div class="form-btns" style=""><button class="btn btn-back" type="submit" >完成提交</button></div>
+                        
+                    </form>
+                    </div>
+                </div>
+            </div>
+      
+{/block}

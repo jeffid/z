@@ -1,0 +1,50 @@
+{extend name="public:base"/}
+{block name="main"}
+<div id="main" class="inner home-inner">
+    <div class="account-container">
+        <div class="set-page">
+            <div class="set-nav">
+                <div class="account-manager">账户管理</div>
+                <ul>
+                    <a href="/employer/info"><li>个人信息</li></a>
+                    <a href="/employer/add"><li >发布工作</li></a>
+                    <a href="/employer/index"><li >已发布工作</li></a>
+                    <a href="/employer/reindex"><li>已收简历</li></a>
+                    <a href="/employer/editphone"><li>手机号码</li></a>
+                    <a href="/employer/editpwd"><li class="cur">密码管理</li></a>
+                    <a href="/employer/companyindex"><li>公司</li></a>
+                </ul>
+            </div>
+            
+            <div class="set-content">
+                <form action="/employer/pwdupdate" class="form-editpwd" data-form="form-editpwd">
+                    <input type="hidden" name="'id" value="1">
+                    <div class="bind-phone">
+                        <span class="txt-msg">当前登录的账号</span>
+                        <div class="operate-area"><span class="phone-num">{$p}</span></div>
+                    </div>
+                    <!-- 初始设置密码的时候 -->
+                    <div>
+                        <span class="txt-msg" style="margin-top: 20px">设置登录密码</span>
+                        <div class="operate-area">
+                            
+                            <div class="form-row row-code">
+                                <span class="cell-wrap" style="margin-top: 20px"><input type="password" class="ipt ipt-code ipt-pwd-orginal" placeholder="请输入密码" data-format="请设置6-20位数字与字母组合密码" data-blank="请输入密码" name="password" value=""></span>
+                            </div>
+                            <div class="form-row row-code" style="margin-top: 20px">
+                                <span class="cell-wrap" ><input type="password" class="ipt ipt-code ipt-pwd-orginal-confirm" data-blank="请重复输入密码" data-format="两次输入密码不一致" placeholder="请确认密码" name="repassword" value=""></span>
+                            </div>
+                            <div class="form-btn" style="margin-top: 20px">
+                                <button type="submit" class="btn btn-origin-pwd" ka="pwd_add_sure">设置密码</button>
+                            </div>
+                        
+                        </div>
+                    </div>
+                    
+                    <!-- 修改密码的时候 -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+            {/block}

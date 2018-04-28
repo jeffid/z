@@ -72,3 +72,13 @@ function sms($phone, $expire = 30)
     $ucpass = new Ucpaas($options);
     return $ucpass->SendSms($appid, $templateid, $param, $phone, $uid);
 }
+
+function sms_check($phone,$phoneCode){
+    if ($phoneCode == session('phoneCode') && $phone == session('phone') && time() < session('phoneCodeExpire')) {
+//        session('phoneCode',null); //todo 暂时不删除短信验证码
+        return true;
+    }
+    else {
+        return false;
+    }
+}

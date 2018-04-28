@@ -25,12 +25,6 @@ class Employee extends Permit0
         return $this->fetch('/account');
     }
     
-    function getChangePhone()
-    {
-        return $this->fetch('/account/change_phone');
-    }
-    
-    
     function getResume()
     {
         /*
@@ -44,10 +38,6 @@ class Employee extends Permit0
             'his' => $this->getResumeHistoryData(),
             'edu' => $this->getResumeEducationData(),
         ];
-        session('uid', 1);
-        session('username', '邓华华');
-        session('userStatus', 0);
-        session('phone', '+8617665450001');
         
         return $this->fetch('/resume/resume', $data);
     }
@@ -56,7 +46,7 @@ class Employee extends Permit0
     function getResumeInfoData()
     {
         $uid = session('uid');
-        $phone = session('phone');
+        $phone = session('phonePostfix');
         $applyStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑机会', '在职-月内到岗'];
         $sexText = ['女', '男'];
         /*如果记录不存在,此方法返回空数组*/
@@ -101,9 +91,10 @@ class Employee extends Permit0
     function postResumeInfoEditExec()
     {
         $rq = request();
-//        var_dump($rq->param());
-        $res = Db::table('resume_info')->strict(false)->update($rq->param());
-        if ($res) {
+        $userName = $rq->param('in_name');
+        if ($res = Db::table('resume_info')->strict(false)->update($rq->param())) {
+            session('userName', $userName); //更新暂存用户名
+            Db::table('user')->where('id', session('uid'))->update(['username' => $userName]);
             return $this->postResumeInfoShow();
         } else {
             return ['msg' => '信息表数据更新失败', 'res' => $res];
@@ -121,11 +112,15 @@ class Employee extends Permit0
     function postResumeInfoAddExec()
     {
         $rq = request();
+        $userName = $rq->param('in_name');
         $data = $rq->except(['in_id']);//历史遗留的in_id
         $data['uid'] = session('uid');
 //        print_r($data);
         $res = Db::table('resume_info')->strict(false)->insert($data);
         if ($res) {
+            session('userName', $userName); //更新暂存用户名
+            Db::table('user')->where('id', session('uid'))->update(['username' => $userName]);
+            
             return $this->postResumeInfoShow();
         } else {
             return ['msg' => '添加信息失败,请完整填写字段再提交', 'res' => $res];
@@ -162,7 +157,7 @@ class Employee extends Permit0
         $data['uid'] = session('uid');
         
         /*防止添加多条数*/
-        if (!Db::table('resume_adventage')->where('uid', $data['uid'])->find()) {
+        if (Db::table('resume_adventage')->where('uid', $data['uid'])->find()) {
             return ['msg' => '记录已存在'];
         }
         
@@ -339,4 +334,78 @@ class Employee extends Permit0
         }
     }
     
+    /*账号管理**************************************************/
+    function getAccount()
+    {
+        return $this->getPhoneEdit();
+//        return $this->fetch('/');
+    }
+    
+    /*修改手机号 */
+    function getPhoneEdit()
+    {
+        $phone = session('phonePostfix');
+        $p = substr_replace($phone, "****", 3, 4);
+//        var_dump($_SESSION);
+        return $this->fetch("/employee/editphone", ['p' => $p]);
+    }
+    
+    function postPhoneEditExec()
+    {
+        $rq = request();
+        $fcode = $rq->param('captcha');
+        //对比输入的验证码和系统验证码
+        $uid = session('uid');
+        $data = [
+            'phone_prefix' => $rq->param('regionCode'),
+            'phone_postfix' => $rq->param('phone'),
+            'phone' => $rq->param('regionCode') . $rq->param('phone')
+        ];
+        
+        if (!captcha_check($fcode)) {
+            return ['msg' => "图形验证码错误"];
+        }
+        
+        if (!sms_check($data['phone'], $rq->param('phoneCode'))) {
+            return ['msg' => "短信验证码不正确或过期"];
+        }
+        if (Db::table("user")->where('id', $uid)->update($data)) {
+            session('phonePostfix', $data['phone_postfix']); //短手机号
+            session('phone', $data['phone']); //长手机号
+            return ['msg' => "ok", 'redirect' => '/employee/PhoneEdit'];
+        } else {
+            return ['msg' => "更新数据失败"];
+        }
+    }
+    
+    /*修改密码*/
+    function getPwdEdit()
+    {
+        $uid = session('uid');
+        $row = Db::table('user')->where('id', $uid)->find();
+        $phone = $row['phone_postfix'];
+        $p = substr_replace($phone, "****", 3, 4);
+        
+        return $this->fetch("/employee/editpwd", ['row' => $row, 'p' => $p]);
+    }
+    
+    function postPwdAddExec()
+    {
+        $rq = request();
+        $uid = session('uid');
+        //获取修改的值
+        $data['password'] = md5($rq->param('password'));
+        
+        if (Db::table("user")->where('id', $uid)->update($data)) {
+            session('userPassword', $data['password']); //新密码存入session
+            return ['msg' => "ok", 'redirect' => '/employee/pwdEdit'];
+        } else {
+            return ['msg' => "更新数据失败"];
+        }
+    }
+    
+    function postPwdEditExec()
+    {
+    
+    }
 }

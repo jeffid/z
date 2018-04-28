@@ -12,7 +12,7 @@
     <meta name="copyright" content="Copyright (c) zhipin.com">
     
     
-    <title>【BOSS直聘注册】</title>
+    <title>{$title ?? '【BOSS直聘注册】'}</title>
     <meta name="keywords" content="BOSS直聘注册">
     <meta name="description"
           content="本页提供BOSS直聘电脑端在线注册，BOSS直聘APP官网手机号快捷注册，支持中国大陆、美国等数十个国家和地区手机注册，赶快来注册BOSS直聘吧，开启直聘新模式！">
@@ -20,34 +20,12 @@
     
     <link href="/static/home/css/main.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="/static/home/css/sub.css">
-    
-    
-    <!--<script charset="utf-8" src="/static/home/js/v.js"></script>-->
-    <!--<script src="/static/home/js/hm.js"></script>-->
-    <!--<script src="/static/home/js/ka.js"></script>-->
-    <script>
-        _PAGE = {
-            checkMobileUrl: "/registe/sendSms.json",
-            regMobileUrl: "/registe/save.json",
-            loginMobileUrl: "/login/phone.json",
-            loginAccountUrl: "/login/account.json",
-            getRandomKeyUrl: "/captcha/randkey.json",
-            verifyImgUrl: "/captcha/?randomKey={randomKey}",
-            getPositionUrl: "/user/position.json",
-            loginOrRegiste: "signup"
-        }
-        var loginjson = {
-            act: '0',
-            btnValue: '领取',
-            titleValue: 'BOSS直聘<br><span class="subTitle">领取直直福利</span>'
-        }
-    </script>
 </head>
 
 <body class="page-sign">
 <div id="wrap">
     <div id="header">
-        <h1 class="logo"><a href="#" ka="header/static-home-logo" title=""><img
+        <h1 class="logo"><a href="/index/index" ka="header/static-home-logo" title=""><img
                 src="/static/home/images/login-logo.png"><span>找工作要跟<br>老板谈</span></a></h1>
     </div>
     <div class="sign-wrap">
@@ -56,7 +34,7 @@
         <!--密码登录--------------------------------------------------------------------------->
         <div class="sign-form sign-pwd" style="display:{$signPwd};">
             <h3 class="title">登录BOSS直聘</h3>
-            <div class="tip-error"></div>
+            <div class="tiperror"></div>
             <div class="sign-tab">
                 <span class="link-signin cur">密码登录</span>
                 <span class="link-sms">短信登录</span>
@@ -131,7 +109,7 @@
         <!--短信登录------------------------------------------------------------------------------------->
         <div class="sign-form sign-sms" style="display:{$signSms};">
             <h3 class="title">登录BOSS直聘</h3>
-            <div class="tip-error"></div>
+            <div class="tiperror"></div>
             <div class="sign-tab">
                 <span class="link-signin">密码登录</span>
                 <span class="link-sms cur">短信登录</span>
@@ -196,7 +174,7 @@
                         <input
                                 type="hidden" name="smsType" value="1">
                         <button type="button" class="btn btn-sms"
-                                data-url="" data-action="/login/sms">发送验证码</button>
+                                data-url="" data-action="/login/sms" data-btn="sms">发送验证码</button>
                     </span>
                 </div>
                 <div class="form-btn">
@@ -208,7 +186,7 @@
         <!--扫码登录-------------------------------------------------------------------------------------->
         <!--<div class="sign-form sign-scan" style="display:none;">-->
         <!--<h3 class="title">登录BOSS直聘</h3>-->
-        <!--<div class="tip-error"></div>-->
+        <!--<div class="tiperror"></div>-->
         <!--<div class="sign-tab"><span class="link-signin">密码登录</span><span class="link-sms">短信登录</span><span-->
         <!--class="link-scan cur">扫码登录</span></div>-->
         <!--<div class="qrcode-box">-->
@@ -241,7 +219,7 @@
         <!--注册------------------------------------------------------------------------------------->
         <div class="sign-form sign-register" style="display:{$signRegister};">
             <h3 class="title">注册BOSS直聘</h3>
-            <div class="tip-error"></div>
+            <div class="tiperror"></div>
             <div class="sign-tab">
                 <span>使用手机号注册</span>
             </div>
@@ -262,7 +240,7 @@
                     <span class="ipt-wrap">
                         <i class="icon-sign-phone"></i>
                         <input type="tel" class="ipt ipt-phone required" placeholder="手机号" name="phone" minlength="6"
-                               maxlength="11">
+                               maxlength="11" required>
                     </span>
                     <div class="dropdown-menu">
                         <ul>
@@ -309,7 +287,7 @@
                         <input type="text" class="ipt ipt-sms required" ka="signup-sms" placeholder="短信验证码"
                                name="phoneCode" required minlength="4" maxlength="4">
                         <input type="hidden" name="smsType" value="2">
-                        <button type="button" class="btn btn-sms" data-url="" data-action="/signup/sms">发送验证码</button>
+                        <button type="button" class="btn btn-sms" data-url="" data-action="/signup/sms" data-btn="sms">发送验证码</button>
                     </span>
                 </div>
                 <div class="form-btn">

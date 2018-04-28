@@ -18,6 +18,7 @@ class Login extends Controller
             'signPwd' => 'none',
             'signSms' => 'block', // 默认短信登录
             'signRegister' => 'none',
+            'title' => '【BOSS直聘登录】',
         ];
         return $this->fetch('/signup', $data);
     }
@@ -39,25 +40,22 @@ class Login extends Controller
         $data['phone'] = $rq->param('regionCode') . $rq->param('phone');
         
         if (!captcha_check($data['captcha'])) {
-            echo '图形验证码不正确';
-            return;
+            return ['msg' => '图形验证码不正确'];
         }
         /* 收验证码的手机号==登录手机号，
            提交短信验证码==存session里的验证码，
            在有效时间 */
-        if ($data['phoneCode'] != session('phoneCode') && time() > session('phoneCodeExpire') && $data['phone'] != session('phone')) {
-            echo '短信验证码不正确或过期';
-            return;
+        if ($data['phoneCode'] != session('phoneCode') || time() > session('phoneCodeExpire') || $data['phone'] != session('phone')) {
+            return ['msg' => '短信验证码不正确或过期'];
         }
         /*手机号提示放在最后,防止恶意猜测用户注册情况*/
         $res = db('user')->where('phone', $data['phone'])->find();
         if (!$res) {
-            echo '该手机号未注册,请先注册';
-            return;
+            return ['msg' => '该手机号未注册,请先注册'];
         }
-        $this->loginSuccess($res);
-
-//        echo 'ok';
+        
+        /*登录成功，可以跳转*/
+        return $this->loginSuccess($res);
     }
     
     /* 密码模式登录 */
@@ -70,30 +68,43 @@ class Login extends Controller
         
         
         if (!captcha_check($rq->param('captcha'))) {
-            echo '图形验证码不正确';
-            return;
+            return ['msg' => '图形验证码不正确'];
         }
         
         $res = db('user')->where($data)->find();
         if (!$res) {
-            echo '该手机号未注册或密码错误';
-            return;
+            return ['msg' => '该手机号未注册或密码错误'];
         }
-        $this->loginSuccess($res);
+        /*登录成功，可以跳转*/
+        return $this->loginSuccess($res);
 //        echo 'ok';
     }
     
     function loginSuccess($user)
     {
-        $userinfo = db('resume_info')->where('uid', $user['id'])->find() ?? [];
-        $username = $userinfo['in_name'] ?? '未实名';
-        session('username', $username); //用户实名
+        $username = $user['username'] ?? '未实名';
+        session('userName', $username); //用户实名
+        session('userPosition', $user['position']); //用户职位
         session('uid', $user['id']); //用户id
-        session('phone_postfix', $user['phone_postfix']); //短手机号
+        session('phonePostfix', $user['phone_postfix']); //短手机号
         session('phone', $user['phone']); //长手机号
-        session('userStauts', $user['status']); //用户角色状态
-        session('phoneCode', null); //删除短信验证码
-        
-       return $this->redirect('/index/index');
+        session('userStatus', $user['status']); //用户角色状态
+        session('userPassword',$user['password']);
+//        session('phoneCode', null); //删除短信验证码 todo
+
+        return ['msg' => 'ok', 'redirect' => '/index/index'];
+    }
+    
+    function getLogout(){
+        session('userName', null); //用户实名
+        session('userPosition', null['position']); //用户职位
+        session('uid', null); //用户id
+        session('phonePostfix', null); //短手机号
+        session('phone', null); //长手机号
+        session('userStatus', null); //用户角色状态
+        session('userPassword',null);
+    
+    
+        return $this->redirect('/index/index');
     }
 }

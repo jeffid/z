@@ -47,26 +47,54 @@ class Signup extends Controller
         $data['phone'] = $rq->param('regionCode') . $rq->param('phone');
         $data['status'] = $rq->param('purpose');
         $data['addtime'] = time();
+        
         /* 验证以上5项 */
         $result = $this->validate($data, 'User.signup');
-        if ($result === true) {
-            /* 短信验证码验证 */
-            if ($data['phone'] == session('phone') && $data['phoneCode'] == session('phoneCode') && time() < session('phoneCodeExpire')) {
-                session('phoneCode', null); //删除验证码,防止重用
-                echo db('user')->strict(false)->insert($data) ? 'ok' : 'error';
+        if ($result !== true) {
+            return ['msg' => $result];
+        }
+        
+        /* 短信验证码验证 */
+        if ($data['phone'] != session('phone') || $data['phoneCode'] != session('phoneCode') || time() > session('phoneCodeExpire')) {
+//            session('phoneCode', null); // todo 删除验证码,防止重用
+//            echo  ? 'ok' : 'error';
+            return ['msg' => '短信验证码不正确或过期'];
+        }
 //                unset($data['captcha']);
 //                unset($data['phoneCode']);
 //               echo db('user')->insert($data);
-            } else {
-                echo '短信验证码不正确或过期';
+        $id = db('user')->strict(false)->insertGetId($data);
+        if ($id) {
+            session('userName', '未实名'); //用户实名
+            session('uid', $id); //用户id
+            session('phonePostfix', $data['phone_postfix']); //短手机号
+            session('phone', $data['phone']); //长手机号
+            session('userStatus', $data['status']); //用户角色状态
+            /*todo
+             * HR 跳转到账号管理
+             * 牛人 跳转到简历
+             * */
+            if ($data['status']=='0') {
+            return ['msg' => 'ok', 'redirect' => '/employee/resume'];
             }
+            if ($data['status']=='1') {
+            return ['msg' => 'ok', 'redirect' => '/employer/info'];
+            }
+            
         } else {
-            echo $result;
-//            return;
+            return ['msg' => '异常，注册失败'];
         }
+        
     }
     
-    function getGuide(){
+    
+    function getGuide()
+    {
+        return $this->fetch('/guide');
+    }
+    
+    function getProtocol()
+    {
         return $this->fetch('/guide');
     }
     
