@@ -9,8 +9,10 @@
 
 namespace app\home\controller;
 use app\home\controller\Permit1;
+use think\Controller;
 use think\Db;
-class Job extends Permit1
+
+class Job extends Controller
 {
     function getIndex(){
         

@@ -27,7 +27,7 @@ Route::controller("/permissions","admin/Permissions");
 //后台角色管理
 Route::controller("/rolelist","admin/Rolelist");
 //品牌模块
-Route::controller("/acompanys","admin/Company");
+Route::controller("/company","admin/Company");
 //公告模块
 Route::controller("/articles","admin/Articles");
 //轮播图模块
@@ -44,7 +44,7 @@ Route::controller('/homelogin','home/Login');
 //前台注册
 Route::controller("/signup","home/Signup");
 //公司主页
-Route::controller("/company","home/Company");
+Route::controller("/companys","home/Company");
 //公司招聘职位
 Route::controller("/companyjob","home/Companyjob");
 //账号管理  发布信息 已收信息 手机号 密码修改 企业

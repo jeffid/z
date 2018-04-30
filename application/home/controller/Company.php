@@ -8,9 +8,9 @@
 
 
 namespace app\home\controller;
-use app\home\controller\Permit1;
+use think\Controller;
 use think\Db;
-class Company extends Permit1
+class Company extends Controller
 {
     function getIndex(){
         $id=25; //todo
