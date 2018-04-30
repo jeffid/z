@@ -10,18 +10,20 @@
 namespace app\home\controller;
 use app\home\controller\Permit1;
 use think\Db;
-class Company extends Permit1
+class Companyjob extends Permit1
 {
-    function getIndex(){
-        $id=25; //todo
+    function getIndex()
+    {
+        $request = request();
+        $id = $request->param('25');
+        $id=25; //todo  公司id
         $row=Db::table('company')->where('id',$id)->find();
-        $rew=Db::table('company_addr')->where('co_id',$id)->find();
-        $info= count(DB::table("job")->where('co_id',$id)->select());
         $list=count(DB::table("company_admin")->where('co_id',$id)->select());
-        $lists=DB::query("select * from job,company_admin where job.co_id=company_admin.co_id and job.co_id=$id");
-        $job=Db::table('job')->where('co_id',$id)->select();
-        $jobs=Db::table('job')->where('co_id',$id)->find();
-        $env=Db::table('company_env')->where('co_id',$id)->find();
+        $lists=DB::table("company_admin")->where('co_id',$id)->select();
+        $info= count(DB::table("job")->where('co_id',$id)->select());
+        $job=Db::table('job')->alias('j')->join('user ca',"j.co_id = ca.co_id and j.co_id={$id} " )->paginate(5);
+        $rew=Db::table('company_admin')->where('id',$id)->find();
+     
         $a=[
             '1~3k',
             '3~5k',
@@ -50,7 +52,7 @@ class Company extends Permit1
         ];
 //        $job['salary']=$a[$job['salary']];
 //        var_dump($job);
-        
-        return $this->fetch("/company",['row'=>$row,'info'=>$info,'list'=>$list,'job'=>$job,'a'=>$a,'env'=>$env,'lists'=>$lists,'rew'=>$rew,'jobs'=>$jobs]);
+    
+        return $this->fetch("/company_job",['row'=>$row,'info'=>$info,'a'=>$a,'list'=>$list,'job'=>$job,'rew'=>$rew,'data' => $request->param(),'lists'=>$lists]);
     }
 }

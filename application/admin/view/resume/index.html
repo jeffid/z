@@ -1,0 +1,63 @@
+{extend name="AdminPublic:public"/}
+{block name="admin"}
+<div id="mws-navigation">
+    <ul>
+        <li>
+            <a href="#"><i class="icon-th-list"></i>个人简历</a>
+        
+        </li>
+        
+        <li>
+            <a href="#"><i class="icon-user"></i>个人信息</a>
+            <ul class="closed">
+                <li ><a  href="#">姓名</a><input type="text" value="{$info['in_name']}" > <a class="yy-info">性别</a><input type="text" value="{$info['in_sex']}" ></li>
+                <li ><a  href="#">当前求职状态</a><input type="text" value="{$info['in_status']}" ></li>
+                <li ><a  href="#">开始工作时间</a><input type="text" value="{$info['in_start_work_year']}" ></li>
+                <li ><a  href="#"> 生日</a><input type="text" value="{$info['in_birthday']}" ></li>
+                <li><a > 微信号</a><input type="text" value="{$info['in_wx']}" ></li>
+                <li><a > 邮箱</a><input type="text" value="{$info['in_email']}" ></li>
+            </ul>
+        </li>
+        
+        <li>
+            <a class="yu-info" href="#"><i class="icon-user"></i>我的优势</a>
+            <ul class="closed">
+                <li><a href="#">我的优势</a></li>
+
+                <textarea rows="10" cols="80">{$info['ad_text']}</textarea>
+
+        
+            </ul>
+        </li>
+
+    
+        <li>
+            <a href="#"><i class="icon-user"></i>工作经历</a>
+            <ul class="closed">
+                <li><a href="#">公司名字<input type="text" value="{$info['hi_company']}" > 职业类型<input type="text" value="{$info['hi_type']}" ></a></li>
+                <li><a href="#">职位名称<input type="text" value="{$info['hi_position']}" > 所属行业<input type="text" value="{$info['hi_industry']}" ></a></li>
+                <li><a href="#">在职时间<input type="text" value="{$info['hi_startdate']}" > <input type="text" value="{$info['hi_enddate']}" ></a></li>
+                <li><a href="#">所属部门<input type="text" value="{$info['hi_department']}" ></a></li>
+                <li><a href="#">工作内容<textarea rows="10" cols="60">{$info['hi_work']}</textarea> 工作业绩<textarea rows="10" cols="60">{$info['hi_results']}</textarea></a></li>
+                
+            </ul>
+        </li>
+        
+        <li>
+            <a href="#"><i class="icon-user"></i>教育经历</a>
+            <ul class="closed">
+                <li><a href="#">学校名称</a> <input type="text" value="{$info['ed_school']}" > <a>专业名称</a> <input type="text" value="{$info['ed_subject']}" ></li>
+                <li><a href="#">学历</a> <input type="text" value="{$info['ed_degree']}" ></li>
+                <li><a href="#">时间段</a> <input type="text" value="{$info['ed_startdate']}" > <input type="text" value="{$info['ed_enddate']}" ></li>
+                <li><a href="#">在校经验 </a><textarea rows="10" cols="60">{$info['ed_experience']}</textarea></li>
+        
+            </ul>
+        </li>
+    
+        
+        
+    </ul>
+</div>
+</div>
+{/block}
+{block name="title"}后台用户列表{/bolic}

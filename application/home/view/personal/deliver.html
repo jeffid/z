@@ -1,0 +1,76 @@
+{extend name="public:base"/}
+{block name="title"}已投递{/block}
+{block name="main"}
+<div id="main" class="inner home-inner">
+    <div class="job-box">
+        <!--侧边信息栏-->
+        {include file="personal:sider" /}
+        
+        <div class="user-sider-left">
+            <div class="chat-history">
+                <div class="job-tab">
+                    <!--<a href="/personal/chat" ka="personal_top_added_0">沟通过</a>-->
+                    <a href="/personal/deliver" ka="personal_top_sawme_0" class="cur">已投递</a>
+                    <a href="/personal/interview" ka="personal_top_interview">面试</a>
+                    <a href="/personal/interest" ka="personal_top_interest">感兴趣</a>
+                </div>
+                
+                <ul>
+                    {/*
+                    <!--无职位-->
+                    <div class="data-tips">
+                        <div class="data-blank">
+                            <i class="tip-nodata"></i><b>暂时未有投递简历，建议尝试多与Boss沟通</b>
+                            <p><a href="https://www.zhipin.com/geek/new/index/recommend/"
+                                  ka="personal_submitted_recommend" class="btn">查看推荐职位</a></p>
+                        </div>
+                    </div>
+                    */}
+                    <!--有职位 start-->
+                    
+                    <!--沟通过和已投递-->
+                    <li class="item-boss">
+                        <div class="figure"><img src="/static/home/images/avatar_9.png"></div>
+                        <div class="item-content">
+                            <div class="info-header">
+                                {/*
+                                <div class="btns">
+                                    <a ka="personal_submitted_continue_bdacae975d756c160HV-2Nm-EA~~" href="javascript:;"
+                                       class="btn btn-startchat"
+                                       data-url="/gchat/addRelation.json?jobId=1f9c58be726ae9d41nxy2dW0Elc~"
+                                       redirect-url="/geek/new/index/chat?id=bdacae975d756c160HV-2Nm-EA~~"
+                                       target="_blank">继续沟通</a>
+                                </div>
+                                */}
+                                <h3 class="name">许红梅<em class="vline"></em>QA经理</h3>
+                            </div>
+                            <div class="info-primary">
+                                <div class="company-info">
+                                    <img src="/static/home/images/467cfdabefe1f7d4be83ca2741ad94a0be1bd4a3bd2a63f070bdbdada9aad826.jpg">
+                                    <div class="text">
+                                        <b>
+                                            <a href="javascript:;" ka="personal_submitted_brand_5c76df9afcad3ef51XF43tW_">中国金融认证中心</a>
+                                        
+                                        
+                                        </b>
+                                        <p class="gray">计算机软件 · 不需要融资 · 500-999人</p>
+                                    </div>
+                                </div>
+                                <div class="job-info">
+                                    <div class="job-name"><a href="javascript:;
+
+" ka="personal_submitted_job_1f9c58be726ae9d41nxy2dW0Elc~}">C/C++高级软件开发工程师<span class="salary">20k-30k</span></a></div>
+                                    <p class="gray">北京 · 大兴区 · 亦庄<em class="vline"></em>3-5年<em class="vline"></em>本科
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--简历预览-->
+{include file="personal:pop_resume" /}
+{/block}}

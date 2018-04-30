@@ -31,10 +31,10 @@
                 {empty name="Think.session.userName" }
                 <!--未登录-->
                 <div class="btns">
-                    <a href="/login/index" class="link-publish" ka="header-publish" title="免费发布职位">免费发布职位</a><em class="vline"></em>
+                    <a href="/homelogin/index" class="link-publish" ka="header-publish" title="免费发布职位">免费发布职位</a><em class="vline"></em>
                     <!--<a  href="javascript:;" ka="header-sao" class="link-scan">Boss 扫码登录</a>-->
                     <a  href="/signup/index" ka="header-register" class="btn btn-outline">注册</a>
-                    <a href="/login/index" ka="header-login" class="btn btn-outline">登录</a>
+                    <a href="/homelogin/index" ka="header-login" class="btn btn-outline">登录</a>
                 </div>
                 
                 {else/}
@@ -53,10 +53,10 @@
                             <img src="#" alt="">
                         </a>
                         <div class="dropdown" style="display: none;">
-                            <!--<a href="#" ka="header-personal">个人中心</a>-->
+                            <a href="/personal/deliver" ka="header-personal">个人中心</a>
                             <a href="/employee/account" ka="account_manage">账户管理</a>
                             <a href="javascript:;" class="link-recruit" ka="header-recruit">我要招聘</a>
-                            <a href="/login/logout" ka="header-logout">退出</a>
+                            <a href="/homelogin/logout" ka="header-logout">退出</a>
                             <p class="recruit-tip" style="display: none;">
                                 <img src="/static/home/images/recruit-tip.gif" alt="">
                                 <span>请在 APP 端“我的 - 设置”中<br>切换为Boss身份，即可进行招聘</span>

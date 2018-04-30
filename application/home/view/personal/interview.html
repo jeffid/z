@@ -1,0 +1,36 @@
+{extend name="public:base"/}
+{block name="title"}面试{/block}
+{block name="main"}
+<div id="main" class="inner home-inner">
+    <div class="job-box">
+        <!--侧边信息栏-->
+        {include file="personal:sider" /}
+        
+        <div class="user-sider-left">
+            <div class="chat-history">
+                <div class="job-tab">
+                    <!--<a href="/personal/chat" ka="personal_top_added_0">沟通过</a>-->
+                    <a href="/personal/deliver" ka="personal_top_sawme_0" >已投递</a>
+                    <a href="/personal/interview" ka="personal_top_interview" class="cur">面试</a>
+                    <a href="/personal/interest" ka="personal_top_interest">感兴趣</a>
+                </div>
+                <ul>
+    
+                    <!--无职位-->
+                    <div class="data-tips">
+                        <div class="data-blank">
+                            <i class="tip-nodata"></i><b>暂时未有邀约面试，建议尝试多与Boss沟通</b>
+                            <p><a href="javascript:;" ka="personal_interview_recommend" class="btn">查看推荐职位</a></p>
+                        </div>
+                    </div>
+                    
+                  
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--简历预览-->
+{include file="personal:pop_resume" /}
+
+{/block}}

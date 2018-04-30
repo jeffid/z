@@ -1,0 +1,30 @@
+{extend name="AdminPublic:public"/}
+{block name="admin"}
+<div class="container">
+    
+    <div class="mws-panel-body no-padding">
+        <form class="mws-form" action="/permissions/roleinsert" method="post">
+            <div class="mws-form-inline">
+                <div class="mws-form-row">
+                    <div >
+                        <ul class="mws-form-list inline">
+                            {foreach name="role" item="row"}
+                            <li><input type="checkbox" value="{$row['id']}" name="name[]" {if condition="in_array($row['id'],$rids)"}checked{/if}> <label>{$row['name']}</label></li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mws-button-row">
+                <input type="hidden" name="id" value="{$info['id']}">
+                <input value="分配角色" class="btn btn-danger" type="submit">
+                <input value="Reset" class="btn " type="reset">
+            </div>
+        </form>
+    </div>
+    
+    
+    <!-- Panels End -->
+</div>
+{/block}
+{block name="title"}后台角色分配{/block}

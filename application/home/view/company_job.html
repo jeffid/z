@@ -1,0 +1,77 @@
+{extend name="public:base"/}
+{block name="main"}
+
+
+<div id="main">
+    <div class="company-banner" style="background-image: url({$row['bg']});">
+        <div class="inner home-inner">
+            <div>
+                <div class="company-stat">
+                    <span><a href="" ka="all-jobs-top"><b>{$info}</b>在招职位</a></span><em class="vline"></em><span><b>{$list}</b>位BOSS</span>
+                    <div class="company-logo"><img src="{$row['logos']}" alt=""></div>
+                </div>
+                <div class="info-primary">
+                    <h1 class="name">{$row['name']}<i class="icon-brand"></i></h1>
+                    <p>{$row['financing']}<em class="vline"></em>{$row['employees']}人以上<em class="vline"></em>{$row['industry']}
+                    </p>
+                </div>
+            </div>
+            <div class="company-tab">
+                
+                <a href="/companys/index" ka="company-intro">公司简介</a>
+                
+                
+                <a href="" ka="company-jobs" class="cur">招聘职位({$info})</a>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;background: #fff;height: 600px">
+    
+        {foreach name="job" item="row"}
+        <div class="inner home-inner">
+    
+            
+            <div class="code-box">
+                <span>手机查看</span>
+                <img src="./222_files/common.json" alt="">
+            </div>
+            <li>
+                <a href="" data-lid="85e7c83a-a1a8-4b9f-997f-7b0057d8e397.brand_jod_list" ka="job-1" target="_blank">
+                    <div class="job-primary" style="float: left">
+                        <div class="info-primary">
+                            <h3 class="name">
+                                <div class="title-box">
+                                    <div class="job-title">{$row['job']}</div>
+                                    <span class="red">{$a[$row['salary']]}</span>
+                                </div>
+                            </h3>
+                            <p>{$row['location']}<em class="vline"></em>{$row['experience']}年以内<em class="vline"></em>{$row['degree']}</p>
+                        </div>
+                        
+                        <div class="info-publis" style="margin-left: 300px">
+                            <h3 class="name">{$row['username']}<em
+                                    class="vline"></em>{$row['position']}</h3>
+                            <p>发布于{:date( 'Y-m-d H:i:s',$row['timestamp'])}</p>
+                        </div>
+                    </div>
+                </a>
+                <div class="startchat-box detail-op">
+                    <a ka="job-1-chat" href="javascript:;"
+                       data-url="/gchat/addRelation.json?jobId=6b18d944e74510401nd-2ti6EVE~"
+                       redirect-url="/geek/new/index/chat?id=a83b7fe66fee41f70XV62du6EQ~~&amp;lid=85e7c83a-a1a8-4b9f-997f-7b0057d8e397.brand_jod_list"
+                       class="btn btn-startchat">简历投取</a>
+                </div>
+            </li>
+        
+        </div>
+        {/foreach}
+        <div class="" id="pages" style="margin-right: 330px">
+        
+            {$job->appends($data)->render()}
+    
+        </div>
+    </div>
+</div>
+
+
+{/block}

@@ -1,0 +1,67 @@
+{extend name="AdminPublic:public"/}
+{block name="admin"}
+<div class="mws-panel grid_8">
+    <div class="mws-panel-header">
+        <span>用户修改</span></div>
+    <div class="mws-panel-body no-padding">
+        <form class="mws-form" action="/company/update" method="post" enctype="multipart/form-data">
+            <div class="mws-form-inline">
+                <div class="mws-form-row">
+                    <label class="mws-form-label">简称</label>
+                    <div class="mws-form-item">
+                        <input type="text" class="large" name="name" value="{$info['name']}"></div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">全称</label>
+                    <div class="mws-form-item">
+                        <input type="text" class="large" name="fullname" value="{$info['fullname']}"></div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">主题背景图</label>
+                    <div class="mws-form-item">
+                        <input type="file" class="large" name="bg" value="{$info['bg']}"></div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">品牌logo</label>
+                    <div class="mws-form-item">
+                        <input type="file" class="large" name="logo" value="{$info['logo']}"></div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">融资情况</label>
+                    <div class="mws-form-item">
+                        <input type="text" class="large" name="financing" value="{$info['financing']}"></div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">供职人数</label>
+                    <div class="mws-form-item">
+                        <input type="text" class="large" name="employees" value="{$info['employees']}"></div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">所在行业</label>
+                    <div class="mws-form-item">
+                        <input type="text" class="large" name="industry" value="{$info['industry']}"></div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">简介</label>
+                    <div class="mws-form-item">
+                        <input type="text" class="large" name="profile" value="{$info['profile']}"></div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">官网</label>
+                    <div class="mws-form-item">
+                        <input type="text" class="large" name="homepage" value="{$info['homepage']}"></div>
+                </div>
+                
+            </div>
+            <div class="mws-button-row">
+                <input type="hidden" name="id" value="{$info['id']}">
+                <input type="submit" value="修改" class="btn btn-danger">
+            </div>
+        </form>
+        <div class="mws-button-row">
+            <a href="/company/index" class="btn btn-success">返回</a>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="title"}后台用户修改{/block}

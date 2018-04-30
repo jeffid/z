@@ -1,0 +1,43 @@
+{extend name="AdminPublic:public"/}
+{block name="admin"}
+<div class="mws-panel grid_8">
+    <div class="mws-panel-header">
+        <span>友情链接修改</span>
+    </div>
+    <div class="mws-panel-body no-padding">
+        <form class="mws-form" action="/adminlinks/update" method="post">
+            <div class="mws-form-inline">
+                <div class="mws-form-row">
+                    <label class="mws-form-label">网站名称</label>
+                    <div class="mws-form-item">
+                        <input type="text" class="large" name="name" value="{$data.name}">
+                    </div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">网站</label>
+                    <div class="mws-form-item">
+                        <input type="text" class="large" name="link"  value="{$data.link}">
+                    </div>
+                </div><div class="mws-form-row">
+                <label class="mws-form-label">电子邮箱</label>
+                <div class="mws-form-item">
+                    <input type="text" class="large" name="email" value="{$data.email}">
+                </div>
+            </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">网站介绍</label>
+                    <div class="mws-form-item">
+                        <textarea rows="" cols="" class="large" name="referral" >{$data.referral}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="mws-button-row">
+                <input type="hidden" name="id" value="{$data.id}">
+                <input type="submit" value="提交" class="btn btn-danger">
+                <a href="/adminlinks/index"  class="btn ">返回上一层</a>
+            </div>
+        </form>
+    </div>
+</div>
+{/block}
+{block name="title"}后台友情链接添加{/block}

@@ -8,14 +8,55 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
+
+
 use think\Route;
 
-Route::controller('/index','home/Index');
-Route::controller('/login','home/Login');
-Route::controller('/signup','home/Signup');
-Route::controller('/resume','home/Resume');
-Route::controller('/job','home/Job');
-Route::controller('/company','home/Company');
+/**后台******************/
+Route::controller("/user","admin/User");
+
+Route::controller("/admin","admin/Admin");
+//后台用户模块
+Route::controller("/adminuser","admin/User");
+//后台登录模块
+Route::controller("/login","admin/Login");
+//简历模块
+Route::controller("/resume","admin/Resume");
+//权限模块
+Route::controller("/permissions","admin/Permissions");
+//后台角色管理
+Route::controller("/rolelist","admin/Rolelist");
+//品牌模块
+Route::controller("/acompanys","admin/Company");
+//公告模块
+Route::controller("/articles","admin/Articles");
+//轮播图模块
+Route::controller("/carousel","admin/Carousel");
+//链接友情模块
+Route::controller("/links","admin/Links");
+//分类模块
+Route::controller("/category","admin/Category");
+
+
+/*前台**********************************************/
+//登录
+Route::controller('/homelogin','home/Login');
+//前台注册
+Route::controller("/signup","home/Signup");
+//公司主页
+Route::controller("/company","home/Company");
+//公司招聘职位
+Route::controller("/companyjob","home/Companyjob");
+//账号管理  发布信息 已收信息 手机号 密码修改 企业
+Route::controller("/employer","home/Employer");
+//求职 职位详情
+Route::controller("/job","home/Job");
+//网站主页
+Route::controller("/index","home/Index");
+
+/**********/
+//普通用户个人中心
+Route::controller('/personal','home/Personal');
+//普通用户其它相关
 Route::controller('/employee','home/Employee');
-Route::controller('/employer','home/Employer');
 

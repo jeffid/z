@@ -1,0 +1,327 @@
+{extend name="public:base"/}
+{block name="main"}
+
+
+    <div id="main">
+        <div class="company-banner" style="background-image: url({$row['bg']});">
+            <div class="inner home-inner">
+                <div>
+                    <div class="company-stat">
+                        <span><a href="" ka="all-jobs-top"><b>{$info}</b>在招职位</a></span><em class="vline"></em><span><b>{$list}</b>位BOSS</span>
+                        <div class="company-logo"><img src="{$row['logos']}" alt=""></div>
+                    </div>
+                    <div class="info-primary">
+                        <h1 class="name">{$row['name']}<i class="icon-brand"></i></h1>
+                        <p>{$row['financing']}<em class="vline"></em>{$row['employees']}人以上<em class="vline"></em>{$row['industry']}</p>
+                    </div>
+                </div>
+                <div class="company-tab">
+                    
+                    <a href="" class="cur" ka="company-intro">公司简介</a>
+                    
+                    
+                    <a href="/companyjob/index" ka="company-jobs">招聘职位({$info})</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="company-hotjob small-item">
+            <div class="inner home-inner">
+                
+                
+                <div class="code-box">
+                    <span>手机查看</span>
+                    <img src="./222_files/common.json" alt="">
+                </div>
+                
+                <h3><a href="/companyjob/index" class="more" ka="all-jobs-hot">查看全部{$info}个职位</a>热招职位</h3>
+                <ul>
+    
+                    {volist name="job" id="item"  length='5'}
+                    <li>
+                        <a href="JavaScript:;"  ka="hot-job-1">
+                            <div class="info-primary">
+                                <div class="name"><span class="salary">{$a[$item['salary']]}</span><b>{$item['job']} </b></div>
+                                <p class="gray">{$item['tags']} ·{$item['degree']}·{$item['location']}</p>
+                            </div>
+                        </a>
+                    </li>
+                    {/volist}
+                    
+                
+                </ul>
+            </div>
+        </div>
+        
+        <div class="job-box">
+            <div class="inner home-inner">
+                <div class="company-sider">
+                    
+                    
+                    <div class="job-sec picture-list">
+                        <h3>公司环境</h3>
+                        <div class="slider-main" style="height: 149px;">
+                            
+                            <a href="" class="pic-btn btn-prev prev"></a>
+                            <a href="" class="pic-btn btn-next  next"></a>
+                            
+                            <ul>
+                                
+                                <li class="" style="left: -298px;">
+                                    <img src="{$env['srcs']}" alt="">
+                                </li>
+                                
+                                <li class="" style="left: -298px;">
+                                    <img src="{$env['srcs']}" alt="">
+                                </li>
+                                
+                                <li class="cur" style="left: 0px;">
+                                    <img src="{$env['srcs']}" alt="">
+                                </li>
+                                
+                                <li class="" style="left: -298px;">
+                                    <img src="{$env['srcs']}" alt="">
+                                </li>
+                                
+                                <li class="" style="left: -298px;">
+                                    <img src="{$env['srcs']}" alt="">
+                                </li>
+                            
+                            </ul>
+                            <a href="" class="btn-direction btn-prev prev"></a><a href="" class="btn-direction btn-next next"></a><div class="slider-dot"><i data-index="1" class=""></i><i data-index="2" class=""></i><i data-index="3" class="cur"></i><i data-index="4" class=""></i><i data-index="5" class=""></i></div></div>
+                    </div>
+                    
+                    
+                    <div class="job-sec recruiter-list">
+                        <h3>{$row['fullname']}中心招聘Boss</h3>
+                        <ul>
+                            {volist name="lists" id="item"  length='4'}
+                            <li>
+                                <div class="figure"></div>
+                                <div class="text">
+                                    <div class="name"><a href="" ka="boss-1">{$item['ce_name']}<em class="vline"></em>{$item['profile']}</a></div>
+                                    <p class="gray">正在招聘 “{$item['profile']}” 等 {$info} 个职位</p>
+                                </div>
+                            </li>
+                            {/volist}
+                            
+                        
+                        </ul>
+                        <div class="view-more"><a href="" ka="all-jobs-boss"><i class="more">查看所有Boss的在招职位</i></a></div>
+                    </div>
+                
+                </div>
+                <div class="job-detail">
+                    <div class="detail-content">
+                        
+                        <div class="job-sec">
+                            <h3>{$row['fullname']}中心简介</h3>
+                            <div class="text fold-text">{$row['profile']}<a href="" class="more-view" ka="company-intro-more" style="display: block;">展开<i class="fz fz-slidedown"></i></a></div>
+                        </div>
+                        
+                        
+                        <div class="job-sec company-products">
+                            <h3>团队介绍</h3>
+                            {$jobs['team_descr']}
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        <div class="job-sec">
+                            <h3>公司地址: {$rew['addr']}</h3>
+                            <div class="job-location">
+                            
+                            
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        <div class="links" style="height: 70px;">
+                            
+                            <dl class="links-item">
+                                <dt>推荐公司：</dt>
+                                <dd>
+                                    
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-brand-1">三维聚源</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-brand-2">职前</a>
+                                
+                                
+                                
+                                
+                                </dd>
+                            </dl>
+                            <dl class="links-item">
+                                <dt>城市招聘：</dt>
+                                <dd>
+                                    
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-1">潜江招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-2">西宁招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-3">晋中招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-4">抚顺招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-5">定安招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-6">陇南招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-7">中山招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-8">丽江招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-9">朝阳招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-10">运城招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-11">三明招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-12">龙岩招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-13">六安招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-14">阳江招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-15">抚州招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-16">韶关招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-17">内江招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-18">菏泽招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-19">崇左招聘</a>
+                                    
+                                    <a href="JavaScript:;"  ka="seo-city-20">呼和浩特招聘</a>
+                                
+                                
+                                
+                                
+                                </dd>
+                            </dl>
+                            <dl class="links-item">
+                                <dt>热门职位：</dt>
+                                <dd>
+                                    
+                                    
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-1">上海氩弧焊工招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-2">上海服装设计招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-3">上海夹具工程师招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-4">上海营养师招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-5">上海医疗器械注册招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-6">上海铣工招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-7">上海面料辅料开发招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-8">上海法律顾问招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-9">上海CEO/总裁/总经理招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-10">上海男装设计招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-11">上海童装设计招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-12">上海财务总监招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-13">上海医师招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-14">上海漆工招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-15">上海临床数据分析招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-16">上海事业部负责人招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-17">上海行政总监招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-18">上海体系工程师招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-19">上海打样/制版招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-20">上海前台招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-21">上海模具工程师招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-22">上海经理助理招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-23">上海电工招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-24">上海医美咨询招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-25">上海铆工招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-26">上海材料工程师招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-27">上海医学编辑招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-28">上海机械制图招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-29">上海厂长/工厂经理招聘</a>
+                                    
+                                    
+                                    <a href="JavaScript:;"  ka="seo-position-30">上海放射科医师招聘</a>
+                                
+                                
+                                
+                                
+                                </dd>
+                            </dl>
+                            <label><span>展开</span><i class="fz fz-slidedown"></i></label>
+                        </div>
+                        <div class="pos-bread">
+                            <a href="" ka="brand-breadcrumb-1">首页</a><i class="icon-arrow-right"></i><a href="" ka="brand-breadcrumb-2">互联网金融行业招聘</a><i class="icon-arrow-right"></i><a href="" ka="brand-breadcrumb-3">招商银行信用卡中心</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+{/block}

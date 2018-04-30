@@ -1,0 +1,85 @@
+{extend name="AdminPublic:public"/}
+{block name="admin"}
+ <div class="mws-panel grid_8"> 
+   <div class="mws-panel-header"> 
+    <span>用户管理添加模块</span> 
+   </div> 
+   <div class="mws-panel-body no-padding"> 
+    <form class="mws-form" action="/company/insert" method="post" enctype="multipart/form-data">
+     <div class="mws-form-inline">
+      <div class="mws-form-row">
+       <label class="mws-form-label">简称</label>
+       <div class="mws-form-item">
+        <input type="text" class="small" name="name" />
+       </div>
+      </div>
+      <div class="mws-form-row">
+       <label class="mws-form-label">全称</label>
+       <div class="mws-form-item">
+        <input type="text" class="small" name="fullname" />
+       </div>
+      </div>
+      <div class="mws-form-row"> 
+       <label class="mws-form-label">主题背景图</label>
+       <div class="mws-form-item">
+        <input type="file" class="medium" name="bg"/>
+       </div>
+      </div>
+      <div class="mws-form-row">
+       <label class="mws-form-label">品牌logo</label>
+       <div class="mws-form-item">
+        <input type="file" class="medium" name="logo"/>
+       </div>
+      </div>
+      <div class="mws-form-row">
+       <label class="mws-form-label">融资情况</label>
+       <div class="mws-form-item">
+        <input type="text" class="medium" name="financing"/>
+       </div>
+      </div>
+      <div class="mws-form-row">
+       <label class="mws-form-label">供职人数</label>
+       <div class="mws-form-item">
+        <input type="text" class="medium" name="employees"/>
+       </div>
+      </div>
+      <div class="mws-form-row">
+       <label class="mws-form-label">所在行业</label>
+       <div class="mws-form-item">
+        <input type="text" class="medium" name="industry"/>
+       </div>
+      </div>
+      <div class="mws-form-row">
+       <label class="mws-form-label">简介</label>
+       <div class="mws-form-item">
+        <input type="text" class="medium" name="profile"/>
+       </div>
+      </div>
+      <div class="mws-form-row">
+       <label class="mws-form-label">管网</label>
+       <div class="mws-form-item">
+        <input type="text" class="medium" name="homepage"/>
+       </div>
+      </div>
+      
+      <div class="mws-form-row">
+      
+      </div>
+      
+      <!--<div class="mws-form-row">-->
+       <!--<label class="mws-form-label">权限</label>-->
+       <!--<div class="mws-form-item">-->
+        <!--<select class="large" name="state"> <option>Option 0</option> <option>Option 1</option> <option>Option 2</option>  </select>-->
+       <!--</div>-->
+      <!--</div>-->
+      
+      
+     <div class="mws-button-row"> 
+      <input type="submit" value="添加" class="btn btn-danger" /> 
+      <input type="reset" value="Reset" class="btn " /> 
+     </div> 
+    </form> 
+   </div> 
+  </div>
+{/block}
+{block name="title"}后台用户添加列表{/bolic}
