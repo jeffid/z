@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: WAXKI
- * Date: 2018/4/18
- * Time: 20:45
- */
-
-
 namespace app\home\controller;
+
 use think\Controller;
 use think\Db;
 class Companyjob extends Controller

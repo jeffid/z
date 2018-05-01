@@ -20,6 +20,12 @@ class Signup extends Controller
 {
     function getIndex()
     {
+        /*默认变量组*/
+        session('default',[]);
+        /*默认头像*/
+        session('default.avatar','/static/home/images/avatar/avatar_14.png');
+        session('default.logo','/static/home/images/defaultlogov2.jpg');
+    
         $data = [
             'signPwd' => 'none',
             'signSms' => 'none',
@@ -55,9 +61,7 @@ class Signup extends Controller
         }
         
         /* 短信验证码验证 */
-        if ($data['phone'] != session('phone') || $data['phoneCode'] != session('phoneCode') || time() > session('phoneCodeExpire')) {
-//            session('phoneCode', null); // todo 删除验证码,防止重用
-//            echo  ? 'ok' : 'error';
+        if (!sms_check($data['phone'], $data['phoneCode'])) {
             return ['msg' => '短信验证码不正确或过期'];
         }
 //                unset($data['captcha']);
@@ -65,12 +69,12 @@ class Signup extends Controller
 //               echo db('user')->insert($data);
         $id = db('user')->strict(false)->insertGetId($data);
         if ($id) {
-            session('userName', '未实名'); //用户实名
             session('uid', $id); //用户id
-            session('phonePostfix', $data['phone_postfix']); //短手机号
-            session('phone', $data['phone']); //长手机号
-            session('userStatus', $data['status']); //用户角色状态
-            /*todo
+            session('user.name', '未实名'); //用户实名
+            session('user.phonePostfix', $data['phone_postfix']); //短手机号
+            session('user.phone', $data['phone']); //长手机号
+            session('user.status', $data['status']); //用户角色状态
+            /* 前台重定向
              * HR 跳转到账号管理
              * 牛人 跳转到简历
              * */

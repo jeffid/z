@@ -16,10 +16,12 @@ use think\Controller;
 class Permit0 extends Controller
 {
     function _initialize(){
-        if(!session('uid')||session('userStatus')!='0'){
+        if(!session('uid')||session('user.status')!='0'){
             //跳转前台登录界面
-            $this->error('请先登录牛人账号','/login/index');
+            $this->error('请先登录牛人账号','/homelogin/index');
         }
+//        var_dump($_SESSION); /*todo 上线前删除*/
+
 //        $request=request();
 //        $controller=strtolower($request->controller());
 //        $action=$request->action();

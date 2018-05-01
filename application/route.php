@@ -36,7 +36,8 @@ Route::controller("/carousel","admin/Carousel");
 Route::controller("/links","admin/Links");
 //分类模块
 Route::controller("/category","admin/Category");
-
+//广告
+Route::controller("/advertising","admin/Advertising");
 
 /*前台**********************************************/
 //登录

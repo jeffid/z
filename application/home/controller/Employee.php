@@ -46,7 +46,7 @@ class Employee extends Permit0
     function getResumeInfoData()
     {
         $uid = session('uid');
-        $phone = session('phonePostfix');
+        $phone = session('user.phonePostfix');
         $applyStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑机会', '在职-月内到岗'];
         $sexText = ['女', '男'];
         /*如果记录不存在,此方法返回空数组*/
@@ -93,7 +93,7 @@ class Employee extends Permit0
         $rq = request();
         $userName = $rq->param('in_name');
         if ($res = Db::table('resume_info')->strict(false)->update($rq->param())) {
-            session('userName', $userName); //更新暂存用户名
+            session('user.name', $userName); //更新暂存用户名
             Db::table('user')->where('id', session('uid'))->update(['username' => $userName]);
             return $this->postResumeInfoShow();
         } else {
@@ -118,7 +118,7 @@ class Employee extends Permit0
 //        print_r($data);
         $res = Db::table('resume_info')->strict(false)->insert($data);
         if ($res) {
-            session('userName', $userName); //更新暂存用户名
+            session('user.name', $userName); //更新暂存用户名
             Db::table('user')->where('id', session('uid'))->update(['username' => $userName]);
             
             return $this->postResumeInfoShow();
@@ -344,7 +344,7 @@ class Employee extends Permit0
     /*修改手机号 */
     function getPhoneEdit()
     {
-        $phone = session('phonePostfix');
+        $phone = session('user.phonePostfix');
         $p = substr_replace($phone, "****", 3, 4);
 //        var_dump($_SESSION);
         return $this->fetch("/employee/editphone", ['p' => $p]);
@@ -370,8 +370,8 @@ class Employee extends Permit0
             return ['msg' => "短信验证码不正确或过期"];
         }
         if (Db::table("user")->where('id', $uid)->update($data)) {
-            session('phonePostfix', $data['phone_postfix']); //短手机号
-            session('phone', $data['phone']); //长手机号
+            session('user.phonePostfix', $data['phone_postfix']); //短手机号
+            session('user.phone', $data['phone']); //长手机号
             return ['msg' => "ok", 'redirect' => '/employee/PhoneEdit'];
         } else {
             return ['msg' => "更新数据失败"];
@@ -397,7 +397,7 @@ class Employee extends Permit0
         $data['password'] = md5($rq->param('password'));
         
         if (Db::table("user")->where('id', $uid)->update($data)) {
-            session('userPassword', $data['password']); //新密码存入session
+            session('user.password', $data['password']); //新密码存入session
             return ['msg' => "ok", 'redirect' => '/employee/pwdEdit'];
         } else {
             return ['msg' => "更新数据失败"];

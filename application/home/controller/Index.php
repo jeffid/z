@@ -2,25 +2,40 @@
 
 namespace app\home\controller;
 
-use app\home\controller\Permit1;
 //导入Db
+use think\Controller;
 use think\Db;
-class Index extends Permit1
+
+
+class Index extends Controller
 {
     public function getIndex()
     {
+        /*默认变量组*/
+        session('default',[]);
+        /*默认头像*/
+        session('default.avatar','/static/home/images/avatar/avatar_14.png');
+        session('default.logo','/static/home/images/defaultlogov2.jpg');
         
+        /*轮播数据*/
+        $env=db::table("carousel")->limit(5)->select();
+        /*广告数据*/
+        $ad=db::table("advertising")->limit(2)->select();
+        /*全部分类,平行数据*/
+        $addCategory = Db::table('category')->select();
+        /*分类目录,多维分类数据*/
+        $cate=getCategory($addCategory); //通用函数
         
-        
-        $env=db::table("carousel")->select();
-        var_dump($env);
-        return $this->fetch("/index/index",['env'=>$env]);
+        $d=[
+            'cate'=>$cate,
+            'env'=>$env,
+            'ad'=>$ad
+        ];
+        return $this->fetch("index/index",$d);
     }
+    
+    /*todo ?*/
     function getCompanyindex(){
-    
-    
-//        var_dump($id);
-//        $id=25; //todo
         $request = request();
         $id=$request->param('id');
 //        var_dump($id);die;

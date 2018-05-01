@@ -6,9 +6,8 @@
             <div class="slider-main" >
                 <a href="" class="pic-btn btn-prev prev"></a>
                 <a href="" class="pic-btn btn-next  next"></a>
-            
+            <!-- 轮播 -->
                 <ul>
-                
                     <li class="" style="left:0; ">
                         <a href="companyindex/id/{$env[0]['co_id']}"> <img src="{$env[0]['bg']}" style="width: 710px;height: 346px;"  alt=""></a>
                     </li>
@@ -26,13 +25,28 @@
                     <li class="" style="left: -710px; ">
                         <a href="companyindex/id/{$env[4]['co_id']}"><img src="{$env[4]['bg']}" style="width: 710px;height: 346px;"  alt=""></a>
                     </li>
-                    
-            
                 </ul>
-                <a href="" class="btn-direction btn-prev prev"></a><a href="" class="btn-direction btn-next next"></a><div class="slider-dot"><i data-index="1" class=""></i><i data-index="2" class=""></i><i data-index="3" class="cur"></i><i data-index="4" class=""></i><i data-index="5" class=""></i></div></div>
-        </div>
-        <div class="h1z1"></div>
-        <div class="h1z1_h"></div>
+                <!-- /轮播 -->
     
+                <a href="" class="btn-direction btn-prev prev"></a>
+                <a href="" class="btn-direction btn-next next"></a>
+                <!--<div class="slider-dot">-->
+                    <!--<i data-index="1" class=""></i>-->
+                    <!--<i data-index="2" class=""></i>-->
+                    <!--<i data-index="3" class="cur"></i>-->
+                    <!--<i data-index="4" class=""></i>-->
+                    <!--<i data-index="5" class=""></i>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <!-- 广告位 -->
+        <div class="h1z1">
+            <a href="/companyindex/id/{$ad[0]['co_id']}"><img src="{$ad[0]['bg']}" alt="" style="width: 353px;height:110px;"></a>
+        </div>
+        <div class="h1z1_h">
+            <a href="/companyindex/id/{$ad[1]['co_id']}"><img src="{$ad[1]['bg']}" alt="" style="width: 353px;height:110px;"></a>
+        </div>
+        <!-- /广告位 -->
+
     </div>
 </div>

@@ -16,21 +16,21 @@
                 </div>
                 
                 <ul>
-                    {/*
+                    {empty name="data" }
                     <!--无职位-->
                     <div class="data-tips">
                         <div class="data-blank">
                             <i class="tip-nodata"></i><b>暂时未有投递简历，建议尝试多与Boss沟通</b>
-                            <p><a href="https://www.zhipin.com/geek/new/index/recommend/"
+                            <p><a href=""
                                   ka="personal_submitted_recommend" class="btn">查看推荐职位</a></p>
                         </div>
                     </div>
-                    */}
-                    <!--有职位 start-->
                     
+                    {else /}
                     <!--沟通过和已投递-->
+                    {volist name="data" id="item" }
                     <li class="item-boss">
-                        <div class="figure"><img src="/static/home/images/avatar_9.png"></div>
+                        <div class="figure"><img src="{$item.hr_avatar ?? $Think.session.default.avatar}"></div>
                         <div class="item-content">
                             <div class="info-header">
                                 {/*
@@ -42,30 +42,30 @@
                                        target="_blank">继续沟通</a>
                                 </div>
                                 */}
-                                <h3 class="name">许红梅<em class="vline"></em>QA经理</h3>
+                                <h3 class="name">{$item.hr_name}<em class="vline"></em>{$item.hr_position}</h3>
                             </div>
                             <div class="info-primary">
                                 <div class="company-info">
-                                    <img src="/static/home/images/467cfdabefe1f7d4be83ca2741ad94a0be1bd4a3bd2a63f070bdbdada9aad826.jpg">
+                                    <img src="{$item.co_logo ?? $Think.session.default.logo}">
                                     <div class="text">
                                         <b>
-                                            <a href="javascript:;" ka="personal_submitted_brand_5c76df9afcad3ef51XF43tW_">中国金融认证中心</a>
-                                        
-                                        
+                                            <a href="javascript:;" >{$item.co_name}</a>
                                         </b>
-                                        <p class="gray">计算机软件 · 不需要融资 · 500-999人</p>
+                                        <p class="gray">{$item.co_industry} · {$item.co_financing} · {$item.co_employees}人</p>
                                     </div>
                                 </div>
                                 <div class="job-info">
                                     <div class="job-name"><a href="javascript:;
 
-" ka="personal_submitted_job_1f9c58be726ae9d41nxy2dW0Elc~}">C/C++高级软件开发工程师<span class="salary">20k-30k</span></a></div>
-                                    <p class="gray">北京 · 大兴区 · 亦庄<em class="vline"></em>3-5年<em class="vline"></em>本科
+" >{$item.j_name}<span class="salary">{:salary2text($item.j_salary)}</span></a></div>
+                                    <p class="gray">{$item.j_location}<em class="vline"></em>{$item.j_experience}<em class="vline"></em>{$item.j_degree}
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </li>
+                    {/volist}
+                    {/empty}
                 </ul>
             </div>
         </div>
