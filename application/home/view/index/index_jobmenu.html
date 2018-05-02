@@ -4,7 +4,7 @@
        
         <dd>
             <i class="icon-arrow-right"></i>
-            <a href="/search/index/jobtype/{$item1['id']}">{$item1['name']}</a>
+            <a href="/search/index/position/{$item1['id']}">{$item1['name']}</a>
         </dd>
        
         <div class="menu-line"></div>
@@ -12,14 +12,11 @@
             {volist name="$item1.children" id="item2"}
     
             <ul>
-                
                 <li>
                     <h4>{$item2['name']}</h4>
                     <div class="text">
                         {volist name="$item2.children" id="item3"}
-    
-                        <a href="/search/index/jobtype/{$item3['id']}">{$item3['name']}</a>
-    
+                            <a href="/search/index/position/{$item3['id']}">{$item3['name']}</a>
                         {/volist}
 
                     </div>
@@ -45,7 +42,7 @@
         <dl>
             <dd>
                 <i class="icon-arrow-right"></i>
-                <a href="/search/index/jobtype/{$item1['id']}">{$item1['name']}</a>
+                <a href="/search/index/position/{$item1['id']}">{$item1['name']}</a>
             </dd>
             <div class="menu-line"></div>
             <div class="menu-sub">
@@ -56,7 +53,7 @@
                         <h4>{$item2['name']}</h4>
                         <div class="text">
                             {volist name="$item2.children" id="item3"}
-                            <a href="/search/index/jobtype/{$item3['id']}">{$item3['name']}</a>
+                            <a href="/search/index/position/{$item3['id']}">{$item3['name']}</a>
                             {/volist}
     
                         </div>

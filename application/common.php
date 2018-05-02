@@ -18,7 +18,7 @@ use think\Db;
 
 function email($to, $title, $content, $cfg = 'zhipin')
 {
-
+    
     import('org.email.SMTP');
     import('org.email.PHPMailer');
     $mail = new PHPMailer();
@@ -65,26 +65,26 @@ function sms($phone, $expire = 30)
     $appid = 'eb8268b7deb2440fb9eb31a4566646ad';
     $templateid = '310670';
     $code = str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
-    session('phone',$phone);
-    session('phoneCode',$code);
-    session('phoneCodeExpire',time()+$expire*60);
+    session('phone', $phone);
+    session('phoneCode', $code);
+    session('phoneCodeExpire', time() + $expire * 60);
     $param = "{$code},{$expire}";// 验证码,有效时间
     $uid = "";
     $ucpass = new Ucpaas($options);
     return $ucpass->SendSms($appid, $templateid, $param, $phone, $uid);
 }
 
-function sms_check($phone,$phoneCode){
+function sms_check($phone, $phoneCode)
+{
     if ($phoneCode == session('phoneCode') && $phone == session('phone') && time() < session('phoneCodeExpire')) {
 //        session('phoneCode',null); //todo 暂时不删除短信验证码
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
 
-function replaceRecord($table,$jid, $status=['status' => '0'])
+function replaceRecord($table, $jid, $status = ['status' => '0'])
 {
     $jobfield = [
         'hr_id',
@@ -113,53 +113,103 @@ function replaceRecord($table,$jid, $status=['status' => '0'])
     $hr = Db::table('user')->where('id', $job['hr_id'])->field($hrfield)->find();
     $company = Db::table('company')->where('id', $job['co_id'])->field($cofield)->find();
     
-    $data = $job + $hr + $company + $status + ['uid'=>session('uid'),'addtime'=>time(),'username'=>session('user.name')];
+    $data = $job + $hr + $company + $status + ['uid' => session('uid'), 'addtime' => time(), 'username' => session('user.name')];
     
     return Db::table($table)->insert($data, 'REPLACE');
 }
 
- /*薪水文本转文本*/
- // todo 薪水的输入分最底、最高两个选择得出的范围比较合适，非当前版本
-function salary2text($n){
-    $a=[
-        '1~3k',
-        '3~5k',
-        '5~7k',
-        '7~9k',
-        '9~11k',
-        '11~13k',
-        '13~15k',
-        '15~17k',
-        '17~19k',
-        '19~21k',
-        '21~23k',
-        '23~25k',
-        '25~27k',
-        '27~29k',
-        '29~31k',
-        '31~33k',
-        '33~35k',
-        '35~37k',
-        '37~39k',
-        '39~41k',
-        '41~43k',
-        '43~45k',
-        '45~47k',
-        '47~49k',
+/*薪水文本转文本*/
+// todo 薪水的输入分最底、最高两个选择得出的范围比较合适，非当前版本
+function salary2text($n)
+{
+    $a = [
+        "0" => '面议',
+        "1" => '1K',
+        "2" => '2K',
+        "3" => '3K',
+        "4" => '4K',
+        "5" => '5K',
+        "6" => '6K',
+        "7" => '7K',
+        "8" => '8K',
+        "9" => '9K',
+        "10" => '10K',
+        "11" => '11K',
+        "12" => '12K',
+        "13" => '13K',
+        "14" => '14K',
+        "15" => '15K',
+        "16" => '16K',
+        "17" => '17K',
+        "18" => '18K',
+        "19" => '19K',
+        "20" => '20K',
+        "21" => '21K',
+        "22" => '22K',
+        "23" => '23K',
+        "24" => '24K',
+        "25" => '25K',
+        "26" => '26K',
+        "27" => '27K',
+        "28" => '28K',
+        "29" => '29K',
+        "30" => '30K',
+        "31" => '31K',
+        "32" => '32K',
+        "33" => '33K',
+        "34" => '34K',
+        "35" => '35K',
+        "36" => '36K',
+        "37" => '37K',
+        "38" => '38K',
+        "39" => '39K',
+        "40" => '40K',
+        "41" => '41K',
+        "42" => '42K',
+        "43" => '43K',
+        "44" => '44K',
+        "45" => '45K',
+        "46" => '46K',
+        "47" => '47K',
+        "48" => '48K',
+        "49" => '49K',
+        "50" => '50K',
+        "60" => '60K',
+        "70" => '70K',
+        "80" => '80K',
+        "90" => '90K',
+        "100" => '100K',
+        "110" => '110K',
+        "120" => '120K',
+        "130" => '130K',
+        "140" => '140K',
+        "150" => '150K',
+        "160" => '160K',
+        "170" => '170K',
+        "180" => '180K',
+        "190" => '190K',
+        "200" => '200K',
+        "210" => '210K',
+        "220" => '220K',
+        "230" => '230K',
+        "240" => '240K',
+        "250" => '250K',
     ];
     return $a[$n];
 }
 
+
 /*性别索引转文本*/
-function sex2text($n){
-    $a=[
+function sex2text($n)
+{
+    $a = [
         '女',
         '男'
     ];
     return $a[$n];
 }
 
-function getCategory($data, $pid=0)
+function getCategory($data, $pid = 0)
 {
     $it = [];
     foreach ($data as $item) {

@@ -39,6 +39,7 @@ Route::controller("/category","admin/Category");
 //广告
 Route::controller("/advertising","admin/Advertising");
 
+
 /*前台**********************************************/
 //登录
 Route::controller('/homelogin','home/Login');
@@ -60,4 +61,6 @@ Route::controller("/index","home/Index");
 Route::controller('/personal','home/Personal');
 //普通用户其它相关
 Route::controller('/employee','home/Employee');
+//搜索
+Route::controller('/search','home/Search');
 
