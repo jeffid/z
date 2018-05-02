@@ -23,18 +23,17 @@
                         {foreach name="job" item="row"}
                         <div style="width: 900px;border: 0px solid #666;height: 80px;">
                             <span style="width: 40px;float: left;margin-left: -10px">ID:{$row['id']}</span>
-                            <span style="width: 100px;float: left">职位:{$row['job_name']}</span>
+                            <span style="width: 100px;float: left">职位:{$row['j_name']}</span>
                             <span style="width: 100px;float: left">姓名:{$row['username']}</span>
                             <span style="width: 200px;float: left">时间:{:date( 'Y-m-d H:i:s',$row['addtime'])}</span>
                             <span style="width: 160px;float: left">
-                                <select name="" id="" data-id="{$row['id']}" data-func="select" data-action="/employer/ChangeOfferStatus">
+                                <select name="" id=""  data-btn="select" data-action="/employer/ChangeOfferStatus/id/{$row['id']}/jid/{$row['j_id']}">
                                     <option value="0" {if condition="$row['status'] == 0"}selected {/if} >未处理</option>
                                     <option value="1" {if condition="$row['status'] == 1"}selected {/if} >已邀约</option>
                                 </select>
                             </span>
                             <span style="width: 60px;float: left">
-                                <a href="/employer/review/id/{$row['id']}" style="float: left;"
-                                   class="btn btn-info">查看</a>
+                                <a href="/employer/review/id/{$row['id']}" style="float: left;" class="btn btn-info">查看</a>
                             </span>
                         </div>
                         {/foreach}

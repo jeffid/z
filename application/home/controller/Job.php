@@ -9,43 +9,49 @@
 
 namespace app\home\controller;
 use app\home\controller\Permit1;
+use think\Controller;
 use think\Db;
-class Job extends Permit1
+
+class Job extends Controller
 {
     function getIndex(){
         
-        $request=request();
-        $id=25; //todo
-        $row=Db::table("job")->where('co_id',$id)->find();
-        $info=Db::table("company")->where('id',$id)->find();
-        $list=Db::table("company_admin")->where('co_id',$id)->find();
-        $a=[
-            '1~3k',
-            '3~5k',
-            '5~7k',
-            '7~9k',
-            '9~11k',
-            '11~13k',
-            '13~15k',
-            '15~17k',
-            '17~19k',
-            '19~21k',
-            '21~23k',
-            '23~25k',
-            '25~27k',
-            '27~29k',
-            '29~31k',
-            '31~33k',
-            '33~35k',
-            '35~37k',
-            '37~39k',
-            '39~41k',
-            '41~43k',
-            '43~45k',
-            '45~47k',
-            '47~49k',
+        $rq=request();
+        $jid=$rq->param('jid');
+        $where=[
+            'id'=>$jid,
+            'status'=>1,
         ];
-        $row['salary']=$a[$row['salary']];
-        return $this->fetch('/detail',['row'=>$row,'info'=>$info,'list'=>$list,]);
+        $row=Db::table("job")->where($where)->find(); //参数
+        if (!$row) {
+            /*没找到id对应工作时跳到首页*/
+            return $this->redirect('/index/index');
+        }
+        
+        $hr=Db::table('user')->where('id',$row['hr_id'])->find();
+        $info=Db::table("company")->where('id',$row['co_id'])->find();
+        $list=Db::table("company_admin")->where('co_id',$row['co_id'])->find();
+    
+        $deliver_status=null;
+        $interest_status=null;
+        
+        if ($uid=session('uid')) {
+            /*当前用户已投递的,状态 1*/
+            $deliver_status=Db::table('personal_deliver')->where(['j_id'=>$jid,'uid'=>$uid])->find() ? 1 :0;
+            /*当前用户已加入感兴趣单的,状态 1*/
+            $interest_status=Db::table('personal_interest')->where(['j_id'=>$jid,'uid'=>$uid])->find() ? 1 :0;
+        }
+        
+//        $row['salary']=salary2text($row['salary']); //转换移到模板里做了
+        $d=[
+            'row'=>$row,
+            'info'=>$info,
+            'list'=>$list,
+            'hr'=>$hr,
+            'deliver_status'=>$deliver_status,
+            'interest_status'=>$interest_status,
+            'jid'=>$jid,
+            ];
+        return $this->fetch('/job_detail',$d);
     }
 }

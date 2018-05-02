@@ -28,7 +28,7 @@
             
             <div class="user-nav">
                 
-                {empty name="Think.session.userName" }
+                {empty name="Think.session.uid" }
                 <!--未登录-->
                 <div class="btns">
                     <a href="/homelogin/index" class="link-publish" ka="header-publish" title="免费发布职位">免费发布职位</a><em class="vline"></em>
@@ -38,6 +38,33 @@
                 </div>
                 
                 {else/}
+    
+                {if condition="$Think.session.user.status eq 1"}
+                {// HR 头部 }
+                <ul>
+                    <li class="">
+                        <a ka="header-message" href="#">消息
+                            <span class="nav-chat-num"></span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-figure">
+                        <a href="#" ka="header-username">
+                            <span class="label-text">{$Think.session.user.name ?? '请完善资料'}</span>
+                            <img src="{$Think.session.user.avatar?? $Think.session.default.avatar}" alt="">
+                        </a>
+                        <div class="dropdown" style="display: none;">
+                            <!--<a href="/personal/deliver" ka="header-personal">个人中心</a>-->
+                            <a href="/employer/account" ka="account_manage">账户管理</a>
+                            <a href="/employer/add" class="link-recruit" ka="header-recruit">我要招聘</a>
+                            <a href="/homelogin/logout" ka="header-logout">退出</a>
+                            
+                        </div>
+                    </li>
+                </ul>
+                
+                {else /}
+    
                 <ul>
                     <li class="">
                         <a ka="header-message" href="#">消息
@@ -49,8 +76,8 @@
                     </li>
                     <li class="nav-figure">
                         <a href="#" ka="header-username">
-                            <span class="label-text">{$Think.session.userName ?? '请完善资料'}</span>
-                            <img src="#" alt="">
+                            <span class="label-text">{$Think.session.user.name ?? '请完善资料'}</span>
+                            <img src="{$Think.session.user.avatar?? $Think.session.default.avatar}" alt="">
                         </a>
                         <div class="dropdown" style="display: none;">
                             <a href="/personal/deliver" ka="header-personal">个人中心</a>
@@ -64,7 +91,8 @@
                         </div>
                     </li>
                 </ul>
-                
+    
+                {/if}
                 {/empty}
                 
             </div>

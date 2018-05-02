@@ -85,10 +85,10 @@ class Category extends Allow
         $request = request();
         $id = $request->param('id');
         if ($list=Db::table('category')->where('pid',$id)->select()){
-            $this->error("存在子类别删除失败,请先删除子类别","/cartegory/index");
+            $this->error("存在子类别删除失败,请先删除子类别","/category/index");
         }elseif(false){
             //todo 后期看有相关商品
-            $this->error("存在相关商品删除失败,请先删除商品","/cartegory/index");
+            $this->error("存在相关商品删除失败,请先删除商品","/category/index");
         } else{
             if(Db::table('category')->where('id',$id)->delete()){
                 $this->success("删除成功","/category/index");

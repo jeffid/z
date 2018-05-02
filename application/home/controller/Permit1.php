@@ -7,6 +7,7 @@
  */
 
 namespace app\home\controller;
+
 use think\Controller;
 
 /**
@@ -15,18 +16,23 @@ use think\Controller;
  * */
 class Permit1 extends Controller
 {
-    function _initialize(){
-        if(!session('uid')||session('userStatus')!='1'){
+    function _initialize()
+    {
+        $rq = request();
+        $c = $rq->controller();
+        $a = $rq->action();
+        if (!session('uid') || session('user.status') != '1') {
             //跳转前台登录界面
-            $this->error('请先登录BOSS账号','/login/index');
+            return $this->error('请先登录BOSS账号', '/homelogin/index');
         }
-//        $request=request();
-//        $controller=strtolower($request->controller());
-//        $action=$request->action();
-//        $nodelist=Session::get("nodelist");
-//        if(empty($nodelist[$controller])||!in_array($action,$nodelist[$controller])){
-//            $this->error("sorry,您没有权限访问该模块,请联系超级管理员","/admin/index");
-//        }
-    }
+        var_dump($_SESSION); /*todo 上线前删除*/
+    
+        if ($c == 'Employer' && empty(session('user.cid'))) {
+            if ($a == 'postinsert' || $a == 'getadd') {
+                return $this->error('请先添加关联公司，再执行添加工作操作', '/employer/Companyindex');
+            }
+        }
 
+    }
+    
 }

@@ -14,6 +14,7 @@
 
 use think\Loader;
 use think\Config;
+use think\Db;
 
 function email($to, $title, $content, $cfg = 'zhipin')
 {
@@ -81,4 +82,91 @@ function sms_check($phone,$phoneCode){
     else {
         return false;
     }
+}
+
+function replaceRecord($table,$jid, $status=['status' => '0'])
+{
+    $jobfield = [
+        'hr_id',
+        'co_id',
+        'id j_id',
+        'job j_name',
+        'location j_location',
+        'degree j_degree',
+        'salary j_salary',
+        'experience j_experience',
+    ];
+    $hrfield = [
+        'username' => 'hr_name',
+        'avatar' => 'hr_avatar',
+        'position' => 'hr_position'
+    ];
+    $cofield = [
+        'name' => 'co_name',
+        'industry' => 'co_industry',
+        'financing' => 'co_financing',
+        'employees' => 'co_employees',
+        'logo' => 'co_logo'
+    ];
+    
+    $job = Db::table('job')->where('id', $jid)->field($jobfield)->find();
+    $hr = Db::table('user')->where('id', $job['hr_id'])->field($hrfield)->find();
+    $company = Db::table('company')->where('id', $job['co_id'])->field($cofield)->find();
+    
+    $data = $job + $hr + $company + $status + ['uid'=>session('uid'),'addtime'=>time(),'username'=>session('user.name')];
+    
+    return Db::table($table)->insert($data, 'REPLACE');
+}
+
+ /*薪水文本转文本*/
+ // todo 薪水的输入分最底、最高两个选择得出的范围比较合适，非当前版本
+function salary2text($n){
+    $a=[
+        '1~3k',
+        '3~5k',
+        '5~7k',
+        '7~9k',
+        '9~11k',
+        '11~13k',
+        '13~15k',
+        '15~17k',
+        '17~19k',
+        '19~21k',
+        '21~23k',
+        '23~25k',
+        '25~27k',
+        '27~29k',
+        '29~31k',
+        '31~33k',
+        '33~35k',
+        '35~37k',
+        '37~39k',
+        '39~41k',
+        '41~43k',
+        '43~45k',
+        '45~47k',
+        '47~49k',
+    ];
+    return $a[$n];
+}
+
+/*性别索引转文本*/
+function sex2text($n){
+    $a=[
+        '女',
+        '男'
+    ];
+    return $a[$n];
+}
+
+function getCategory($data, $pid=0)
+{
+    $it = [];
+    foreach ($data as $item) {
+        if ($item['pid'] == $pid) {
+            $item['children'] = getCategory($data, $item['id']);
+            $it[] = $item;
+        }
+    }
+    return $it;
 }

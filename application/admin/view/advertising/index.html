@@ -1,0 +1,51 @@
+{extend name="AdminPublic:public"/}
+{block name="admin"}
+<div class="mws-panel grid_8">
+    <div class="mws-panel-header">
+        <span style="float: left"><i class="icon-table"></i> 广告列表</span>
+    </div>
+    <div class="mws-panel-body no-padding">
+        <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
+            
+            <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1"
+                   aria-describedby="DataTables_Table_1_info">
+                <thead>
+                <tr role="row">
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"
+                        colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 209px;">
+                        id
+                    </th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"
+                        colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 209px;">
+                        公司名
+                    </th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"
+                        colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 191px;">
+                        图片
+                    </th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"
+                        colspan="1" aria-label="Engine version: activate to sort column ascending"
+                        style="width: 137px;">操作
+                    </th>
+                </tr>
+                </thead>
+                
+                <tbody role="alert" aria-live="polite" aria-relevant="all">
+                {foreach name="data" item="row"}
+                <tr class="odd">
+                    <td class=" ">{$row['id']}</td>
+                    <td class=" ">{$row['name']}</td>
+                    <td class=" "><img src="{$row['bgs']}" alt=""></td>
+                    <td class=" " style="text-align: center"><a href="/advertising/delete/id/{$row['id']}" class="btn">从广告列移除</a>
+                    </td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+            <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate">
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="title"}后台广告列表{/block}

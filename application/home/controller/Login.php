@@ -45,7 +45,8 @@ class Login extends Controller
         /* 收验证码的手机号==登录手机号，
            提交短信验证码==存session里的验证码，
            在有效时间 */
-        if ($data['phoneCode'] != session('phoneCode') || time() > session('phoneCodeExpire') || $data['phone'] != session('phone')) {
+        
+        if (!sms_check($data['phone'], $data['phoneCode'])) {
             return ['msg' => '短信验证码不正确或过期'];
         }
         /*手机号提示放在最后,防止恶意猜测用户注册情况*/
@@ -83,28 +84,35 @@ class Login extends Controller
     function loginSuccess($user)
     {
         $username = $user['username'] ?? '未实名';
-        session('userName', $username); //用户实名
-        session('userPosition', $user['position']); //用户职位
         session('uid', $user['id']); //用户id
-        session('phonePostfix', $user['phone_postfix']); //短手机号
-        session('phone', $user['phone']); //长手机号
-        session('userStatus', $user['status']); //用户角色状态
-        session('userPassword',$user['password']);
-//        session('phoneCode', null); //删除短信验证码 todo
+        session('user', []);
+        session('user.name', $username); //用户实名
+        session('user.position', $user['position']); //用户职位
+        session('user.phonePostfix', $user['phone_postfix']); //短手机号
+        session('user.phone', $user['phone']); //长手机号
+        session('user.status', $user['status']); //用户角色状态
+        session('user.password', $user['password']);
+        session('user.avatar', $user['avatar']);
+        session('user.cid', $user['co_id']);
 
+        
         return ['msg' => 'ok', 'redirect' => '/index/index'];
     }
     
-    function getLogout(){
-        session('userName', null); //用户实名
-        session('userPosition', null['position']); //用户职位
+    function getLogout()
+    {
         session('uid', null); //用户id
-        session('phonePostfix', null); //短手机号
-        session('phone', null); //长手机号
-        session('userStatus', null); //用户角色状态
-        session('userPassword',null);
-    
-    
+        session('user', null); //用户user信息组
+//        session('userName', null); //用户实名
+//        session('userPosition', null['position']); //用户职位
+//        session('phonePostfix', null); //短手机号
+//        session('phone', null); //长手机号
+//        session('userStatus', null); //用户角色状态
+//        session('userPassword',null);
+//        session('userAvatar',null);
+//        session('userCoId',null);
+        
+        
         return $this->redirect('/index/index');
     }
 }

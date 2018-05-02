@@ -15,113 +15,64 @@
                     <a href="/personal/interest" ka="personal_top_interest" class="cur">感兴趣</a>
                 </div>
                 <ul>
-                    {/*
+                    {empty name="data[0]" }
                     <!--无职位-->
                     <div class="data-tips">
                         <div class="data-blank">
-                            <i class="tip-nodata"></i><b>暂时未有投递简历，建议尝试多与Boss沟通</b>
+                            <i class="tip-nodata"></i><b>暂时未有添加到感兴趣，建议尝试多与Boss沟通</b>
                             <p><a href="https://www.zhipin.com/geek/new/index/recommend/"
                                   ka="personal_submitted_recommend" class="btn">查看推荐职位</a></p>
                         </div>
                     </div>
-                    */}
-                    <!--感兴趣-->
-                    <li class="item-boss">
-                        <div class="figure"><img
-                                src="./interest_files/0a684a981b5d1f7a5be201db1df86d114aba90342dc7dcbab819f04cba92c7b9_s.jpg">
-                        </div>
-                        <div class="item-content">
-                            <div class="info-header">
-                                <div class="btns">
-                                    
-                                    
-                                    <a ka="personal_interest_chat_5a8ffdd2fd13724c1nZ739m-EVM~" href="javascript:;"
-                                       class="btn btn-startchat"
-                                       data-url="/gchat/addRelation.json?jobId=407d5543884af53c1n1_29W-FlM~"
-                                       redirect-url="/geek/new/index/chat?id=5a8ffdd2fd13724c1nZ739m-EVM~"
-                                       target="_blank">开始沟通</a>
-                                    
-                                    
-                                    <a ka="personal_interest_cancel_5a8ffdd2fd13724c1nZ739m-EVM~" href="javascript:;"
-                                       class="btn btn-like"
-                                       data-url="/geek/tag/jobtagupdate.json?jobId=407d5543884af53c1n1_29W-FlM~&amp;tag=4">取消感兴趣</a>
-                                </div>
-                                <h3 class="name">李璐莹<em class="vline"></em>HRBP</h3>
-                            </div>
-                            <div class="info-primary">
-                                <div class="company-info">
-                                    
-                                    
-                                    <img src="./interest_files/a166ff1be03c773702a3c4db479f91c2237be6b2d179363c97e0cb73bf20ae2c.jpg">
-                                    
-                                    
-                                    <div class="text">
-                                        <b>
-                                            
-                                            
-                                            <a href="https://www.zhipin.com/gongsi/2167ef1147ead06f1X1_2Nw~.html"
-                                               ka="personal_interest_brand_2167ef1147ead06f1X1_2Nw~">无秘</a>
-                                        
-                                        
-                                        </b>
-                                        <p class="gray">移动互联网 · B轮 · 100-499人</p>
-                                    </div>
-                                </div>
-                                <div class="job-info">
-                                    <div class="job-name"><a
-                                            href="https://www.zhipin.com/job_detail/407d5543884af53c1n1_29W-FlM~.html"
-                                            ka="personal_interest_job_407d5543884af53c1n1_29W-FlM~">后端开发工程师<span
-                                            class="salary">25k-50k</span></a></div>
-                                    <p class="gray">深圳 · 南山区 · 蛇口<em class="vline"></em>不限<em class="vline"></em>本科</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
                     
+                   {else /}
+                    
+                    {volist name="data" id="item" }
                     <!--感兴趣-->
                     <li class="item-boss">
-                        <div class="figure"><img
-                                src="./interest_files/235577817a94bd829ecd867697c5c487cfcd208495d565ef66e7dff9f98764da_s.jpg">
-                        </div>
+                        <div class="figure"><img src="{$item.hr_avatar ?? $Think.session.default.avatar}"></div>
                         <div class="item-content">
                             <div class="info-header">
+                                
                                 <div class="btns">
-                                    
-                                    
-                                    <a ka="personal_interest_chat_d5dbee640fabee6f1HF-2dm0ElA~" href="javascript:;"
+                                    {/*
+                                    <a ka="personal_submitted_continue_bdacae975d756c160HV-2Nm-EA~~" href="javascript:;"
                                        class="btn btn-startchat"
-                                       data-url="/gchat/addRelation.json?jobId=ddd552198aef10211n1_2ty1GVI~"
-                                       redirect-url="/geek/new/index/chat?id=d5dbee640fabee6f1HF-2dm0ElA~"
-                                       target="_blank">开始沟通</a>
-                                    
-                                    
-                                    <a ka="personal_interest_cancel_d5dbee640fabee6f1HF-2dm0ElA~" href="javascript:;"
-                                       class="btn btn-like"
-                                       data-url="/geek/tag/jobtagupdate.json?jobId=ddd552198aef10211n1_2ty1GVI~&amp;tag=4">取消感兴趣</a>
+                                       data-url="/gchat/addRelation.json?jobId=1f9c58be726ae9d41nxy2dW0Elc~"
+                                       redirect-url="/geek/new/index/chat?id=bdacae975d756c160HV-2Nm-EA~~"
+                                       target="_blank">继续沟通</a>
+                                    */}
+                                <a  href="/personal/interestRemove/list/1/jid/{$item.j_id}" class="btn" data-url="">取消感兴趣</a>
                                 </div>
-                                <h3 class="name">董胜富<em class="vline"></em>视频编码</h3>
+                                
+    
+    
+                                <h3 class="name">{$item.hr_name}<em class="vline"></em>{$item.hr_position}</h3>
                             </div>
                             <div class="info-primary">
                                 <div class="company-info">
-                                    <img src="/interest_files/3aa7cafafad9b7521c5e3a55a9688312aaf51feb540fef8e09bb759dc64687c0.png">
+                                    <img src="{$item.co_logo ?? $Think.session.default.logo}">
                                     <div class="text">
                                         <b>
-                                            <a href="https://www.zhipin.com/gongsi/6fcd6bb018e7e8db1Xxz0t8~.html"
-                                               ka="personal_interest_brand_6fcd6bb018e7e8db1Xxz0t8~">爱奇艺</a>
+                                            <a href="javascript:;" >{$item.co_name}</a>
                                         </b>
-                                        <p class="gray">互联网 · D轮及以上 · 1000-9999人</p>
+                                        <p class="gray">{$item.co_industry} · {$item.co_financing} · {$item.co_employees}人</p>
                                     </div>
                                 </div>
                                 <div class="job-info">
-                                    <div class="job-name"><a
-                                            href="https://www.zhipin.com/job_detail/ddd552198aef10211n1_2ty1GVI~.html"
-                                            ka="personal_interest_job_ddd552198aef10211n1_2ty1GVI~">视频编码高级工程师<span
-                                            class="salary">20k-40k</span></a></div>
-                                    <p class="gray">深圳 · 南山区 · 大冲<em class="vline"></em>不限<em class="vline"></em>硕士</p>
+                                    <div class="job-name"><a href="javascript:;
+
+" >{$item.j_name}<span class="salary">{:salary2text($item.j_salary)}</span></a></div>
+                                    <p class="gray">{$item.j_location}<em class="vline"></em>{$item.j_experience}<em class="vline"></em>{$item.j_degree}
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </li>
+    
+                    {/volist}
+    
+                    {/empty}
                 </ul>
             </div>
         </div>
