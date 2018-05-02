@@ -41,7 +41,7 @@
                     <li>
                         <a href="JavaScript:;"  ka="hot-job-1">
                             <div class="info-primary">
-                                <div class="name"><span class="salary">{$a[$item['salary']]}</span><b>{$item['job']} </b></div>
+                                <div class="name"><span class="salary">{:salary2text($item['salary'])}</span><b>{$item['job']} </b></div>
                                 <p class="gray">{$item['tags']} ·{$item['degree']}·{$item['location']}</p>
                             </div>
                         </a>
@@ -311,9 +311,7 @@
                             </dl>
                             <label><span>展开</span><i class="fz fz-slidedown"></i></label>
                         </div>
-                        <div class="pos-bread">
-                            <a href="" ka="brand-breadcrumb-1">首页</a><i class="icon-arrow-right"></i><a href="" ka="brand-breadcrumb-2">互联网金融行业招聘</a><i class="icon-arrow-right"></i><a href="" ka="brand-breadcrumb-3">招商银行信用卡中心</a>
-                        </div>
+                       
                     </div>
                 </div>
             </div>

@@ -49,13 +49,13 @@
                                     <img src="{$item.co_logo ?? $Think.session.default.logo}">
                                     <div class="text">
                                         <b>
-                                            <a href="javascript:;" >{$item.co_name}</a>
+                                            <a href="/companys/index/cid/{$item.co_id}" >{$item.co_name}</a>
                                         </b>
                                         <p class="gray">{$item.co_industry} · {$item.co_financing} · {$item.co_employees}人</p>
                                     </div>
                                 </div>
                                 <div class="job-info">
-                                    <div class="job-name"><a href="javascript:;
+                                    <div class="job-name"><a href="/job/index/jid/{$item.j_id}
 
 " >{$item.j_name}<span class="salary">{:salary2text($item.j_salary)}</span></a></div>
                                     <p class="gray">{$item.j_location}<em class="vline"></em>{$item.j_experience}<em class="vline"></em>{$item.j_degree}

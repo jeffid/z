@@ -53,7 +53,7 @@ class Personal extends Permit0
         return $this->fetch('/personal/interview', ['data' => $data]);
     }
     
-    /*感兴趣的职位列表*/
+    /*感兴趣的职位列表页*/
     function getInterest()
     {
         $where = [
