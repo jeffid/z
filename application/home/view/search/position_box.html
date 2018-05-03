@@ -1,0 +1,33 @@
+<div class="position-box ">
+    {notempty name="category" }
+    <!--搜索框实时从数据库拿目录时用这个,否则用静态目录-->
+    <ul class="category category-1">
+        <li data-positioncode="0" data-position="不限职业类型">
+            <a href="javascript:;">不限职业类型</a>
+        </li>
+        {volist name="category" id="item1" }
+        <li data-positioncode="{$item1['id']}" data-position="{$item1.name}">
+            <a href="javascript:;">{$item1['name']}</a>
+            <ul class="category category-2">
+                {volist name="$item1.children" id="item2"}
+                <li data-positioncode="{$item2['id']}" data-position="{$item2.name}">
+                    <a href="javascript:;">{$item2['name']}</a>
+                    <ul class="category category-3">
+                        {volist name="$item2.children" id="item3"}
+                        <li data-positioncode="{$item3['id']}" data-position="{$item3.name}">
+                            <a href="javascript:;">{$item3['name']}</a>
+                        </li>
+                        {/volist}
+                    </ul>
+                </li>
+                {/volist}
+            </ul>
+        </li>
+        {/volist}
+    </ul>
+    {else /}
+    <!--搜索框实时从数据库拿目录时用这个,否则用静态目录-->
+    {include file="search:category" }
+    {/notempty}
+    <div class="dropdown-menu"></div>
+</div>

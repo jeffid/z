@@ -10,9 +10,11 @@ namespace app\home\controller;
 
 use think\Controller;
 use think\Db;
+
 class Search extends Controller
 {
-    function getIndex(){
+    function getIndex()
+    {
         /*
          * query=&scity=&industry=100003&position=
          * */
@@ -40,54 +42,97 @@ class Search extends Controller
   `position` varchar(20) NOT NULL COMMENT '工作类型',
   `position_code` int(10) unsigned NOT NULL COMMENT '工作类型编号',
          * */
-        $rq=request();
-        $where='1=1';
-        $query=$rq->get('query');
-        $locationCode=$rq->get('scity');
-        $industryCode=$rq->get('industry');
-        $positionCode=$rq->get('position');
-    
+        $rq = request();
+        $where = '1=1';
+        $query = $rq->get('query');
+        $locationCode = $rq->get('scity');
+        $industryCode = $rq->get('industry');
+        $positionCode = $rq->get('position');
+        $w=[];
         if (!empty($query)) {
-            $where.=" AND job LIKE %{$query}%";
+//            $where .= " AND `job` LIKE '%{$query}%'";
+            $w['job']=['LIKE',"%{$query}%"];
         }
         if (!empty($locationCode)) {
-            $where.=" AND location_code = {$locationCode}";
+//            $where .= " AND location_code = {$locationCode}";
+            $w['location_code']=$locationCode;
+    
         }
         if (!empty($industryCode)) {
-            $where.=" AND industry_code = {$industryCode}";
+//            $where .= " AND industry_code = {$industryCode}";
+            $w['industry_code']=$industryCode;
         }
         if (!empty($positionCode)) {
-           $ct=Db::query("select id from category WHERE `id` = {$positionCode} OR FIND_IN_SET({$positionCode},`path`)");
-           $str_ct='';
+            $ct = Db::query("select id from category WHERE `id` = {$positionCode} OR FIND_IN_SET({$positionCode},`path`)");
+            $str_ct = '';
             foreach ($ct as $item) {
-                $str_ct.=$item['id'].',';
-           }
-           
-           $str_ct=trim($str_ct,',');
-           $where.=" AND `position_code` IN ({$str_ct})";
-           echo $where;
+                $str_ct .= $item['id'] . ',';
+            }
+            $str_ct = trim($str_ct, ',');
+//            $where .= " AND `position_code` IN ({$str_ct})";
+            $w['position_code']=['IN',$str_ct];
+//            echo $where;
+        }
+//        var_dump($w);
+        /*查询符合条件的工作*/
+//        $jobs_id = Db::query("SELECT id FROM job WHERE {$where}");
+//        $jobs_id =Db::table('job')->field('id')->where($w)->select();
+        $jobs_id =Db::table('job')->field('id')->where($w)->paginate(1);
+        $page=$jobs_id->appends($rq->get())->render();
+        
+        $jobfield = [
+            'hr_id',
+            'co_id',
+            'id' => 'j_id',
+            'job' => 'j_name',
+            'location' => 'j_location',
+            'degree' => 'j_degree',
+            'salary' => 'j_salary',
+            'experience' => 'j_experience',
+            'timestamp' => 'j_timestamp',
+        ];
+        $hrfield = [
+            'username' => 'hr_name',
+            'avatar' => 'hr_avatar',
+            'position' => 'hr_position'
+        ];
+        $cofield = [
+            'name' => 'co_name',
+            'industry' => 'co_industry',
+            'financing' => 'co_financing',
+            'employees' => 'co_employees',
+            'logo' => 'co_logo'
+        ];
+        
+        $list = [];
+        foreach ($jobs_id as $item) {
+            var_dump($item);
+            $jid = $item['id'];
+            /* 有其中一条执行不成功跳出*/
+            if (!($job = Db::table('job')->where('id', $jid)->field($jobfield)->find())) {
+                continue;
+            }
+            if (!($hr = Db::table('user')->where('id', $job['hr_id'])->field($hrfield)->find())) {
+                continue;
+            }
+            if (!($company = Db::table('company')->where('id', $job['co_id'])->field($cofield)->find())) {
+                continue;
+            }
+            $list[] = $job + $hr + $company;
         }
         
-        $res=Db::query("SELECT * FROM `job` WHERE {$where}");
-        
-        var_dump($res);
+//        var_dump($w,$jobs_id, $list);
         
         /*全部分类,平行数据*/
-        $allCategory = Db::table('category')->select();
+//        $allCategory = Db::table('category')->select();
         /*分类目录,多维分类数据*/
-        $category=getCategory($allCategory); //通用函数
-        $d=[
-            'category'=>$category??[], //采用静态目录时用后一值
+//        $category=getCategory($allCategory); //通用函数
+        $d = [
+            'category' => $category ?? [], //采用静态目录时用后一值
+            'list' => $list,
+            'page' => $page,
         ];
-        return $this->fetch('/search',$d);
+        return $this->fetch('search/search', $d);
     }
     
-    /*
-     *  if ($_GET['tid'] == 0) {
-            $sql = "select * from goods";
-        } else {
-            //分类 以及 这个分类下面所有自分类包含的商品 且上架的
-            $sql = "select * from goods where (tid={$_GET['tid']} or tid in(select id from type where path like '%,{$_GET['tid']},%')) and status=1";
-        }
-     * */
 }

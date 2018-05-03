@@ -1,0 +1,163 @@
+{extend name="public:base"/}
+{block name="main"}
+<div id="filter-box" class="">
+    <div class="inner home-inner">
+        <div class="search-box sub">
+            <div class="search-form ">
+                <form action="/search/index/" method="get" class="">
+                    <div class="search-form-con">
+                        <div class="city-sel">
+                            <i class="line"></i>
+                            <span class="label-text">
+                                <b>深圳</b><i class="icon-arrow-down"></i>
+                            </span>
+                        </div>
+                        <div class="industry-sel" ka="search_bos_sel_industry">
+                            <i class="line"></i>
+                            <span class="label-text">
+                                <b>行业不限</b><i class="icon-arrow-down"></i>
+                            </span>
+                        </div>
+                        <div class="position-sel" ka="search_box_sel_jobtype">
+                            <i class="line"></i>
+                            <span class="label-text">
+                                <b>职位类型不限</b><i class="icon-arrow-down"></i>
+                            </span>
+                        </div>
+                        <p class="ipt-wrap">
+                            <input type="text" name="query" ka="search-keyword" value="" autocomplete="off" class="ipt-search" maxlength="50" placeholder="搜索职位、公司">
+                        </p>
+                    </div>
+                    
+                    <input type="hidden" name="scity" class="city-code" value="">
+                    <input type="hidden" name="industry" class="industry-code" value="">
+                    <input type="hidden" name="position" class="position-code" value="">
+                    
+                    <button class="btn btn-search">搜索</button>
+                    
+                    {include file="search:city_box" }
+                    {include file="search:industry_box" }
+                    {include file="search:position_box" }
+                </form>
+            </div>
+        </div>
+        <div class="box-shadow-box"></div>
+    </div>
+</div>
+
+<div id="main" class="inner home-inner">
+    <div class="job-box">
+        <div class="sider">
+            
+            <!--<div class="sider-list" style="">
+                <h3>看过的职位</h3>
+                <ul>
+                </ul>
+                <li>
+                    <a href="javascript:;" ka="viewed_list_1">
+                        <h4>架构师（PHP/C++） <span class="salary">30K-50K</span></h4>
+                        <p>明睿</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" ka="viewed_list_2">
+                        <h4>资深PHP研发工程师 <span class="salary">40K-60K</span></h4>
+                        <p>找靓机</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" ka="viewed_list_3">
+                        <h4>PHP开发工程师 <span class="salary">6K-8K</span></h4>
+                        <p>曼咖互动</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" ka="viewed_list_4">
+                        <h4>嵌入式开发专家(智能语音/视频云) <span class="salary">25K-50K</span></h4>
+                        <p>阿里云</p>
+                    </a>
+                </li>
+            </div>-->
+            
+            <div class="promotion-img nomargin"><a href="javascript:;"
+                                                   target="_blank" ka="ad_banner_0"><img src="/static/home/images/promotion.jpg"
+                                                                                         alt=""></a></div>
+            <div class="promotion-img"><a href="javascript:;" target="_blank"
+                                          ka="ad_banner_1"><img src="/static/home/images/pro-1.png" alt=""></a></div>
+            <div class="promotion-img"><a href="javascript:;" target="_blank"
+                                          ka="ad_banner_2"><img src="/static/home/images/pro-2.png" alt=""></a></div>
+        </div>
+        <div class="job-list">
+            <div class="job-tab" data-filter="" data-keyword="" data-l3code="" data-rescount="305459" data-page="1"
+                 data-source="2"></div>
+            <ul>
+                {volist name="list" id="item"}
+                <li>
+                    <div class="job-primary">
+                        <div class="info-primary">
+                            <h3 class="name">
+                                <a href="/job/index/jid/{$item.j_id}" data-itemid="1"
+                                   data-lid="7-1t6xd3Hk.7-1t6xd3Hk" data-jobid="19030191" data-index="1"
+                                   ka="search_list_1" target="_blank">
+                                    <div class="job-title">{$item.j_name}</div>
+                                    <span class="red">{:salary2text($item.j_salary)}</span>
+                                    <div class="info-detail">
+                                        <!--悬浮详情-->
+                                    </div>
+                                </a>
+                            </h3>
+                            <p>{$item.j_location}<em class="vline"></em>{$item.j_experience}<em class="vline"></em>{$item.j_degree}</p>
+                        </div>
+                        
+                        <div class="info-company">
+                            <div class="company-text">
+                                <h3 class="name"><a href="/companys/index/cid/{$item.co_id}" ka="search_list_company_1_custompage" target="_blank">{$item.co_name}</a>
+                                </h3>
+                                <p>{$item.co_industry}<em class="vline"></em>{$item.co_financing}<em class="vline"></em>{$item.co_employees}人</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-publis">
+                            <h3 class="name"><img src="{$item.hr_avatar ?? $Think.session.default.avatar}">{$item.hr_name}<em class="vline"></em>{$item.hr_position}</h3>
+                            <p>发布于{:date('m月d日',$item.j_timestamp)}</p>
+                        </div>
+                    </div>
+                </li>
+              {/volist}
+            
+            </ul>
+            
+            
+            <div class="" id="pages" style="height: 26px;overflow: hidden;">
+<!--                <a href="javascript:;" ka="page-prev" class="prev disabled"></a>
+                <a href="javascript:;" class="cur" ka="page-cur">1</a>
+                <a href="javascript:;" ka="page-2">2</a>
+                <a href="javascript:;" ka="page-3">3</a>
+                <span>...</span>
+                <a href="javascript:;" ka="page-next" class="next"></a>-->
+                
+<!--                <ul class="pagination">
+                    <li class="disabled"><span>«</span></li>
+                    <li class="active"><span>1</span></li>
+                    <li><a href="/search/index?query=&amp;scity=&amp;industry=&amp;position=5&amp;page=2">2</a></li>
+                    <li><a href="/search/index?query=&amp;scity=&amp;industry=&amp;position=5&amp;page=3">3</a></li>
+                    <li><a href="/search/index?query=&amp;scity=&amp;industry=&amp;position=5&amp;page=2">»</a></li>
+                </ul>
+                -->
+                {$page}
+            </div>
+        </div>
+    </div>
+</div>
+<!--通用返回顶部-->
+<div id="siderbar" style="display: none;">
+    <ul>
+        <li class="siderbar-top" title="返回顶部"></li>
+        <li class="siderbar-feedback" title="反馈"><span>反馈</span></li>
+        <li class="siderbar-qrcode" title="BOSS直聘APP">
+            <div class="qrcode-layer"><i></i><img src="/static/home/images/common.json" alt="">下载BOSS直聘APP</div>
+        </li>
+    </ul>
+</div>
+</div>
+{/block}
