@@ -1,0 +1,416 @@
+/*登录注册图形验证码*/
+.sign-form .captcha {
+    width: 99px;
+    height: 40px;
+    border: 1px #e3e7ed solid;
+    border-left: 0;
+    vertical-align: middle
+}
+
+/*绝不显示官方提示框*/
+.jconfirm {
+    display: none !important;
+}
+
+/*简历导航栏,锚*/
+.resume-nav li:hover a {
+    display: inline-block;
+}
+
+/*简历修改、添加表单*/
+.data-form-resume .form-row {
+    padding-bottom: 17px
+}
+
+.data-form-resume .form-row dt {
+    line-height: 40px
+}
+
+.data-form-resume .form-row dd {
+    position: relative;
+    *position: static;
+    zoom: 1
+}
+
+.ie .data-form-resume .form-row dd:after {
+    content: '';
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+    overflow: hidden
+}
+
+.data-form-resume .title {
+    padding: 23px 0 9px 13px
+}
+
+.data-form-resume .form-row dl {
+    display: inline-block;
+    width: 316px;
+    vertical-align: top;
+    *zoom: 1;
+    *display: inline;
+    margin: 0 14px
+}
+
+.item-form-through {
+    margin: 0 14px
+}
+
+.data-form-resume .item-form-through dl {
+    display: block;
+    width: auto;
+    margin: 0
+}
+
+.data-form-resume .title {
+    border-bottom: 0
+}
+
+.data-form-resume .ipt {
+    padding: 9px 12px;
+    font-size: 14px;
+    width: 290px;
+    min-width: 290px
+}
+
+#resume-userinfo .data-form-resume .ipt:first-of-type[readonly] {
+    opacity: .5
+}
+
+.data-form-resume .ipt-long {
+    width: 638px
+}
+
+.data-form-resume .form-btns {
+    text-align: right;
+    padding: 11px 16px 28px;
+}
+
+.data-form-resume .radio-square {
+    min-width: 146px
+}
+
+.data-form-resume .tip-text {
+    height: 26px;
+    margin-bottom: -26px;
+    margin-top: 0
+}
+
+/*登录注册异常提示框*/
+.job-sider .sign-form .tiperror {
+    height: 25px;
+    padding-top: 5px
+}
+
+.job-sider .sign-form .tiperror {
+    margin-bottom: -20px
+}
+
+.sign-form .tiperror {
+    text-align: center;
+    color: #fc6c38;
+    height: 29px;
+    line-height: 18px;
+    padding-top: 7px
+}
+
+.semwrap .tiperror {
+    margin-bottom: -25px
+}
+
+/*主页文案图*/
+.promotion-main {
+    height: 456px;
+}
+
+.home-main {
+    height: 582px;
+}
+
+/*首页搜索框,缺陷补充*/
+.ipt-search {
+    /*height: 42px;*/
+}
+
+ .category {
+    width: 120px;
+    /*background-color: pink;*/
+    background-color: #fff;
+    border: 1px solid  #d1d4db;
+}
+ .category-1 {
+    position: relative;
+}
+ .category-2,
+ .category-3
+{
+    position: absolute;
+    left: 100%;
+    top: 0;
+    display: none;
+}
+ .category > li {
+    position: relative;
+    padding: 0 5px;
+    cursor: pointer;
+}
+ .category > li:hover {
+    background-color: #f1f3f6;
+}
+
+ .category > li:hover > .category {
+    display: block;
+}
+
+
+/*工作切换 感兴趣 状态*/
+.info-detail-top .detail-top-right .link-like2 {
+    display: inline-block;
+    margin-left: 20px;
+    background: url(../images/icons-like.png) no-repeat;
+    color: #9fa3b0;
+    padding-left: 20px;
+    -webkit-transition: none;
+    transition: none;
+    background-position: 0 -73px;
+    margin-right: 25px
+}
+
+.info-detail-top .detail-top-right .link-like2:hover {
+    background-position: 0 -106px;
+    color: #fb7042
+}
+
+.detail-op .op-links .link-like2 {
+    background-position: 0 -73px
+}
+
+.detail-op .op-links .link-like2.active,
+.detail-op .op-links .link-like2:hover {
+    background-position: 0 -106px;
+    color: #fb7042
+}
+
+/***sub  *************************************/
+.account-container .set-content {
+    overflow: hidden;
+    /*padding: 0;*/
+}
+
+.resume-item-open {
+    background-color: #fff;
+}
+
+#pages {
+    color: #ffffff;
+    float: right;
+    padding: 2px;
+    margin: 10px 8px 10px 0;
+    background: #202329;
+    /*width: 50px;*/
+}
+
+#pages li {
+    float: left;
+    width: 2.5em;
+    margin: 0 5px;
+    color: #fff;
+    text-align: center;
+}
+
+#pages li.active {
+    background-color: #666;
+    
+}
+
+#pages a:hover {
+    color: #fff !important;
+}
+
+#pages a {
+    color: #c9c5c5 !important;
+}
+
+.item-form {
+    display: block !important;
+}
+
+.jconfirm {
+    display: none !important;
+}
+
+.data-form-resume .form-row {
+    padding-bottom: 17px
+}
+
+.data-form-resume .form-row dt {
+    line-height: 40px
+}
+
+.data-form-resume .form-row dd {
+    position: relative;
+    *position: static;
+    zoom: 1
+}
+
+.ie .data-form-resume .form-row dd:after {
+    content: '';
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+    overflow: hidden
+}
+
+.data-form-resume .title {
+    padding: 23px 0 9px 13px
+}
+
+.data-form-resume .form-row dl {
+    display: inline-block;
+    width: 316px;
+    vertical-align: top;
+    *zoom: 1;
+    *display: inline;
+    margin: 0 14px
+}
+
+.item-form-through {
+    margin: 0 14px
+}
+
+.data-form-resume .item-form-through dl {
+    display: block;
+    width: auto;
+    margin: 0
+}
+
+.data-form-resume .title {
+    border-bottom: 0
+}
+
+.data-form-resume .ipt {
+    padding: 9px 12px;
+    font-size: 14px;
+    width: 290px;
+    min-width: 290px
+}
+
+#resume-userinfo .data-form-resume .ipt:first-of-type[readonly] {
+    opacity: .5
+}
+
+.data-form-resume .ipt-long {
+    width: 638px
+}
+
+.data-form-resume .form-btns {
+    text-align: right;
+    padding: 11px 16px 28px
+}
+
+.data-form-resume .radio-square {
+    min-width: 146px
+}
+
+.data-form-resume .tip-text {
+    height: 26px;
+    margin-bottom: -26px;
+    margin-top: 0
+}
+
+/*主页方案图*/
+.promotion-main {
+    height: 456px;
+}
+
+.home-main {
+    height: 582px;
+}
+
+.promotion-main .picture-list li img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: #f7f7f7;
+}
+
+.promotion-main .picture-list .slider-main {
+    width: 710px !important;
+    height: 346px !important;
+}
+
+.promotion-main .picture-list .pic-btn {
+    display: none;
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    margin-top: -18px;
+    background: rgba(0, 0, 0, .5);
+    top: 50%;
+    z-index: 1000;
+}
+
+.promotion-main .picture-list {
+    padding-bottom: 2px;
+}
+
+.h1z1 {
+    border: 0px solid black;
+    width: 353px;
+    height: 110px;
+    float: left;
+    
+}
+
+.h1z1_h {
+    border: 0px solid black;
+    width: 353px;
+    height: 110px;
+    float: left;
+    margin-left: 2px;
+    
+}
+
+.promotion-main.company-sider {
+    float: unset;
+    width: unset;
+    padding-bottom: unset;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#left {
+    position: fixed;
+    left: 60px;
+    top: 120px;
+    width: 30px;
+    height: 30px;
+}
+
+#right {
+    position: fixed;
+    left: 370px;
+    top: 120px;
+    width: 30px;
+    height: 30px;
+}
+
+#div1 {
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    left: 100px;
+    top: 250px;
+    background: orange;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+
+/**************************************************/

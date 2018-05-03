@@ -1,0 +1,142 @@
+#mws-logos-wrap{
+    border:0 solid red;
+    width:400px;
+    height:80px;
+    font-size: 20px;
+    color:#00d7c6;
+    margin-top: 20px;
+}
+.clearfix{
+    background:#202329;
+}
+#mws-header{
+    background:#202329;
+}
+#mws-navigation{
+    background:#202329;
+    padding-top:20px;
+}
+#mws-sidebar-bg{
+    background:#202329;
+
+}
+#mws-sidebar{
+    padding-top:0px;
+}
+#newbg{
+    background:url("../../adminlogins/images/newbg.png");
+    width: 100%;
+    height: 500px;
+}
+
+#logins1{
+    width: 920px;
+    height: 60px;
+    /*border:1px solid red;*/
+    margin: 0 auto;
+    background-color: #00d7c6 !important;
+}
+
+#advs1 {
+    height: 60px;
+    width: 1000px;
+    background-color: #00d7c6;
+    /* background-color: #fff; */
+    margin: 0 auto;
+}
+#advs {
+    height: 50px;
+    width: 1000px;
+    /*background-color: #00d7c6;*/
+    /* background-color: #fff; */
+    margin: 0 auto;
+}
+.sanp {
+    display: inline-block;
+    vertical-align: top;
+    color: #fff;
+    font-size: 18px;
+    margin-left: 24px;
+    line-height: 26px;
+    padding-top: 5px;
+    font-weight: 400;
+}
+#logins2 {
+    float: left;
+    line-height: 60px;
+    color: #fff;
+    font-size: 30px;
+    border: 0px solid #ccc;
+    margin-left: 10px;
+}
+#loginss3 {
+    width: 400px;
+    height: 430px;
+     border: 1px solid red;
+    margin: 0 auto;
+    background-color: white;
+    border: 6px solid #E8E8E8;
+}
+.title {
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 32px;
+    color: #5dd5c8;
+    position: relative;
+    text-align: center;
+    top:30px;
+}
+.xspan{
+    font-size: 14px !important;
+    color: #9fa3b0 !important;
+}
+#logins6 {
+    width: 356px;
+    height: 360px;
+    /* border: 1px solid green; */
+    float: left;
+    margin-top: 65px;
+}
+.newqw{
+    background: #00d7c6 !important;
+}
+#logins8 {
+    width: 100%;
+    height: 65px;
+    margin-top: 25px;
+
+    background:#00d7c6 !important ;
+}
+#dds{
+    width: 309px;
+    height: 35px;
+    background-color: #5dd5c8;
+    border: 0px solid #5dd5c8;
+    color: white;
+    font-weight: bolder;
+    font-size: 18px;
+    word-spacing: 30px;
+
+}
+/*#mws-header{*/
+    /*height:70px;*/
+/*}*/
+/*.yy-info{*/
+    /*font-size: 13px !important;*/
+    /*padding: 0 0 0 10px !important;*/
+
+/*}*/
+/*.yz-info{*/
+    /**/
+    /*display: block;*/
+    /*border:0 solid red !important;*/
+    /*width: 270px !important;*/
+    /*height: 50px !important;*/
+    /*font-size: 13px !important;*/
+    /*float: right !important;*/
+    /*padding: 0 0 0 10px !important;*/
+/*}*/
+/*yu-info{*/
+    /*float: right;*/
+/*}*/
+

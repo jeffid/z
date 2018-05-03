@@ -1,0 +1,211 @@
+.uo {
+    list-style-type: none;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #f2f5fa;
+    
+    cursor: pointer;
+    
+}
+
+.ou {
+    margin: -800px 0 0px 210px;
+    width: 780px;
+    height: 720px;
+    border: 0px solid blue;
+    
+}
+
+.uo.cur {
+    background: #fff;
+    border-right: 5px solid green;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.inner {
+    margin: 0 0 !important;
+    width: 780px !important;
+}
+
+#our {
+    width: 990px;
+    height: 800px;
+    margin: 0 auto;
+    border: 0px solid red;
+    background-color: #f8f9fb;
+}
+
+#ios {
+    width: 200px;
+    height: 800px;
+    background: #f2f5fa;
+}
+
+.uos {
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 21px;
+    color: #414a60;
+    text-align: center;
+}
+
+.btn-back {
+    float: right !important;
+    margin-left: 20px;
+}
+
+.vali_btn {
+    float: right !important;
+}
+
+#yfb {
+    width: 750px;
+    height: 80px;
+    border: 1px solid blue;
+    margin-top: 10px;
+    /*background: red;*/
+    
+}
+
+.yfb_i {
+    display: block;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    margin-left: 20px;
+    float: left;
+    color: #898e9d;
+}
+
+.yfb_o {
+    display: block;
+    width: 180px;
+    height: 80px;
+    line-height: 80px;
+    margin-left: 20px;
+    float: left;
+    color: #898e9d;
+}
+
+.form-resume .form-row,
+.form-addjob .form-row,
+.form-editjob .form-row{
+    padding-bottom: 17px
+}
+
+.form-resume .form-row dt,
+.form-addjob .form-row dt,
+.form-editjob .form-row dt{
+    line-height: 40px
+}
+
+.form-resume .form-row dd,
+.form-addjob .form-row dd,
+.form-editjob .form-row dd{
+    position: relative;
+    *position: static;
+    zoom: 1
+}
+
+.ie .form-resume .form-row dd:after,
+.ie .form-addjob .form-row dd:after,
+.ie .form-editjob .form-row dd:after{
+    content: '';
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+    overflow: hidden
+}
+
+.form-resume .title,
+.form-addjob .title,
+.form-editjob .title {
+    padding: 23px 0 9px 13px
+}
+
+.form-resume .form-row dl,
+.form-addjob .form-row dl,
+.form-editjob .form-row dl {
+    display: inline-block;
+    width: 316px;
+    vertical-align: top;
+    *zoom: 1;
+    *display: inline;
+    margin: 0 14px
+}
+
+.form-resume .item-form-through dl,
+.form-addjob .item-form-through dl,
+.form-editjob .item-form-through dl {
+    display: block;
+    width: auto;
+    margin: 0
+}
+
+.form-resume .title,
+.form-addjob .title,
+.form-editjob .title {
+    border-bottom: 0
+}
+
+.form-resume .ipt {
+    padding: 9px 12px;
+    font-size: 14px;
+    width: 290px;
+    min-width: 290px
+}
+
+#resume-userinfo .form-resume .ipt:first-of-type[readonly],
+#resume-userinfo .form-addjob .ipt:first-of-type[readonly],
+#resume-userinfo .form-editjob .ipt:first-of-type[readonly] {
+    opacity: .5
+}
+
+.form-resume .ipt-long,
+.form-addjob.ipt-long,
+.form-editjob.ipt-long {
+    width: 638px
+}
+
+.form-resume .form-btns,
+.form-addjob .form-btns,
+.form-editjob .form-btns {
+    text-align: right;
+    padding: 11px 16px 28px
+}
+
+.form-resume .radio-square,
+.form-addjob .radio-square,
+.form-editjob .radio-square {
+    min-width: 146px
+}
+
+.form-resume .tip-text,
+.form-addjob .tip-text,
+.form-editjob .tip-text {
+    height: 26px;
+    margin-bottom: -26px;
+    margin-top: 0
+}
+.set-box{
+    width:700px !important;
+    height:600px !important;
+    box-shadow:none;
+    margin-left: -5px;
+}
+.operate-area{
+    margin-left: 120px;
+}
+.txt-msgh{
+    width: 120px;
+    display: block;
+    float: left;
+}
