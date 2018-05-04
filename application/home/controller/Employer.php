@@ -47,7 +47,7 @@ class Employer extends Permit1
             $this->error("数据添加失败", "/employer/info");
         }
     }
-    /*todo hr没关系公司不能添加工作*/
+    
     function getAdd()
     {
         return $this->fetch("/employer/job_add");
@@ -67,8 +67,10 @@ class Employer extends Permit1
         //HR id
         $data['hr_id'] = session('uid');
         //当前HR相关联的公司ID
-        $hr = Db::table('user')->where('id', session('uid'))->find();
+        $hr = Db::table('user')->where('id', session('uid'))->find(); //查找与hr关联的公司
+        $co = Db::table('company')->where('id', $hr['co_id'])->find(); //查找公司名
         $data['co_id'] = $hr['co_id'];
+        $data['co_name'] = $co['co_name'];
         
         if (DB::table("job")->strict(false)->insert($data)) {
             echo "ok";

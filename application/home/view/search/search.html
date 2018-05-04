@@ -88,6 +88,7 @@
                                           ka="ad_banner_2"><img src="/static/home/images/pro-2.png" alt=""></a></div>
         </div>
         <div class="job-list">
+            {notempty name="list"}
             <div class="job-tab" data-filter="" data-keyword="" data-l3code="" data-rescount="305459" data-page="1"
                  data-source="2"></div>
             <ul>
@@ -146,6 +147,15 @@
                 -->
                 {$page}
             </div>
+            
+            {else /}
+            <div class="data-tips">
+                <div class="data-blank">
+                    <i class="tip-errordata"></i>
+                    <b>没有找到相关职位，修改筛选条件试一下</b>
+                </div>
+            </div>
+            {/notempty}
         </div>
     </div>
 </div>

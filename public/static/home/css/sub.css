@@ -414,3 +414,107 @@
 }
 
 /**************************************************/
+/*自定义轮播*/
+.m-carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.m-carousel ul,
+.m-carousel li {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    transition: left .5s ease,
+    right .5s ease,
+    opacity .7s ease;
+}
+
+.m-carousel a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.m-carousel li {
+    position: absolute;
+}
+
+.m-carousel li img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*height: 100%;*/
+    width: 100%;
+}
+
+.m-carousel .carousel-dot {
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    z-index: 10;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.m-carousel .carousel-dot > .dot {
+    display: inline-block;
+    z-index: 10;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: lightgrey;
+}
+
+.m-carousel .carousel-dot > .dot.cur {
+    background-color: #55cbc4;
+}
+
+.m-carousel .btn-direction {
+    position: absolute;
+    top: 50%;
+    z-index: 999;
+    display: none;
+    width: 36px;
+    height: 36px;
+    margin-top: -18px;
+    background: rgba(0, 0, 0, .7);
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    
+}
+
+.m-carousel:hover .btn-direction {
+    display: block;
+}
+
+.m-carousel .btn-direction.prev {
+    left: 5px;
+}
+
+.m-carousel .btn-direction.prev::before {
+    content: '<';
+    display: block;
+    text-align: center;
+    line-height: 36px;
+}
+
+.m-carousel .btn-direction.next {
+    right: 5px;
+}
+
+.m-carousel .btn-direction.next::before {
+    content: '>';
+    display: block;
+    text-align: center;
+    line-height: 36px;
+}
+/* /自定义轮播 */

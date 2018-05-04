@@ -408,4 +408,63 @@ class Employee extends Permit0
     {
     
     }
+    
+    function postAvatarUpdate()
+    {
+        $rq = request();
+        if (!empty($imgstr = $rq->param('data'))) {
+            $base64_body = substr(strstr($imgstr, ','), 1);
+            //2，解码:
+            $data = base64_decode($base64_body);
+            $basePath = ROOT_PATH . 'public' . DS; // 操作系统盘根目录到public目录的路径,静态资源根目录
+            $path = '/uploads/avatar/'; // TP5 的public目录下的目录
+            $realSavePath = $basePath . $path; // 操作系统中的目录路径,不含文件名
+            
+            if (!is_dir($realSavePath)) {
+                mkdir($realSavePath, 0777, true);
+            }
+            
+            preg_match('|image/(.+);base|', $imgstr, $a); // 匹配图片后缀
+            $extension = $a[1] ?? '';
+            $fileName = uniqid('avatar_', true) . '.' . $extension; //文件名,带扩展名
+            $saveName = $path . $fileName; //TP5 静态资源文件路径,包括文件名
+            $realSaveName=$realSavePath.$fileName; //操作系统文件下
+            
+            /*存储图片*/
+            if (file_put_contents($realSaveName, $data)) {
+                /*旧文件路径*/
+                $user = Db::table('user')->where('id', session('uid'))->field('avatar')->find();
+                $oldAvatar = $basePath . $user['avatar'];
+                
+                if (Db::table('user')->where('id', session('uid'))->update(['avatar' => $saveName])) {
+                    /*删除旧头像文件*/
+                    if (is_file($oldAvatar)) {
+                        unlink($oldAvatar);
+                    }
+                    /*新头像路径出存入session*/
+                    session('user.avatar',$saveName);
+                    /*新头像地址传入数据库后，返回成功信息*/
+                    return [
+                        "rescode" => 1,
+                        "resmsg" => "请求成功",
+                        "verifyTip" => false,
+                        "url" => [
+                            $saveName,
+                            $saveName,
+                        ]
+                    ];
+                } else {
+                    /*新文件存入数据库失败后，删除新头像文件*/
+                    unlink($realSaveName);
+                }
+                
+            }
+            /*如果前面没有成功返回，则返回失败信息给前台*/
+            return [
+                "rescode" => 0,
+                "resmsg" => "更新头像请求失败",
+                "verifyTip" => false,
+            ];
+        }
+    }
 }

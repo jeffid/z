@@ -44,14 +44,14 @@ class Search extends Controller
          * */
         $rq = request();
         $where = '1=1';
-        $query = $rq->get('query');
-        $locationCode = $rq->get('scity');
-        $industryCode = $rq->get('industry');
-        $positionCode = $rq->get('position');
+        $query = $rq->param('query');
+        $locationCode = $rq->param('scity');
+        $industryCode = $rq->param('industry');
+        $positionCode = $rq->param('position');
         $w=[];
         if (!empty($query)) {
 //            $where .= " AND `job` LIKE '%{$query}%'";
-            $w['job']=['LIKE',"%{$query}%"];
+            $w['job|co_name']=['LIKE',"%{$query}%"]; //工作名、公司名模糊查询
         }
         if (!empty($locationCode)) {
 //            $where .= " AND location_code = {$locationCode}";
@@ -78,7 +78,7 @@ class Search extends Controller
 //        $jobs_id = Db::query("SELECT id FROM job WHERE {$where}");
 //        $jobs_id =Db::table('job')->field('id')->where($w)->select();
         $jobs_id =Db::table('job')->field('id')->where($w)->paginate(1);
-        $page=$jobs_id->appends($rq->get())->render();
+        $page=$jobs_id->appends($rq->param())->render();
         
         $jobfield = [
             'hr_id',

@@ -525,4 +525,88 @@ window.onload = function () {
         }
         
     });
+    
+    /*自定义轮播*/
+    var _crs = [].slice.call(document.querySelectorAll('.m-carousel'));
+    _crs.forEach(function (_item) {
+        var _dotBox = _item.querySelector('.carousel-dot'),
+            _li = _item.querySelectorAll('li'),
+            llen = _li.length,
+            idx = 0,
+            lastIdx = -1,
+            html = '',
+            w = _item.offsetWidth,
+            timer = null,
+            duration = 3000;
+
+//                console.log(_li);
+        
+        for (var i = 0; i < llen; i++) {
+//            _li[i].style.display = 'none';
+            _li[i].style.opacity = 0;
+            _li[i].style.zIndex = -1;
+            html += '<i data-index="' + i + '" class="dot"></i>';
+        }
+        
+        _dotBox.innerHTML = html;
+        var _dots = _dotBox.querySelectorAll('.dot');
+        
+        /*初始化*/
+        shift();
+        /*开始循环*/
+        next();
+        /*监听点击事件*/
+        _item.addEventListener('click', function (e) {
+            var it = e.target;
+            if (it.classList.contains('dot')) {
+                next(it.dataset.index);
+            }
+            if (it.classList.contains('next')) {
+                next();
+            }
+            if (it.classList.contains('prev')) {
+                prev();
+            }
+        });
+        
+        function next(newIdx) {
+            clearTimeout(timer);
+            lastIdx = idx;
+            idx = newIdx || ++idx % llen;
+            shift();
+            
+            timer = setTimeout(function () {
+                next();
+            }, duration)
+        }
+        
+        function prev() {
+            clearTimeout(timer);
+            lastIdx = idx;
+            idx = (--idx < 0 ? llen - 1 : idx) % llen;
+            shift();
+            
+            timer = setTimeout(function () {
+                next();
+            }, duration)
+        }
+        
+        function shift() {
+            if (_li[lastIdx]) {
+//                _li[lastIdx].style.display = 'none';
+                _li[lastIdx].style.opacity = 0;
+                _li[lastIdx].style.zIndex = -1;
+                _li[lastIdx].classList.remove('cur');
+            }
+            _dots[lastIdx] && _dots[lastIdx].classList.remove('cur');
+
+//            _li[idx].style.display = 'block';
+            _li[idx].style.opacity = 1;
+            _li[idx].style.zIndex = 1;
+            _li[idx].classList.add('cur');
+            _dots[idx].classList.add('cur');
+        }
+        
+    })
+    
 };

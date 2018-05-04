@@ -12,26 +12,26 @@ class Index extends Controller
     public function getIndex()
     {
         /*默认变量组*/
-        session('default',[]);
+        session('default', []);
         /*默认头像*/
-        session('default.avatar','/static/home/images/avatar/avatar_14.png');
-        session('default.logo','/static/home/images/defaultlogov2.jpg');
-        
+        session('default.avatar', '/static/home/images/avatar/avatar_14.png');
+        session('default.logo', '/static/home/images/defaultlogov2.jpg');
+
         /*轮播数据*/
-        $env=db::table("carousel")->limit(5)->select();
+        $env = db::table("carousel")->limit(5)->select();
         /*广告数据*/
-        $ad=db::table("advertising")->limit(2)->select();
+        $ad = db::table("advertising")->limit(2)->select();
         /*全部分类,平行数据*/
         $allCategory = Db::table('category')->select();
         /*分类目录,多维分类数据*/
-        $cate=getCategory($allCategory); //通用函数
+        $cate = getCategory($allCategory); //通用函数
         
-        $d=[
-            'cate'=>$cate,
-            'env'=>$env,
-            'ad'=>$ad
+        $d = [
+            'cate' => $cate,
+            'env' => $env,
+            'ad' => $ad
         ];
-        return $this->fetch("index/index",$d);
+        return $this->fetch("index/index", $d);
     }
     
 }
