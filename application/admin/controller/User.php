@@ -35,7 +35,8 @@ class User extends Allow
         
         $request = request();
         //封装需要添加数据
-        $data = $request->only(['phone', 'passwrod']);
+        $data = $request->only(['phone']);
+        $data['password']=md5($request->param('password'));
         //添加时间
         $data['addtime'] = time();
         //封装status
@@ -46,7 +47,7 @@ class User extends Allow
             //显示错误提示信息  阻止页面提交
             $this->error($result, "/adminuser/add");
         }
-        if (Db::table("user")->insert($data)) {
+        if (Db::table("admin")->insert($data)) {
             $this->success("数据添加成功", "/adminuser/index");
             // var_dump($data);
         } else {

@@ -36,7 +36,8 @@
                     <td class=" ">{$row['id']}</td>
                     <td class=" ">{$row['name']}</td>
                     <td class=" "><img src="{$row['bgs']}" alt=""></td>
-                    <td class=" " style="text-align: center"><a href="/advertising/delete/id/{$row['id']}" class="btn">从广告列移除</a>
+                    <td class=" " style="text-align: center">
+                        <a href="/advertising/edit/id/{$row['id']}" class="btn btn-info">修改</a> <a href="/advertising/delete/id/{$row['id']}" class="btn">从广告列移除</a>
                     </td>
                 </tr>
                 {/foreach}

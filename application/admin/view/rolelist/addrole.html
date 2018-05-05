@@ -9,7 +9,16 @@
                     <div >
                         <ul class="mws-form-list inline">
                             {foreach name="role" item="row"}
+                            {empty name="$rids" }
+    
+                            <li><input type="checkbox" value="{$row['id']}" name="name[]" > <label>{$row['name']}</label></li>
+    
+                            {else/}
+                            
                             <li><input type="checkbox" value="{$row['id']}" name="name[]" {if condition="in_array($row['id'],$rids)"}checked{/if}> <label>{$row['name']}</label></li>
+    
+                            {/empty}
+                            
                             {/foreach}
                         </ul>
                     </div>

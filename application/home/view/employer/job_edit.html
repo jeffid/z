@@ -31,12 +31,12 @@
                                     <h3 class="title">招聘岗位</h3>
                                     <div class="form-row">
                                         <dl>
-                                            <dt>工作名称 <span class="gray"></span></dt>
+                                            <dt>* 工作名称 <span class="gray"></span></dt>
                                             <dd><input type="text" class="ipt required" placeholder="输入工作名称" data-blank="输入工作名称"
                                                        data-format="输入工作名称" required minlength="2" maxlength="10" ka="et-uname" name="job" value="{$row['job']}"></dd>
                                         </dl>
                                         <dl>
-                                            <dt>所在地 <span class="gray"></span></dt>
+                                            <dt>* 所在地 <span class="gray"></span></dt>
                                             <dd><input type="text" class="ipt required" placeholder="请填写所在地" data-blank="请填写所在地"
                                                        data-format="请填写所在地" required minlength="2" maxlength="10" ka="et-uname" name="location" value="{$row['location']}">
                                             </dd>
@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="form-row">
                                         <dl>
-                                            <dt>要求经验年龄</dt>
+                                            <dt>* 要求经验年龄</dt>
                                             <dd>
                                                 <div class="gray"><input type="text"
                                                                          name="experience"
@@ -53,7 +53,7 @@
                                             </dd>
                                         </dl>
                                         <dl>
-                                            <dt>要求学历</dt>
+                                            <dt>* 要求学历</dt>
                                             <dd>
                                                 <div class="gray">
                                                     <input type="text" name="degree" class="ipt required" value="{$row['degree']}" required minlength="2" maxlength="10">
@@ -69,7 +69,7 @@
                                                        required minlength="2" maxlength="20"></dd>
                                         </dl>
                                         <dl>
-                                            <dt>工作地址</dt>
+                                            <dt>* 工作地址</dt>
                                             <dd><input name="address" ka="email_edit" value="{$row['address']}" type="text" class="ipt"
                                                        placeholder="请填写工作地址" data-range="0,40" data-blank="" data-format="请填写工作地址"
                                                        required minlength="2" maxlength="50"></dd>
@@ -77,7 +77,7 @@
                                     </div>
                                     <div class="form-row">
                                         <dl>
-                                            <dt>职位描述</dt>
+                                            <dt>* 职位描述</dt>
                                             <dd>
         
                                                 <!--<input type="text" class="ipt ipt-datetimepicker " data-blank="" name="job_descr"-->
@@ -87,14 +87,14 @@
                                             </dd>
                                         </dl>
                                         <dl>
-                                            <dt>团队介绍</dt>
+                                            <dt>* 团队介绍</dt>
                                             <dd><textarea class="ipt ipt-datetimepicker " name="team_descr" id="" cols="30" rows="10" required minlength="1" maxlength="100" required minlength="2" maxlength="300">{$row['team_descr']}</textarea></dd>
                                         </dl>
                                     </div>
                                    
                                     <div class="form-row" style="padding-bottom: 20px;">
-                                        <input type="hidden" name="id" value="">
-                                        <button class="btn btn-back" type="button" ka="user-resume-user-info-cancel">取消</button>
+                                        <input type="hidden" name="id" value="{$row['id']}">
+                                        
                                         <button class="btn vali_btn" type="submit" ka="user-resume-user-info-ok">完成</button>
                                     </div>
                                     

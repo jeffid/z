@@ -25,12 +25,13 @@ class Index extends Controller
         $allCategory = Db::table('category')->select();
         /*分类目录,多维分类数据*/
         $cate = getCategory($allCategory); //通用函数
-        
         $d = [
             'cate' => $cate,
             'env' => $env,
             'ad' => $ad
         ];
+//        var_dump($d);
+    
         return $this->fetch("index/index", $d);
     }
     

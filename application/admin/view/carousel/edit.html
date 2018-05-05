@@ -1,0 +1,25 @@
+{extend name="AdminPublic:public"/}
+{block name="admin"}
+<form class="mws-form" action="/carousel/update" method="post" enctype="multipart/form-data">
+    <div class="mws-form-inline">
+        <input type="hidden" name="id" value="{$row['id']}">
+        <div class="mws-form-row">
+           
+                <div class="mws-form-row">
+                    <label class="mws-form-label">图片</label>
+                    <img src="{$row['bgs']}" alt="">
+                    <div class="mws-form-item">
+                    <input type="file" class="large" name="bgs"></div>
+                    </div>
+                    </div>
+                    <div class="mws-button-row">
+                    <input type="submit" value="添加" class="btn btn-danger">
+                    <input type="reset" value="Reset" class="btn ">
+                    
+                    </div>
+                        </div>
+        </form>
+        
+        
+{/block}
+{block name="title"}后台轮播图修改{/block}

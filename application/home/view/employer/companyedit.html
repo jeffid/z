@@ -10,11 +10,11 @@
                 <h3 class="title">公司信息</h3>
                 <div class="form-row">
                     <dl>
-                        <dt>简称(品牌) <span class="gray"></span></dt>
+                        <dt>* 简称(品牌) <span class="gray"></span></dt>
                         <dd><input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="name" maxlength="24" minlength="1" required value="{$row['name']}"></dd>
                     </dl>
                     <dl>
-                        <dt>品牌全称</dt>
+                        <dt>* 品牌全称</dt>
                         <dd>
                             
                             <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format=""  ka="et-uname" name="fullname" maxlength="24" minlength="1" required value="{$row['fullname']}">
@@ -28,37 +28,38 @@
                         <dd><img src="{$row['bgs']}" alt=""></dd>
                     </dl>
                     <dl>
-                        <dt>品牌</dt>
+                        <dt>* 品牌</dt>
                         <dd><input type="file" class="medium" name="logo" value="{$row['logo']}" /></dd>
                         <dd><img src="{$row['logos']}" alt=""></dd>
                     </dl>
                 </div>
                 <div class="form-row">
                     <dl>
-                        <dt>融资情况</dt>
+                        <dt>* 融资情况</dt>
                         <dd>
                             <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format=""  ka="et-uname" name="financing" maxlength="24" minlength="1" required value="{$row['financing']}">
                         </dd>
                     </dl>
                     <dl>
-                        <dt>供职人数</dt>
+                        <dt>* 供职人数</dt>
                         <dd><input name="employees"  type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50" minlength="1" required value="{$row['employees']}"></dd>
                     </dl>
                 </div>
                 <div class="form-row">
                     <dl>
-                        <dt>所在行业</dt>
+                        <dt>* 所在行业</dt>
                         <dd><input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format=""  ka="et-uname" name="industry" maxlength="24" minlength="1" required value="{$row['industry']}"></dd>
                     </dl>
                     <dl>
-                        <dt>简介</dt>
-                        <dd><input type="text"  class="ipt required" placeholder=""  data-blank="" data-format="" ka="et-uname" name="profile" maxlength="24" minlength="1" required value="{$row['profile']}"></dd>
+                        <dt>* 简介</dt>
+                        <dd><textarea class="ipt ipt-datetimepicker " name="profile" id="" cols="30"
+                                      rows="10" required minlength="1" maxlength="1200">{$row['cf']}</textarea></dd>
                     </dl>
                 
                 </div>
                 <div class="form-row">
                     <dl>
-                        <dt>官网</dt>
+                        <dt>* 官网</dt>
                         <dd><input type="text"  class="ipt required" placeholder=""  data-blank="" data-format="" ka="et-uname" name="homepage" maxlength="24" minlength="1" required value="{$row['homepage']}"></dd>
                     </dl>
                 
@@ -67,25 +68,25 @@
                 <div class="form-row">
                     
                     <dl>
-                        <dt>公司地址</dt>
+                        <dt>* 公司地址</dt>
                         <dd><input name="addr"  type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"  minlength="1" required value="{$row['addr']}"></dd>
                     </dl>
                 </div>
                 <div class="form-row">
                     <dl>
-                        <dt>高管名</dt>
+                        <dt>* 高管名</dt>
                         <dd>
                             <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format=""  ka="et-uname" name="ce_name" maxlength="24" minlength="1" required value="{$row['ce_name']}">
                         </dd>
                     </dl>
                     <dl>
-                        <dt>高管履历</dt>
+                        <dt>* 高管履历</dt>
                         <dd>
-                            <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" minlength="1" required  ka="et-uname" name="profile" value="{$row['profile']}">
+                            <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" minlength="1" required  ka="et-uname" name="profiles" value="{$row['cadf']}">
                         </dd>
                     </dl>
                     <dl>
-                        <dt>公司环境</dt>
+                        <dt>* 公司环境</dt>
                         <dd><input type="file" class="medium" name="src" value="{$row['src']}"/></dd>
                         <dd><img src="{$row['srcs']}" alt=""></dd>
                     </dl>

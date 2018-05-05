@@ -1,0 +1,12 @@
+<div class="links links-friends" style="height: 30px;">
+    <dl class="links-item">
+        <dt>友情链接：</dt>
+        <dd>
+            {volist name="row" id="data" }
+            <a href="https://{$data['link']}" target="_blank" ka="friendly-link-1">{$data['name']}</a>
+            {/volist}
+        
+        </dd>
+    </dl>
+    <label><span>展开</span><i class="fz fz-slidedown"></i></label>
+</div>

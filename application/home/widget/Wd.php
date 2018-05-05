@@ -5,11 +5,15 @@
  * Date: 2018/4/19
  * Time: 2:14
  */
-namespace app\admin\widget;
+namespace app\home\widget;
 use think\Controller;
+use think\Db;
 
 class Wd extends Controller{
+
     function links(){
-        return $this->fetch('user:1');
+        $row=Db::table('links')->limit(20)->select();
+    
+        return $this->fetch('widget:links',['row'=>$row]);
     }
 }

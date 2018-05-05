@@ -1,0 +1,63 @@
+{extend name="public:base"/}
+{block name="main"}
+<div id="main" class="inner home-inner">
+    <div class="account-container">
+        <div class="set-page">
+            <div class="set-nav">
+                <div class="account-manager">账户管理</div>
+                <ul>
+                    <a href="/employer/info">
+                        <li>个人信息</li>
+                    </a>
+                    <a href="/employer/add">
+                        <li>发布工作</li>
+                    </a>
+                    <a href="/employer/index">
+                        <li class="cur">已发布工作</li>
+                    </a>
+                    <a href="/employer/reindex">
+                        <li>已收简历</li>
+                    </a>
+                    <a href="/employer/editphone">
+                        <li>手机号码</li>
+                    </a>
+                    <a href="/employer/editpwd">
+                        <li>密码管理</li>
+                    </a>
+                    <a href="/employer/companyindex">
+                        <li>公司</li>
+                    </a>
+                </ul>
+            </div>
+            
+            <div class="set-content">
+                <div class="set-box sign-form">
+                    <!--已发布工作-->
+                    <div class="ou" id="div2" style="display: block">
+                        {foreach name="job" item="row"}
+                        <div style="width: 900px;border: 0px solid #666;height: 80px">
+                            <span style="width: 60px;float: left">ID:{$row['id']}</span>
+                            <span style="width: 160px;float: left">职位:{$row['job']}</span>
+                            <span style="width: 200px;float: left">时间:{:date( 'Y-m-d H:i:s',$row['timestamp'])}</span>
+                            <span style="width: 160px;float: left">状态:
+                                <a href="/employer/changestatus/id/{$row['id']}" class="btn" data-btn="changestatus"
+                                   data-status="{$row['status']}">{if condition="$row['status'] == 1"}可用 {else /} 禁用{/if}</a></span>
+                            <span style="width: 60px;float: left">
+                                <a href="/employer/edit/id/{$row['id']}" style="float: left;"
+                                   class="btn btn-info">修改</a>
+                            </span>
+                        </div>
+                        {/foreach}
+                        <!--<h1>1111</h1>-->
+                    </div>
+                    <div class="" id="pages">
+                        
+                        {$job->appends($data)->render()}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

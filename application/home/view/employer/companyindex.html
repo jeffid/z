@@ -77,31 +77,21 @@
                                 <dd><input type="text" disabled class="ipt required" placeholder=""  data-blank="" data-format="" maxlength="24" ka="et-uname" name="industry" value="{$row['industry']??''}"></dd>
                             </dl>
                             <dl>
-                                <dt>简介</dt>
-                                <dd><input type="text" disabled class="ipt required" placeholder=""  data-blank="" data-format="" maxlength="24" ka="et-uname" name="industry" value="{$row['profile']??''}"></dd>
-                            </dl>
-                
-                        </div>
-                        <div class="form-row">
-                            <dl>
-                                <dt>官网</dt>
-                                <dd><input type="text" disabled class="ipt required" placeholder=""  data-blank="" data-format="" maxlength="24" ka="et-uname" name="industry" value="{$row['homepage']??''}"></dd>
-                            </dl>
-                            
-    
-                        </div>
-
-                        <div class="form-row">
-                            <dl>
-                                <dt>所属公司</dt>
-                                <dd>
-                                    <input type="text" disabled class="ipt required" placeholder=""  data-blank="" data-format="" maxlength="24" ka="et-uname" name="co_id" value="{$row['co_id']??''}">
-                                </dd>
-                            </dl>
-                            <dl>
                                 <dt>公司地址</dt>
                                 <dd><input name="addr" disabled value="{$row['addr']??''}" type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"></dd>
                             </dl>
+                
+                        </div>
+ 
+
+                        <div class="form-row">
+                            
+                            <dl>
+                                <dt>官网</dt>
+                                <dd><input type="text" disabled class="ipt required" placeholder=""  data-blank="" data-format="" maxlength="24" ka="et-uname" name="homepage" value="{$row['homepage']??''}"></dd>
+    
+                            </dl>
+                            
                         </div>
                         <div class="form-row">
                             <dl>
@@ -112,11 +102,12 @@
                             </dl>
                 
                         </div>
+                        
                         <div class="form-row">
                             <dl>
                                 <dt>高管履历</dt>
                                 <dd>
-                                    <input type="text" disabled class="ipt required" placeholder=""  data-blank="" data-format="" maxlength="24" ka="et-uname" name="profile" value="{$row['profile']??''}">
+                                    <input type="text" disabled class="ipt required" placeholder=""  data-blank="" data-format="" maxlength="24" ka="et-uname" name="profiles" value="{$row['cadf']??''}">
                                 </dd>
                             </dl>
                             <div class="form-row" style="padding-bottom: 20px;float: right">
@@ -127,6 +118,16 @@
                                 {notempty name="row"}
                                 <a href="/employer/companyedit/id/{$info['co_id']}"><button class="btn vali_btn" type="button" ka="user-resume-user-info-ok">修改</button></a>
                                 {/notempty}
+                            </div>
+                            <div class="form-row">
+        
+                                <dl>
+                                    <dt>简介</dt>
+                                    <dd><textarea disabled class="ipt ipt-datetimepicker " name="profile" id="" cols="30"
+                                                  rows="10" required minlength="1" maxlength="1200">{$row['cf']??''}</textarea></dd>
+        
+                                </dl>
+    
                             </div>
                         </div>
                         

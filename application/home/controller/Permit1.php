@@ -25,11 +25,12 @@ class Permit1 extends Controller
             //跳转前台登录界面
             return $this->error('请先登录BOSS账号', '/homelogin/index');
         }
-//        var_dump($_SESSION); /*todo 上线前删除*/
+    
+        var_dump($_SESSION); /*todo 上线前删除*/
     
         if ($c == 'Employer' && empty(session('user.cid'))) {
             if ($a == 'postinsert' || $a == 'getadd') {
-                return $this->error('请先添加关联公司，再执行添加工作操作', '/employer/Companyindex');
+                return $this->error('请先添加关联公司，再执行添加工作操作', '/employer/Companyadd');
             }
         }
 

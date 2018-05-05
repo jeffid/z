@@ -77,7 +77,7 @@ class Search extends Controller
         /*查询符合条件的工作*/
 //        $jobs_id = Db::query("SELECT id FROM job WHERE {$where}");
 //        $jobs_id =Db::table('job')->field('id')->where($w)->select();
-        $jobs_id =Db::table('job')->field('id')->where($w)->paginate(1);
+        $jobs_id =Db::table('job')->field('id')->where($w)->paginate(30);
         $page=$jobs_id->appends($rq->param())->render();
         
         $jobfield = [
@@ -106,7 +106,7 @@ class Search extends Controller
         
         $list = [];
         foreach ($jobs_id as $item) {
-            var_dump($item);
+//            var_dump($item);
             $jid = $item['id'];
             /* 有其中一条执行不成功跳出*/
             if (!($job = Db::table('job')->where('id', $jid)->field($jobfield)->find())) {

@@ -38,6 +38,8 @@ Route::controller("/links","admin/Links");
 Route::controller("/category","admin/Category");
 //广告
 Route::controller("/advertising","admin/Advertising");
+//友情链接模块
+Route::controller("/adminlinks","admin/links");
 
 
 /*前台**********************************************/

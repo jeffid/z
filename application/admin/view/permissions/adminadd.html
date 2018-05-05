@@ -2,7 +2,7 @@
 {block name="admin"}
 <div class="mws-panel grid_8">
     <div class="mws-panel-header">
-        <span>用户管理添加模块</span>
+        <span>管理员添加模块</span>
     </div>
     <div class="mws-panel-body no-padding">
         <form class="mws-form" action="/permissions/admininsert" method="post">
@@ -16,7 +16,7 @@
                 <div class="mws-form-row">
                     <label class="mws-form-label">密码</label>
                     <div class="mws-form-item">
-                        <input type="text" class="medium" name="passwrod"/>
+                        <input type="text" class="medium" name="password"/>
                     </div>
                 </div>
                 
@@ -27,7 +27,7 @@
                 <div class="mws-form-row">
                 <label class="mws-form-label">权限</label>
                 <div class="mws-form-item">
-                <select class="large" name="rid"> <option>1</option> <option>2</option> <option>3</option>  </select>
+                <select class="large" name="rid"> <option value="1">普通管理员</option> <option value="2">超级管理员</option> <option value="3">一级管理员</option>  </select>
                 </div>
                 </div>
                 
@@ -41,4 +41,4 @@
     </div>
 </div>
 {/block}
-{block name="title"}后台用户添加列表{/bolic}
+{block name="title"}管理员添加列表{/bolic}

@@ -24,6 +24,15 @@ class Company extends Controller
 //        $job['salary']=$a[$job['salary']];
 //        var_dump($job);
         
-        return $this->fetch("/company",['row'=>$row,'info'=>$info,'list'=>$list,'job'=>$job,'env'=>$env,'lists'=>$lists,'rew'=>$rew,'jobs'=>$jobs]);
+        return $this->fetch("/company",[
+            'row'=>$row,
+            'info'=>$info,
+            'list'=>$list,
+            'job'=>$job,
+            'env'=>$env,
+            'lists'=>$lists,
+            'rew'=>$rew,
+            'jobs'=>$jobs
+        ]);
     }
 }

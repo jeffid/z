@@ -10,8 +10,12 @@ use think\Db;
 class Admin extends Allow{
     //加载后台首页
     public function getIndex(){
+        session('user');
+//        echo  '<pre>';
+//        print_r($_SESSION);
+//        echo  '</pre>';
+//
         $user=Db::table("user")->select();
         return $this->fetch("Admin/index",['user'=>$user]);
     }
 }
-?>

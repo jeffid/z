@@ -1,0 +1,111 @@
+{extend name="public:base"/}
+{block name="main"}
+<div id="main" class="inner home-inner">
+    <div class="account-container">
+        <div class="set-page">
+            <div class="set-nav">
+                <div class="account-manager">账户管理</div>
+                <ul>
+                    <a href="/employer/info"><li>个人信息</li></a>
+                    <a href="/employer/add"><li >发布工作</li></a>
+                    <a href="/employer/index"><li class="cur">已发布工作</li></a>
+                    <a href="/employer/reindex"><li>已收简历</li></a>
+                    <a href="/employer/editphone"><li>手机号码</li></a>
+                    <a href="/employer/editpwd"><li>密码管理</li></a>
+                    <a href="/employer/companyindex"><li>公司</li></a>
+                </ul>
+            </div>
+            
+            <div class="set-content">
+                <div class="set-box sign-form">
+                    <div id="mains" class="inner">
+                        <div class="job-boxs">
+                            <div class="sider deliver-sider">
+                            
+                            </div>
+                        </div>
+                        
+                        <div class="resume-item resume-item-open" id="resume-userinfo">
+                            <div class="item-form">
+                                <form action="/employer/update" method="post" class="form-editjob" data-form="form-editjob">
+                                    <h3 class="title">招聘岗位</h3>
+                                    <div class="form-row">
+                                        <dl>
+                                            <dt>工作名称 <span class="gray"></span></dt>
+                                            <dd><input type="text" class="ipt required" placeholder="输入工作名称" data-blank="输入工作名称"
+                                                       data-format="输入工作名称" required minlength="2" maxlength="10" ka="et-uname" name="job" value="{$row['job']}"></dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>所在地 <span class="gray"></span></dt>
+                                            <dd><input type="text" class="ipt required" placeholder="请填写所在地" data-blank="请填写所在地"
+                                                       data-format="请填写所在地" required minlength="2" maxlength="10" ka="et-uname" name="location" value="{$row['location']}">
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="form-row">
+                                        <dl>
+                                            <dt>要求经验年龄</dt>
+                                            <dd>
+                                                <div class="gray"><input type="text"
+                                                                         name="experience"
+                                                                         class="ipt required"
+                                                                         value="{$row['experience']}" required minlength="1" maxlength="10"></div>
+                                            </dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>要求学历</dt>
+                                            <dd>
+                                                <div class="gray">
+                                                    <input type="text" name="degree" class="ipt required" value="{$row['degree']}" required minlength="2" maxlength="10">
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="form-row">
+                                        <dl>
+                                            <dt>职位标签</dt>
+                                            <dd><input name="tags" ka="email_edit" value="{$row['tags']}" type="text" class="ipt"
+                                                       placeholder="请填写职位标签" data-range="0,40" data-blank="" data-format="请填写职位标签"
+                                                       required minlength="2" maxlength="20"></dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>工作地址</dt>
+                                            <dd><input name="address" ka="email_edit" value="{$row['address']}" type="text" class="ipt"
+                                                       placeholder="请填写工作地址" data-range="0,40" data-blank="" data-format="请填写工作地址"
+                                                       required minlength="2" maxlength="50"></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="form-row">
+                                        <dl>
+                                            <dt>职位描述</dt>
+                                            <dd>
+        
+                                                <!--<input type="text" class="ipt ipt-datetimepicker " data-blank="" name="job_descr"-->
+                                                <!--value="" required minlength="2" maxlength="100">-->
+                                                <textarea class="ipt ipt-datetimepicker " name="job_descr" id="" cols="30" rows="10" required minlength="1" maxlength="300">{$row['job_descr']}</textarea>
+    
+                                            </dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>团队介绍</dt>
+                                            <dd><textarea class="ipt ipt-datetimepicker " name="team_descr" id="" cols="30" rows="10" required minlength="1" maxlength="100" required minlength="2" maxlength="300">{$row['team_descr']}</textarea></dd>
+                                        </dl>
+                                    </div>
+                                   
+                                    <div class="form-row" style="padding-bottom: 20px;">
+                                        <input type="hidden" name="id" value="">
+                                        <button class="btn btn-back" type="button" ka="user-resume-user-info-cancel">取消</button>
+                                        <button class="btn vali_btn" type="submit" ka="user-resume-user-info-ok">完成</button>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

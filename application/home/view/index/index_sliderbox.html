@@ -1,26 +1,17 @@
-
 <div class="slider-box">
-    <div class="promotion-main company-sider" >
-        <div class="m-carousel" style="height: 400px;width: 100%;">
-        
+    <div class="promotion-main company-sider">
+        <!--轮播-->
+        <div class="m-carousel" style="height: 330px;width: 100%;margin-bottom: 3px;">
             <ul class="carousel-main">
-                <li class="cur" >
-                    <a href="#">
-                        <img src="/static/home/images/tip-errordata.png" alt="">
+                {volist name="env" id="item" }
+                <li class="">
+                    <a href="/companys/index/cid/{$item['co_id']}">
+                        <img src="{$item['bg']}" alt="{$item['name']}">
                     </a>
                 </li>
-                <li class="" >
-                    <a href="#">
-                        <img src="/static/home/images/tip-nodata.png" alt="">
-                    </a>
-                </li>
-                <li class="" >
-                    <a href="#">
-                        <img src="/static/home/images/tip-errordata.png" alt="">
-                    </a>
-                </li>
+                {/volist}
             </ul>
-        
+            
             <!--上一个、下一个按钮-->
             <a href="javascript:;" class="btn-direction  prev"></a>
             <a href="javascript:;" class="btn-direction  next"></a>
@@ -28,15 +19,17 @@
             <div class="carousel-dot">
             </div>
         </div>
+        <!--/轮播-->
     
         <!-- 广告位 -->
+        {volist name="ad" id="it" }
         <div class="h1z1">
-            <a href="/companyindex/id/{$ad[0]['co_id']}"><img src="{$ad[0]['bg']}" alt="" style="width: 353px;height:110px;"></a>
+            <a href="/companys/index/cid/{$it['co_id']}">
+                <img src="{$it['bg']}" alt="{$it['name']}" style="width: 353px;height:110px;">
+            </a>
         </div>
-        <div class="h1z1_h">
-            <a href="/companyindex/id/{$ad[1]['co_id']}"><img src="{$ad[1]['bg']}" alt="" style="width: 353px;height:110px;"></a>
-        </div>
+        {/volist}
         <!-- /广告位 -->
-
+    
     </div>
 </div>
