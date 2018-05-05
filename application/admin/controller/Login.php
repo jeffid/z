@@ -26,16 +26,21 @@ class Login extends Controller
         $request = request();
         //获取输入的验证码
         $fcode = $request->param('fcode');
+       
         //对比输入的验证码和系统验证码
         if (!captcha_check($fcode)) {
             return $this->error("验证码错误", "/login/login");
         }
         
         //检测用户名
-        if (!$info = Db::table("admin")->where("username", $request->param('username'))->find()) {
+        if (!$info = Db::table("admin")
+            ->join('user_role ur','admin.id=ur.uid')
+            ->join("role r",'ur.rid=r.id')
+            ->field('admin.username,admin.status,admin.password,admin.id,ur.rid,r.name,r.id as r_id')
+            ->where("username", $request->param('username'))->find()) {
             return $this->error("用户名有误", "/login/login");
         }
-        
+
         if (md5($request->param('password')) != $info['password']) {
             $this->error("密码有误", "/login/login");
         }
@@ -91,6 +96,9 @@ class Login extends Controller
         //3.把当前登录用户的权限信息存储在session里
         Session::set('username', $info['username']);
         Session::set('islogin', 1);
+        Session::set('rid', $info['rid']);
+        Session::set('name', $info['name']);
+        Session::set('r_id', $info['r_id']);
         Session::set('nodelist', $nodelist);
         $this->redirect("/admin/index");
     }

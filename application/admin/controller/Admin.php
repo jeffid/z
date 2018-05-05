@@ -10,7 +10,8 @@ use think\Db;
 class Admin extends Allow{
     //加载后台首页
     public function getIndex(){
-        session('user');
+//        var_dump($_SESSION);
+        session('admin');
 //        echo  '<pre>';
 //        print_r($_SESSION);
 //        echo  '</pre>';

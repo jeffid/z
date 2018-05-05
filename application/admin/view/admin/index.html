@@ -16,7 +16,7 @@
                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 137px;">手机号</th>
                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 124px;">注册时间</th>
                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 60px;">状态</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 60px;">操作</th>
+                    
                 </tr>
                 </thead>
                 <tbody role="alert" aria-live="polite" aria-relevant="all">
@@ -24,9 +24,14 @@
                 <tr class="odd">
                     <td class=" sorting_1">{$row['id']}</td>
                     <td class=" ">{$row['phone_postfix']}</td>
-                    <td class=" ">{$row['addtime']}</td>
-                    <td class=" ">{$row['status']}</td>
-                    <td class=" "><a href="" class="btn btn-success">删除</a><a href="" class="btn btn-info">修改</a></td>
+                    <td class=" ">{:date( 'Y-m-d H:i:s',$row['addtime'])}</td>
+                    <td class=" ">
+                        {if condition="$row['status'] == 0"} 普通用户
+                        {elseif condition="$row['status']==1"/}HR
+                        {else /} 禁用
+                        {/if}
+                    </td>
+                 
                 </tr>
                 {/foreach}
                 </tbody>

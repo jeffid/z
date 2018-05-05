@@ -1,47 +1,11 @@
 {extend name="public:base"/}
 {block name="main"}
+<!--搜索框-->
 <div id="filter-box" class="">
     <div class="inner home-inner">
         <div class="search-box sub">
-            <div class="search-form ">
-                <form action="/search/index/" method="get" class="">
-                    <div class="search-form-con">
-                        <div class="city-sel">
-                            <i class="line"></i>
-                            <span class="label-text">
-                                <b>深圳</b><i class="icon-arrow-down"></i>
-                            </span>
-                        </div>
-                        <div class="industry-sel" ka="search_bos_sel_industry">
-                            <i class="line"></i>
-                            <span class="label-text">
-                                <b>行业不限</b><i class="icon-arrow-down"></i>
-                            </span>
-                        </div>
-                        <div class="position-sel" ka="search_box_sel_jobtype">
-                            <i class="line"></i>
-                            <span class="label-text">
-                                <b>职位类型不限</b><i class="icon-arrow-down"></i>
-                            </span>
-                        </div>
-                        <p class="ipt-wrap">
-                            <input type="text" name="query" ka="search-keyword" value="" autocomplete="off" class="ipt-search" maxlength="50" placeholder="搜索职位、公司">
-                        </p>
-                    </div>
-                    
-                    <input type="hidden" name="scity" class="city-code" value="">
-                    <input type="hidden" name="industry" class="industry-code" value="">
-                    <input type="hidden" name="position" class="position-code" value="">
-                    
-                    <button class="btn btn-search">搜索</button>
-                    
-                    {include file="search:city_box" }
-                    {include file="search:industry_box" }
-                    {include file="search:position_box" }
-                </form>
-            </div>
+            {include file="search:search_form"}
         </div>
-        <div class="box-shadow-box"></div>
     </div>
 </div>
 
@@ -80,8 +44,9 @@
             </div>-->
             
             <div class="promotion-img nomargin"><a href="javascript:;"
-                                                   target="_blank" ka="ad_banner_0"><img src="/static/home/images/promotion.jpg"
-                                                                                         alt=""></a></div>
+                                                   target="_blank" ka="ad_banner_0"><img
+                    src="/static/home/images/promotion.jpg"
+                    alt=""></a></div>
             <div class="promotion-img"><a href="javascript:;" target="_blank"
                                           ka="ad_banner_1"><img src="/static/home/images/pro-1.png" alt=""></a></div>
             <div class="promotion-img"><a href="javascript:;" target="_blank"
@@ -107,44 +72,48 @@
                                     </div>
                                 </a>
                             </h3>
-                            <p>{$item.j_location}<em class="vline"></em>{$item.j_experience}<em class="vline"></em>{$item.j_degree}</p>
+                            <p>{$item.j_location}<em class="vline"></em>{$item.j_experience}<em class="vline"></em>{$item.j_degree}
+                            </p>
                         </div>
                         
                         <div class="info-company">
                             <div class="company-text">
-                                <h3 class="name"><a href="/companys/index/cid/{$item.co_id}" ka="search_list_company_1_custompage" target="_blank">{$item.co_name}</a>
+                                <h3 class="name"><a href="/companys/index/cid/{$item.co_id}"
+                                                    ka="search_list_company_1_custompage" target="_blank">{$item.co_name}</a>
                                 </h3>
-                                <p>{$item.co_industry}<em class="vline"></em>{$item.co_financing}<em class="vline"></em>{$item.co_employees}人</p>
+                                <p>{$item.co_industry}<em class="vline"></em>{$item.co_financing}<em class="vline"></em>{$item.co_employees}人
+                                </p>
                             </div>
                         </div>
                         
                         <div class="info-publis">
-                            <h3 class="name"><img src="{$item.hr_avatar ?? $Think.session.default.avatar}">{$item.hr_name}<em class="vline"></em>{$item.hr_position}</h3>
+                            <h3 class="name"><img src="{$item.hr_avatar ?? $Think.session.default.avatar}">{$item.hr_name}<em
+                                    class="vline"></em>{$item.hr_position}</h3>
                             <p>发布于{:date('m月d日',$item.j_timestamp)}</p>
                         </div>
                     </div>
                 </li>
-              {/volist}
+                {/volist}
             
             </ul>
             
             
             <div class="" id="pages" style="height: 26px;overflow: hidden;">
-<!--                <a href="javascript:;" ka="page-prev" class="prev disabled"></a>
-                <a href="javascript:;" class="cur" ka="page-cur">1</a>
-                <a href="javascript:;" ka="page-2">2</a>
-                <a href="javascript:;" ka="page-3">3</a>
-                <span>...</span>
-                <a href="javascript:;" ka="page-next" class="next"></a>-->
+                <!--                <a href="javascript:;" ka="page-prev" class="prev disabled"></a>
+                                <a href="javascript:;" class="cur" ka="page-cur">1</a>
+                                <a href="javascript:;" ka="page-2">2</a>
+                                <a href="javascript:;" ka="page-3">3</a>
+                                <span>...</span>
+                                <a href="javascript:;" ka="page-next" class="next"></a>-->
                 
-<!--                <ul class="pagination">
-                    <li class="disabled"><span>«</span></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="/search/index?query=&amp;scity=&amp;industry=&amp;position=5&amp;page=2">2</a></li>
-                    <li><a href="/search/index?query=&amp;scity=&amp;industry=&amp;position=5&amp;page=3">3</a></li>
-                    <li><a href="/search/index?query=&amp;scity=&amp;industry=&amp;position=5&amp;page=2">»</a></li>
-                </ul>
-                -->
+                <!--                <ul class="pagination">
+                                    <li class="disabled"><span>«</span></li>
+                                    <li class="active"><span>1</span></li>
+                                    <li><a href="/search/index?query=&amp;scity=&amp;industry=&amp;position=5&amp;page=2">2</a></li>
+                                    <li><a href="/search/index?query=&amp;scity=&amp;industry=&amp;position=5&amp;page=3">3</a></li>
+                                    <li><a href="/search/index?query=&amp;scity=&amp;industry=&amp;position=5&amp;page=2">»</a></li>
+                                </ul>
+                                -->
                 {$page}
             </div>
             

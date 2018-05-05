@@ -1,34 +1,5 @@
 <div class="search-box sub">
-    <div class="search-form ">
-        <form action="/search/index/" method="get" class="">            <div class="search-form-con">
-                <div class="city-sel">
-                    <i class="line"></i>
-                    <span class="label-text"><b>全国</b><i class="icon-arrow-down"></i></span>
-                </div>
-                <div class="industry-sel" ka="search_bos_sel_industry">
-                    <i class="line"></i>
-                    <span class="label-text"><b>行业不限</b><i class="icon-arrow-down"></i></span>
-                </div>
-                <div class="position-sel" ka="search_box_sel_jobtype">
-                    <i class="line"></i>
-                    <span class="label-text"><b>职位类型不限</b><i class="icon-arrow-down"></i></span>
-                </div>
-                <p class="ipt-wrap">
-                    <input type="text" name="query" class="ipt-search" autocomplete="off" maxlength="50" placeholder="搜索职位、公司">
-                </p>
-            </div>
-            
-            <input type="hidden" name="scity" class="city-code" value="">
-            <input type="hidden" name="industry" class="industry-code" value="">
-            <input type="hidden" name="position" class="position-code" value="">
-            <button class="btn btn-search">搜索</button>
-    
-            {include file="search:city_box" }
-            {include file="search:industry_box" }
-            {include file="search:position_box" }
-
-        </form>
-    </div>
+    {include file="search:search_form"}
     
     <!--热门职位-->
     <div class="search-hot">

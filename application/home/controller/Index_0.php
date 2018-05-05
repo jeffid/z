@@ -39,6 +39,7 @@ class Index extends Controller
     print_r($this->getCategory($data));
     }
     
+    /*将分类目录(数组格式)存入数据库*/
     function setCategory($data, $pid, $path = '')
     {
         foreach ($data as $item) {
@@ -53,7 +54,7 @@ class Index extends Controller
             }
         }
     }
-    
+    /*分类目录按层级组合*/
     function getCategory($data, $pid=0)
     {
         $it = [];

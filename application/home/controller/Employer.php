@@ -102,7 +102,7 @@ class Employer extends Permit1
         $id = $request->param('id'); //已发布的工作的id
 //        $id = session('uid');
         //获取修改的值
-        $data = $request->only(['job', 'location', 'experience', 'degree', 'job_descr', 'team_descr', 'tags', 'address']);
+        $data = $request->only(['job', 'location','location_code', 'experience', 'degree', 'job_descr', 'team_descr', 'tags', 'address']);
         if (Db::table("job")->where('id', $id)->update($data)) {
             echo 'ok';
         } else {

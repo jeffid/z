@@ -312,16 +312,18 @@ window.onload = function () {
             
             //招聘信息修改
             case 'form-editjob' : {
+                console.log('88888');
                 var d = {
                     id: form['id'].value,
                     job: form['job'].value,
-                    location: form['location'].value,
                     experience: form['experience'].value,
                     degree: form['degree'].value,
                     job_descr: form['job_descr'].value,
                     team_descr: form['team_descr'].value,
                     address: form['address'].value,
                     tags: form['tags'].value,
+                    location_code: form['scity'].value,
+                    location: $(form['scity']).prevAll('.search-form-con').find('.scityText').text()
                     
                 }
                 $.post(form.action, d, function (res) {
@@ -331,7 +333,6 @@ window.onload = function () {
                     } else {
                         alert("失败");
                     }
-                    // todo 跳转
                 });
                 break;
             }

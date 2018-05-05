@@ -52,7 +52,7 @@
             <div id="mws-logos-wrap">
                 <!--<img src="/static/admins/images/mws-logo.png" alt="mws admin">-->
                 <i class="icon-monitor"></i>
-                <span>BOOS直聘管理系统</span>
+                <a style="color: #0cccb5;text-decoration: none;" href="/admin/index"><span>BOOS直聘管理系统</span></a>
             </div>
         </div>
         
@@ -186,6 +186,7 @@
                 <!-- User Photo -->
                 <div id="mws-user-photo">
                     <img src="/static/admins/example/profile.jpg" alt="User Photo">
+                    
                 </div>
                 
                 <!-- Username and Functions -->
@@ -194,10 +195,15 @@
                         Hello, {$Think.session.username}
                     </div>
                     <ul>
-                        <li></li>
-                        <li></li>
+                        
+                        <li><a href="/adminlogin/logout">
+                            {if condition="$Think.session.rid == $Think.session.r_id"} {$Think.session.name}
+                            {/if}
+                        </a></li>
                         <li><a href="/login/logout">注销登录</a></li>
                     </ul>
+                    
+                    
                 </div>
             </div>
         </div>
