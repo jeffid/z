@@ -34,7 +34,6 @@ class Login extends Controller
     function postLoginSms()
     {
         $rq = request();
-        
         $data['captcha'] = $rq->param('captcha');
         $data['phoneCode'] = $rq->param('phoneCode');
         $data['phone'] = $rq->param('regionCode') . $rq->param('phone');
@@ -94,8 +93,9 @@ class Login extends Controller
         session('user.password', $user['password']);
         session('user.avatar', $user['avatar']);
         session('user.cid', $user['co_id']);
-
         
+        /*获取新的系统消息*/
+        fetchGlobalMsg();
         return ['msg' => 'ok', 'redirect' => '/index/index'];
     }
     
@@ -103,15 +103,6 @@ class Login extends Controller
     {
         session('uid', null); //用户id
         session('user', null); //用户user信息组
-//        session('userName', null); //用户实名
-//        session('userPosition', null['position']); //用户职位
-//        session('phonePostfix', null); //短手机号
-//        session('phone', null); //长手机号
-//        session('userStatus', null); //用户角色状态
-//        session('userPassword',null);
-//        session('userAvatar',null);
-//        session('userCoId',null);
-        
         
         return $this->redirect('/index/index');
     }

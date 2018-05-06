@@ -100,6 +100,8 @@ class Login extends Controller
         Session::set('name', $info['name']);
         Session::set('r_id', $info['r_id']);
         Session::set('nodelist', $nodelist);
+        session('admin',[]);
+        session('admin.id',$info['id']); //当前登录管理员id
         $this->redirect("/admin/index");
     }
     
@@ -109,7 +111,12 @@ class Login extends Controller
     {
         Session::delete('username');
         Session::delete('islogin');
-        $this->success("退出成功", "/login/login");
+        Session::delete('rid');
+        Session::delete('name');
+        Session::delete('r_id');
+        Session::delete('nodelist');
+        session('admin',null);
+        $this->redirect("/login/login");
     }
     
 }

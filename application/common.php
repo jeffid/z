@@ -209,6 +209,17 @@ function sex2text($n)
     return $a[$n];
 }
 
+/*站内信索引转文本*/
+function scope2text($n)
+{
+    $a = [
+        '0' => '面向普通用户',
+        '1' => '面向HR',
+        '3' => '系统消息',
+    ];
+    return $a[$n];
+}
+
 function getCategory($data, $pid = 0)
 {
     $it = [];
@@ -219,4 +230,41 @@ function getCategory($data, $pid = 0)
         }
     }
     return $it;
+}
+
+/*
+ * select id from message_content where type=’global’ and id not in (select message_id from message where receiver_id=A);
+ * */
+
+function fetchGlobalMsg()
+{
+    /*还没加入当前登录用户信息表 的系统消息集合*/
+    $newMsg = Db::table('msg')
+        ->where('id', 'NOT IN', function ($query) {
+            $query->table('msglog')->where('receiver_id', session('uid'))->field('m_id');
+        })
+        ->where([
+            'scope'=> 3, //系统消息代号
+            'expiretime'=>[['=','0'],['>',time()],'or'], //永久有效消息或是在有效期内
+        ])
+        ->field([
+            'id'=>'m_id',
+            'scope'
+        ])
+        ->select();
+    
+    if (!empty($newMsg)) {
+        /*进一步完善插入消息记录表的字段*/
+        foreach ($newMsg as &$item) {
+            $item['receiver_id'] = session('uid');
+        }
+
+//    echo '<pre>';
+//    print_r($newMsg);
+//    echo '</pre>';
+        /*插入新消息记录*/
+        Db::table('msglog')->insertAll($newMsg);
+        
+    }
+    
 }

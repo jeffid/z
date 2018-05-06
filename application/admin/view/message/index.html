@@ -1,0 +1,81 @@
+{extend name="AdminPublic:public"/}
+{block name="title"}站内信列表{/block}
+
+{block name="admin"}
+<div class="mws-panel grid_8">
+    <div class="mws-panel-header">
+        <script type="text/javascript" src="/static/admins/jquery-1.8.3.min.js"></script>
+        <span>
+      <i class="icon-table"></i>站内信列表
+        <a href="/message/add" class="btn btn-primary btn-small">继续添加</a>
+        </span>
+    </div>
+    <div class="mws-panel-body no-padding">
+        <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
+            <div id="uid">
+                <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1"
+                       aria-describedby="DataTables_Table_1_info">
+                    <thead>
+                    <tr role="row">
+                        <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                            rowspan="1" colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending" style="width: 100px;">ID
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                            rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
+                            style="width: 137px;">发布者ID
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                            rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
+                            style="width: 137px;">标题
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                            rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending"
+                            style="width: 124px;">消息组
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                            rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending"
+                            style="width: 85px;">发送时间
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                            rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"
+                            style="width: 60px;">操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <!--
+                      `id` int(10) unsigned NOT NULL,
+                 `sender_id` int(10) unsigned NOT NULL COMMENT '发送者id',
+                 `scope` int(10) unsigned NOT NULL COMMENT '消息发送范围 ,0 对普通用户, 1对HR, 3 全站消息 , 其它数字可为组id',
+                 `title` varchar(50) NOT NULL COMMENT '标题',
+                 `content` text NOT NULL COMMENT '消息正文',
+                 `addtime` int(10) unsigned NOT NULL COMMENT '添加时间',
+                 `expiretime` int(10) unsigne
+                    -->
+                    <tbody role="alert" aria-live="polite" aria-relevant="all">
+                    {foreach name="msg" item="item"}
+                    <tr class="odd">
+                        <td class="">{$item['id']}</td>
+                        <td class="">{$item['sender_id']}</td>
+                        <td class=" ">{$item['title']}</td>
+                        <td class=" ">{:scope2text($item['scope'])}</td>
+                        <td class=" ">{:date('Y年m月d日 H时i分s秒',$item['addtime'])}</td>
+                        <td class=" ">
+                            <a href="/message/detail?id={$item['id']}&url={$Request.url}" class="btn btn-success">查看详情</a>
+                            <a  href="/message/edit?id={$item['id']}&url={$Request.url}" class="btn btn-info">修改</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+            </div>
+            
+            <!--分页-->
+            <div class="dataTables_paginate paging_full_numbers" id="pages">
+                {$page}
+            </div>
+        </div>
+    </div>
+</div>
+
+{/block}

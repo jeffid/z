@@ -1,0 +1,59 @@
+{extend name="public:base"/}
+{block name="title"}未读消息{/block}
+{block name="main"}
+<div id="main" class="inner home-inner">
+    <div class="job-box">
+        <div class="user-sider-left">
+            <div class="chat-history">
+                <div class="job-tab">
+                    <a href="/msg/all" >全部消息</a>
+                    <a href="/msg/unread"  class="cur">未读</a>
+                </div>
+                
+                <ul>
+                    {empty name="data" }
+                    <!--无职位-->
+                    <div class="data-tips">
+                        <div class="data-blank">
+                            <i class="tip-nodata"></i><b>暂时未有消息</b>
+                        </div>
+                    </div>
+                    
+                    {else /}
+                    
+                    <!--沟通过和已投递-->
+                    {volist name="data" id="item" }
+                    <li class="item-boss" style="position: relative;padding-bottom: 5px;">
+                        <div class="item-content" style="margin: 0;">
+                            <div class="info-header" style="margin: 0;">
+                                {/*
+                                <div class="btns">
+                                    <a  href="javascript:;"
+                                       class="btn btn-startchat"
+                                       data-url=""
+                                       redirect-url=""
+                                       target="_blank">继续沟通</a>
+                                </div>
+                                */}
+                                <a href="/msg/detail?mid={$item.m_id}&url={$Request.url}">
+                                    <h3 class="name">
+                                        <b>{$item.title}</b><em class="vline"></em>
+                                        {:mb_substr(strip_tags($item.content),0,50)} ...
+                                    </h3>
+                                </a>
+                               <span style="position: absolute;top: 0;right: 5px;color: #999da7;font-size: 12px;height: 0;line-height: 1.1;">发送时间: {:date('Y年m月d日  H时i分s秒',$item.addtime)}</span>
+                            </div>
+                        </div>
+                    </li>
+                    {/volist}
+                    <div class="" id="pages" style="height: 26px;overflow: hidden;">
+                        {$page}
+                    </div>
+                    {/empty}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{/block}}

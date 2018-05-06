@@ -196,10 +196,9 @@
                     </div>
                     <ul>
                         
-                        <li><a href="/adminlogin/logout">
-                            {if condition="$Think.session.rid == $Think.session.r_id"} {$Think.session.name}
-                            {/if}
-                        </a></li>
+                        <li>
+                            <a>{$Think.session.name}</a>
+                        </li>
                         <li><a href="/login/logout">注销登录</a></li>
                     </ul>
                     
@@ -257,8 +256,8 @@
                         <ul class="closed">
                             <li><a href="/permissions/index">管理员列表</a></li>
                             <li><a href="/permissions/adminadd">管理员添加</a></li>
-                            <li><a href="/permissions/permissionsadd">权限添加</a></li>
-                            <li><a href="/permissions/permissions">权限列表</a></li>
+                            <li><a href="/permissions/permissionsadd">权限组添加</a></li>
+                            <li><a href="/permissions/permissions">权限组列表</a></li>
                             <li><a href="/permissions/roleadd">权限点添加</a></li>
                             <li><a href="/permissions/adminpermissions">权限点列表</a></li>
                             
@@ -274,10 +273,10 @@
                     </li>
     
                     <li>
-                        <a href="#"><i class="icon-edit"></i>公告模块</a>
+                        <a href="#"><i class="icon-edit"></i>站内信</a>
                         <ul class="closed">
-                            <li><a href="/articles/add">公告添加</a></li>
-                            <li><a href="/articles/index">公告列表</a></li>
+                            <li><a href="/message/add">消息添加</a></li>
+                            <li><a href="/message/index?scope=3">系统消息列表</a></li>
                         </ul>
                     </li>
     

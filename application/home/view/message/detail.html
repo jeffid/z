@@ -1,0 +1,40 @@
+{extend name="public:base"/}
+{block name="title"}消息详情{/block}
+{block name="main"}
+<div id="main" class="inner home-inner">
+    <div class="job-box">
+        <div class="user-sider-left">
+            <div class="chat-history">
+                <div class="job-tab">
+                    <a href="{$url}" >返回</a>
+                </div>
+                
+                <ul>
+                    <li class="item-boss" style="position: relative;padding-bottom: 5px;">
+                        <div class="item-content" style="margin: 0;">
+                            <div class="info-header" style="margin: 0;">
+                                    <h3 class="name">
+                                        <b>{$item.title}</b>
+                                    </h3>
+                               <span style="position: absolute;top: 0;right: 5px;color: #999da7;font-size: 12px;height: 0;line-height: 1.1;">发送时间: {:date('Y年m月d日  H时i分s秒',$item.addtime)}</span>
+                            </div>
+                            
+                            <div class="info-primary">
+                                <div class="company-info">
+                                    <div class="text">
+                                      {$item.content}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                    <div class="" id="pages" style="height: 26px;overflow: hidden;">
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{/block}}

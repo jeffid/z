@@ -40,6 +40,8 @@ Route::controller("/category","admin/Category");
 Route::controller("/advertising","admin/Advertising");
 //友情链接模块
 Route::controller("/adminlinks","admin/links");
+//站内信模块
+Route::controller("/message","admin/message");
 
 
 /*前台**********************************************/
@@ -65,4 +67,5 @@ Route::controller('/personal','home/Personal');
 Route::controller('/employee','home/Employee');
 //搜索
 Route::controller('/search','home/Search');
-
+//站内信模块
+Route::controller("/msg","home/message");

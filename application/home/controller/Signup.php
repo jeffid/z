@@ -74,6 +74,10 @@ class Signup extends Controller
             session('user.phonePostfix', $data['phone_postfix']); //短手机号
             session('user.phone', $data['phone']); //长手机号
             session('user.status', $data['status']); //用户角色状态
+            
+            /*获取新的系统消息*/
+            fetchGlobalMsg();
+    
             /* 前台重定向
              * HR 跳转到账号管理
              * 牛人 跳转到简历

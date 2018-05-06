@@ -12,7 +12,8 @@ use think\Db;
  * */
 class Employer extends Permit1
 {
-    function getAccount(){
+    function getAccount()
+    {
         return $this->getInfo();
     }
     
@@ -46,6 +47,7 @@ class Employer extends Permit1
             $this->error("数据添加失败", "/employer/info");
         }
     }
+    
     function getAdd()
     {
         return $this->fetch("/employer/job_add");
@@ -81,7 +83,7 @@ class Employer extends Permit1
     function getindex()
     {
         $request = request();
-        $job = Db::table("job")->where('hr_id',session('uid'))->paginate(8);
+        $job = Db::table("job")->where('hr_id', session('uid'))->paginate(8);
         return $this->fetch("/employer/job_list", ['job' => $job, 'data' => $request->param()]);
     }
     
@@ -102,7 +104,7 @@ class Employer extends Permit1
         $id = $request->param('id'); //已发布的工作的id
 //        $id = session('uid');
         //获取修改的值
-        $data = $request->only(['job', 'location','location_code', 'experience', 'degree', 'job_descr', 'team_descr', 'tags', 'address']);
+        $data = $request->only(['job', 'location', 'location_code', 'experience', 'degree', 'job_descr', 'team_descr', 'tags', 'address']);
         if (Db::table("job")->where('id', $id)->update($data)) {
             echo 'ok';
         } else {
@@ -140,14 +142,13 @@ class Employer extends Permit1
             return;
         }
         
-        if (sms_check($data['phone'],$rq->param('phoneCode'))) {
+        if (sms_check($data['phone'], $rq->param('phoneCode'))) {
             
             session('phoneCode', null); //删除验证码,防止重用
             echo Db::table("user")->where('id', $id)->update($data) ? 'ok' : 'error';
             session('user.phone', $data['phone']);
             session('user.phonePostfix', $data['phone_postfix']);
-        }
-        else {
+        } else {
             var_dump($data);
             echo ' 短信验证码不正确或过期  ';
         }
@@ -204,7 +205,7 @@ class Employer extends Permit1
     {
         $request = request();
         /*列出当前hr_id名下的所有简历投递*/
-        $job = Db::table("personal_deliver")->where('hr_id',session('uid'))->paginate(1);
+        $job = Db::table("personal_deliver")->where('hr_id', session('uid'))->paginate(1);
         return $this->fetch("/employer/received_resume", ['job' => $job, 'data' => $request->param()]);
     }
     
@@ -222,12 +223,18 @@ class Employer extends Permit1
     /*查看应聘者简历*/
     function getReview()
     {
+        /*todo 显示应聘者手机号*/
         $request = request();
-        $id = $request->param('id');
-        $row = Db::query("select * from resume_info as ri,resume_adventage as ra,resume_history as rh,resume_education as re where ri.uid=ra.uid and ri.uid=rh.uid and ri.uid=re.uid and ri.uid={$id}")[0];
-        return $this->fetch("/employer/resume_review", ['row' => $row]);
+        $uid = $request->param('uid');
+        
+        $row = Db::query("select * from resume_info as ri,resume_adventage as ra,resume_history as rh,resume_education as re where ri.uid=ra.uid and ri.uid=rh.uid and ri.uid=re.uid and ri.uid={$uid}");
+        if (count($row) > 0) {
+            return $this->fetch("Resume/index", ['info' => $row[0]]);
+        } else {
+            $this->error('对不起,该用户某油填写简历', '/adminuser/index');
+        }
+        
     }
-    
     
     
     //查看关联公司信息
@@ -241,10 +248,10 @@ class Employer extends Permit1
 //        $row = Db::query("select * from company as c,company_addr as ca,company_env as ce,company_admin as cad where c.id=ca.co_id and c.id=ce.co_id and c.id=cad.co_id and c.id={$info['co_id']}");
         $row = Db::table('company')
             ->alias('c')
-            ->join('company_addr ca','c.id=ca.co_id')
-            ->join('company_env ce','c.id=ce.co_id')
-            ->join('company_admin cad','c.id=cad.co_id')
-            ->where('c.id',$info['co_id'])
+            ->join('company_addr ca', 'c.id=ca.co_id')
+            ->join('company_env ce', 'c.id=ce.co_id')
+            ->join('company_admin cad', 'c.id=cad.co_id')
+            ->where('c.id', $info['co_id'])
             ->field('c.id,c.name,c.fullname,c.bgs,c.logos,c.financing,c.employees,c.industry,c.profile cf,c.homepage,ca.addr,cad.ce_name,cad.profile cadf')
             ->select();
 //        var_dump($row);
@@ -287,7 +294,7 @@ class Employer extends Permit1
         $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
 //        $info=$file->move('/static/public/uploads/');
 //        var_dump($info);die;
-        if(!empty($files)){
+        if (!empty($files)) {
             $infos = $files->move(ROOT_PATH . 'public' . DS . 'uploads');
             $savenames = $infos->getSaveName();
             $exts = $infos->getExtension();
@@ -298,7 +305,7 @@ class Employer extends Permit1
             $data['bg'] = "./uploads/" . $savenames;
             $data['bgs'] = "/uploads/thumbhome/" . $names . "." . $exts;
         }
-       
+        
         $infoss = $filess->move(ROOT_PATH . 'public' . DS . 'uploads');
 //        $infos=$files->move('/static/public/uploads/');
         //获取上传文件信息
@@ -331,7 +338,7 @@ class Employer extends Permit1
         //获取添加内容
         $data['logo'] = "./uploads/" . $savename;
         $data['logos'] = "/uploads/thumbhome/" . $name . "." . $ext;
-        
+
 //        var_dump($data['bg']);die;
 
 
@@ -374,9 +381,9 @@ class Employer extends Permit1
             Db::rollback();
             $this->error("数据添加失败", "/employer/companyadd");
         }
-    
+        
         /*更新HR名下的公司id*/
-        session('user.cid',$co_id);
+        session('user.cid', $co_id);
         $this->success("数据添加成功", "/employer/companyindex");
     }
     
@@ -388,10 +395,10 @@ class Employer extends Permit1
         $info = Db::table('user')->where('id', $id)->find();
         $row = Db::table('company')
             ->alias('c')
-            ->join('company_addr ca','c.id=ca.co_id')
-            ->join('company_env ce','c.id=ce.co_id')
-            ->join('company_admin cad','c.id=cad.co_id')
-            ->where('c.id',$info['co_id'])
+            ->join('company_addr ca', 'c.id=ca.co_id')
+            ->join('company_env ce', 'c.id=ce.co_id')
+            ->join('company_admin cad', 'c.id=cad.co_id')
+            ->where('c.id', $info['co_id'])
             ->field('c.id,c.name,c.fullname,c.bg,c.bgs,c.logo,c.logos,c.financing,c.employees,c.industry,c.profile cf,c.homepage,ce.srcs,ce.src,ca.addr,cad.ce_name,cad.profile cadf')
             ->select();
         $row = $row[0] ?? [];
@@ -409,16 +416,16 @@ class Employer extends Permit1
         $filess = $request->file("src");
         
         $result = $this->validate(['file1' => $file], ['file1' => 'require|image'], ['file1.require' => "上传文件不能为空", 'file1.image' => '非法图像文件']);
-       
+        
         $resultss = $this->validate(['file3' => $filess], ['file3' => 'require|image'], ['file3.require' => "上传文件不能为空2", 'file3.image' => '非法图像文件3']);
         if (true !== $result) {
             $this->error($result, "/employer/companyedit");
         }
-       
+        
         if (true !== $resultss) {
             $this->error($resultss, "/employer/companyedit");
         }
-        if(!empty($files)){
+        if (!empty($files)) {
             $infos = $files->move(ROOT_PATH . 'public' . DS . 'uploads');
             $savenames = $infos->getSaveName();
             $exts = $infos->getExtension();
@@ -428,37 +435,37 @@ class Employer extends Permit1
             $images->thumb(60, 60)->save("./uploads/thumbhome/" . $names . "." . $exts);
             $data['bg'] = "./uploads/" . $savenames;
             $data['bgs'] = "/uploads/thumbhome/" . $names . "." . $exts;
-        }else{
-            $data['bg']='';
-            $data['bgs']='';
+        } else {
+            $data['bg'] = '';
+            $data['bgs'] = '';
         }
         //移动文件
         $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
         
-      
+        
         $infoss = $filess->move(ROOT_PATH . 'public' . DS . 'uploads');
         
         $savename = $info->getSaveName();
-      
+        
         $savenamess = $infoss->getSaveName();
         $ext = $info->getExtension();
-       
+        
         $extss = $infoss->getExtension();
         
         
         //随机图片名字
         $name = time() + rand(1, 10000);
-       
+        
         $namess = time() + rand(1, 10000);
         
         
         //打开需要处理的图像文件
         $img = \think\Image::open("./uploads/" . $savename);
-      
+        
         $imagess = \think\Image::open("./uploads/" . $savenamess);
         
         $img->save("./uploads/thumbhome/" . $name . "." . $ext);
-       
+        
         $imagess->save("./uploads/thumbhome/" . $namess . "." . $extss);
         
         //缩放
@@ -496,7 +503,7 @@ class Employer extends Permit1
             $srcs = $rows['srcs'];
             
             if (Db::table('company')->where("id", $id)->update($data)) {
-                if(!empty($bg && $bgs)){
+                if (!empty($bg && $bgs)) {
                     unlink($bg);
                     unlink("." . $bgs);
                 }

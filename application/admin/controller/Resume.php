@@ -12,23 +12,15 @@ class Resume extends Allow
     public function getIndex()
     {
         //获取会员列表数据
-
         $request = request();
         $id = $request->param('id');
-        //获取简历信息
-        $info = Db::query("select * from resume_info as ri,resume_adventage as ra,resume_history as rh,resume_education as re where ri.uid=ra.uid and ri.uid=rh.uid and ri.uid=re.uid and ri.uid={$id}");
-        if (count($info)>0) {
-            $info=$info[0];
-            if ($id == $info['uid']) {
-            
-            return $this->fetch("Resume/index", ['info' => $info]);
-            }
-        }
-        else {
-            $this->error('对不起,该用户某油填写简历','/adminuser/index');
-        }
-
         
+        //获取简历信息
+        $info = Db::table('resume_info')->where('uid',$id)->select();
+        $hi = Db::table('resume_history')->where('uid',$id)->select();
+        $ed = Db::table('resume_education')->where('uid',$id)->select();
+        $ad= Db::table('resume_adventage')->where('uid',$id)->select();
+    
+        return $this->fetch("Resume/index", ['info' => $info,'hi'=>$hi,'ed'=>$ed,'ad'=>$ad]);
     }
 }
-?>
