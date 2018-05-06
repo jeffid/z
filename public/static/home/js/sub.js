@@ -322,6 +322,7 @@ window.onload = function () {
                     team_descr: form['team_descr'].value,
                     address: form['address'].value,
                     tags: form['tags'].value,
+                    salary: form['salary'].value,
                     location_code: form['scity'].value,
                     location: $(form['scity']).prevAll('.search-form-con').find('.scityText').text()
                     
@@ -609,5 +610,27 @@ window.onload = function () {
         }
         
     })
-    
+    //获取按钮 绑定单击事件
+    $(".kfc").click(function(){
+        // alert('ss');
+        // $(this) 当前事件作用的元素对象
+        // alert($(this).html());
+        switch($(this).html()){
+            case '全选':
+                $("input[name='name[]']").attr("checked",true);
+                break;
+            case '全不选':
+                $("input[name='name[]']").attr("checked",false);
+                break;
+            case '反选':
+                //1.获取选中的input
+                var s=$("input:checked");
+                //2.把其他没有选中的设置为选中
+                $("input[name='name[]']").attr("checked",true);
+                //3.把第一次手动选中的取消选中
+                s.attr("checked",false);
+                break;
+        }
+        
+    });
 };

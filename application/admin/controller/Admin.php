@@ -17,6 +17,8 @@ class Admin extends Allow{
 //        echo  '</pre>';
 //
         $user=Db::table("user")->select();
-        return $this->fetch("Admin/index",['user'=>$user]);
+        return $this->fetch("Admin/index",[
+            'user'=>$user,
+        ]);
     }
 }

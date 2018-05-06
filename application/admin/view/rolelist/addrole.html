@@ -11,23 +11,27 @@
                             {foreach name="role" item="row"}
                             {empty name="$rids" }
     
-                            <li><input type="checkbox" value="{$row['id']}" name="name[]" > <label>{$row['name']}</label></li>
+                            <li><input type="checkbox" value="{$row['id']}" class="checkbox" name="name[]" > <label>{$row['name']}</label></li>
     
                             {else/}
                             
-                            <li><input type="checkbox" value="{$row['id']}" name="name[]" {if condition="in_array($row['id'],$rids)"}checked{/if}> <label>{$row['name']}</label></li>
+                            <li><input type="checkbox" value="{$row['id']}" class="checkbox" name="name[]" {if condition="in_array($row['id'],$rids)"}checked{/if}> <label>{$row['name']}</label></li>
     
                             {/empty}
                             
                             {/foreach}
+                            
                         </ul>
+                        <button type="button" class="kfc">全选</button>
+                        <button type="button" class="kfc">全不选</button>
+                        <button type="button" class="kfc">反选</button>
                     </div>
                 </div>
             </div>
             <div class="mws-button-row">
                 <input type="hidden" name="id" value="{$info['id']}">
                 <input value="分配角色" class="btn btn-danger" type="submit">
-                <input value="Reset" class="btn " type="reset">
+                <a href="/permissions/permissions"><input value="返回" class="btn " type="button"></a>
             </div>
         </form>
     </div>

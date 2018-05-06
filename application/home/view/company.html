@@ -8,7 +8,7 @@
                 <div>
                     <div class="company-stat">
                         <span><a href="" ka="all-jobs-top"><b>{$info}</b>在招职位</a></span><em class="vline"></em><span><b>{$list}</b>位BOSS</span>
-                        <div class="company-logo"><img src="{$row['logos']}" alt=""></div>
+                        <a href="/companys/index/cid/{$row['id']}"><div class="company-logo"><img src="{$row['logos']}" alt=""></div></a>
                     </div>
                     <div class="info-primary">
                         <h1 class="name">{$row['name']}<i class="icon-brand"></i></h1>
@@ -34,12 +34,12 @@
                     <img src="./222_files/common.json" alt="">
                 </div>
                 
-                <h3><a href="/companyjob/index" class="more" ka="all-jobs-hot">查看全部{$info}个职位</a>热招职位</h3>
+                <h3><a href="/companyjob/index/cid/{$row['id']}" class="more" ka="all-jobs-hot">查看全部{$info}个职位</a>热招职位</h3>
                 <ul>
     
                     {volist name="job" id="item"  length='5'}
                     <li>
-                        <a href="JavaScript:;"  ka="hot-job-1">
+                        <a href="/job/index/jid/{$item['id']}"  ka="hot-job-1">
                             <div class="info-primary">
                                 <div class="name"><span class="salary">{:salary2text($item['salary'])}</span><b>{$item['job']} </b></div>
                                 <p class="gray">{$item['tags']} ·{$item['degree']}·{$item['location']}</p>
@@ -99,8 +99,8 @@
                             <li>
                                 <div class="figure"></div>
                                 <div class="text">
-                                    <div class="name"><a href="" ka="boss-1">{$item['ce_name']}<em class="vline"></em>{$item['profile']}</a></div>
-                                    <p class="gray">正在招聘 “{$item['profile']}” 等 {$info} 个职位</p>
+                                    <div class="name"><a href="" ka="boss-1">{$item['username']}<em class="vline"></em>{$item['position']}</a></div>
+                                    <p class="gray">正在招聘 “{$item['newjobname']}” 等 {$info} 个职位</p>
                                 </div>
                             </li>
                             {/volist}

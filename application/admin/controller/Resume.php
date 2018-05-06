@@ -11,10 +11,12 @@ class Resume extends Allow
 //简历列表
     public function getIndex()
     {
+        //简历列表
+     
         //获取会员列表数据
+    
         $request = request();
         $id = $request->param('id');
-        
         //获取简历信息
         $info = Db::table('resume_info')->where('uid',$id)->select();
         $hi = Db::table('resume_history')->where('uid',$id)->select();
@@ -22,5 +24,11 @@ class Resume extends Allow
         $ad= Db::table('resume_adventage')->where('uid',$id)->select();
     
         return $this->fetch("Resume/index", ['info' => $info,'hi'=>$hi,'ed'=>$ed,'ad'=>$ad]);
+    
+    
     }
+
+        
+    
 }
+?>

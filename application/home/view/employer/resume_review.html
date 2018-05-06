@@ -7,30 +7,31 @@
 <div class="resume-item resume-item-open" id="resume-userinfo">
 
     <div class="item-form"><form action="/geek/user/save.json" method="post" class="form-resume">
+        {foreach name="info" item="info"}
         <h3 class="title">个人信息</h3>
         <div class="form-row">
             <dl>
-                <dt>* 姓名 <span class="gray"></span></dt>
-                <dd><input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="name" value="{$row['in_name']}"></dd>
+                <dt>姓名 <span class="gray"></span></dt>
+                <dd><input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="name" value="{$info['in_name']}" disabled ></dd>
             </dl>
             <dl>
-                <dt>* 当前的求职状态</dt>
+                <dt>当前的求职状态</dt>
                 <dd>
                     
-                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="status" value="{$row['in_status']}">
+                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="status" value="{$info['in_status']}" disabled >
                 </dd>
             </dl>
         </div>
         <div class="form-row">
             <dl>
-                <dt>* 性别</dt>
-                <dd><input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="sex" value="{$row['in_sex']}"></dd>
+                <dt>性别</dt>
+                <dd><input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="sex" value="{$info['in_sex']}" disabled ></dd>
             </dl>
             <dl>
                 <dt>开始工作时间</dt>
                 <dd>
     
-                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="work" value="{$row['in_start_work_year']}">
+                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="work" value="{$info['in_start_work_year']}" disabled >
                 <input type="hidden" name="startWorkYearCode" value="0">
                 </span>
                 </dd>
@@ -38,50 +39,54 @@
         </div>
         <div class="form-row">
             <dl>
-                <dt>* 生日</dt>
+                <dt>生日</dt>
                 <dd>
-                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$row['in_birthday']}">
+                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$info['in_birthday']}" disabled >
                 </dd>
             </dl>
             <dl>
                 <dt>微信号</dt>
-                <dd><input name="weixin" value="{$row['in_wx']}" type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"></dd>
+                <dd><input name="weixin" value="{$info['in_wx']}" type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50" disabled ></dd>
             </dl>
         </div>
         <div class="form-row">
             <dl>
                 <dt>* 邮箱</dt>
-                <dd><input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="email" value="{$row['in_email']}"></dd>
+                <dd><input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="email" value="{$info['in_email']}" disabled ></dd>
             </dl>
 
         </div>
+        {/foreach}
+        {foreach name="ad" item="ad"}
         <div class="form-row">
             
             <dl>
                 <dt>我的优势</dt>
                 <dd>
-                    <textarea class="ipt ipt-datetimepicker " name="job_descr" id="" cols="30" rows="10" required minlength="1" maxlength="300">{$row['ad_text']}</textarea>
+                    <textarea class="ipt ipt-datetimepicker " name="job_descr" id="" cols="30" rows="10" required minlength="1" maxlength="300">{$ad['ad_text']}</textarea>
             
                 </dd>
             </dl>
         </div>
+        {/foreach}
+        {foreach name="ed" item="ed"}
         <div class="form-row">
             <dl>
                 <dt>学校名称</dt>
                 <dd>
-                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$row['ed_school']}">
+                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$ed['ed_school']}">
                 </dd>
             </dl>
             <dl>
                 <dt>专业名称</dt>
-                <dd><input name="weixin" value="{$row['ed_subject']}" type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"></dd>
+                <dd><input name="weixin" value="{$ed['ed_subject']}" type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"></dd>
             </dl>
         </div>
         <div class="form-row">
             <dl>
                 <dt>学历</dt>
                 <dd>
-                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$row['ed_degree']}">
+                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$ed['ed_degree']}">
                 </dd>
             </dl>
   
@@ -90,12 +95,12 @@
             <dl>
                 <dt>入校时间</dt>
                 <dd>
-                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$row['ed_startdate']}">
+                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$ed['ed_startdate']}">
                 </dd>
             </dl>
             <dl>
                 <dt>离校时间</dt>
-                <dd><input name="weixin" value="{$row['ed_enddate']}" type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"></dd>
+                <dd><input name="weixin" value="{$ed['ed_enddate']}" type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"></dd>
             </dl>
         </div>
         <div class="form-row">
@@ -103,51 +108,53 @@
             <dl>
                 <dt>在校经历</dt>
                 <dd>
-                    <textarea class="ipt ipt-datetimepicker " name="job_descr" id="" cols="30" rows="10" required minlength="1" maxlength="300">{$row['ed_experience']}</textarea>
+                    <textarea class="ipt ipt-datetimepicker " name="job_descr" id="" cols="30" rows="10" required minlength="1" maxlength="300">{$ed['ed_experience']}</textarea>
                 </dd>
             </dl>
         </div>
+        {/foreach}
+        {foreach name="hi" item="hi"}
         <div class="form-row">
             <dl>
                 <dt>公司名称</dt>
                 <dd>
-                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$row['hi_company']}">
+                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$hi['hi_company']}">
                 </dd>
             </dl>
             <dl>
                 <dt>公司类型</dt>
-                <dd><input name="weixin" value="{$row['hi_type']}" type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"></dd>
+                <dd><input name="weixin" value="{$hi['hi_type']}" type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"></dd>
             </dl>
         </div>
         <div class="form-row">
             <dl>
                 <dt>职业名称</dt>
                 <dd>
-                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$row['hi_position']}">
+                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$hi['hi_position']}">
                 </dd>
             </dl>
             <dl>
                 <dt>所属行业</dt>
-                <dd><input name="weixin" value="{$row['hi_industry']}" type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"></dd>
+                <dd><input name="weixin" value="{$hi['hi_industry']}" type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"></dd>
             </dl>
         </div>
         <div class="form-row">
             <dl>
                 <dt>入职时间</dt>
                 <dd>
-                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$row['hi_startdate']}">
+                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$hi['hi_startdate']}">
                 </dd>
             </dl>
             <dl>
                 <dt>离职时间</dt>
-                <dd><input name="weixin" value="{$row['hi_enddate']}" type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"></dd>
+                <dd><input name="weixin" value="{$hi['hi_enddate']}" type="text" class="ipt" placeholder="" data-range="0,50" data-blank="" data-format="" maxlength="50"></dd>
             </dl>
         </div>
         <div class="form-row">
             <dl>
                 <dt>所属部门</dt>
                 <dd>
-                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$row['hi_department']}">
+                    <input type="text" class="ipt required" placeholder="" data-range="1,12" data-blank="" data-format="" maxlength="24" ka="et-uname" name="birthday" value="{$hi['hi_department']}">
                 </dd>
             </dl>
             
@@ -157,7 +164,7 @@
             <dl>
                 <dt>工作内容</dt>
                 <dd>
-                    <textarea class="ipt ipt-datetimepicker " name="job_descr" id="" cols="30" rows="10" required minlength="1" maxlength="300">{$row['hi_work']}</textarea>
+                    <textarea class="ipt ipt-datetimepicker " name="job_descr" id="" cols="30" rows="10" required minlength="1" maxlength="300">{$hi['hi_work']}</textarea>
 
                 </dd>
             </dl>
@@ -167,11 +174,13 @@
             <dl>
                 <dt>工作业绩</dt>
                 <dd>
-                    <textarea class="ipt ipt-datetimepicker " name="job_descr" id="" cols="30" rows="10" required minlength="1" maxlength="300">{$row['hi_results']}</textarea>
+                    <textarea class="ipt ipt-datetimepicker " name="job_descr" id="" cols="30" rows="10" required minlength="1" maxlength="300">{$hi['hi_results']}</textarea>
             
                 </dd>
             </dl>
         </div>
+        {/foreach}
+        
         
         
         <div class="form-btns"><a href="/employer/reindex"><button class="btn btn-back" type="button" ka="user-resume-user-info-cancel">取消</button></a></div>

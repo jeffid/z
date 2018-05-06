@@ -33,7 +33,7 @@
                                         <dl>
                                             <dt>* 工作名称 <span class="gray"></span></dt>
                                             <dd><input type="text" class="ipt required" placeholder="输入工作名称" data-blank="输入工作名称"
-                                                       data-format="输入工作名称" required minlength="2" maxlength="10" ka="et-uname" name="job" value="{$row['job']}"></dd>
+                                                       data-format="输入工作名称" required minlength="2" maxlength="30" ka="et-uname" name="job" value="{$row['job']}"></dd>
                                         </dl>
                                         <dl>
                                             <dt>* 所属城市</dt>
@@ -56,6 +56,89 @@
                                             </dd>
                                         </dl>
                                         
+                                    </div>
+                                    <div class="form-row">
+                                        
+                                        <dl>
+                                            <dt>* 最底薪水</dt>
+                                            <dd>
+                                                <select name="salary" class="ipt">
+                                                    <option value="0" {if condition="$row['salary'] == 0"} selected {/if} >面议</option>
+                                                    <option value="1" {if condition="$row['salary'] == 1"} selected {/if} >1K</option>
+                                                    <option value="2" {if condition="$row['salary'] == 2"} selected {/if}>2K</option>
+                                                    <option value="3" {if condition="$row['salary'] == 3"} selected {/if}>3K</option>
+                                                    <option value="4" {if condition="$row['salary'] == 4"} selected {/if}>4K</option>
+                                                    <option value="5" {if condition="$row['salary'] == 5"} selected {/if}>5K</option>
+                                                    <option value="6" {if condition="$row['salary'] == 6"} selected {/if}>6K</option>
+                                                    <option value="7" {if condition="$row['salary'] == 7"} selected {/if}>7K</option>
+                                                    <option value="8" {if condition="$row['salary'] == 8"} selected {/if}>8K</option>
+                                                    <option value="9" {if condition="$row['salary'] == 9"} selected {/if}>9K</option>
+                                                    <option value="10" {if condition="$row['salary'] == 10"} selected {/if}>10K</option>
+                                                    <option value="11" {if condition="$row['salary'] == 11"} selected {/if}>11K</option>
+                                                    <option value="12" {if condition="$row['salary'] == 12"} selected {/if}>12K</option>
+                                                    <option value="13" {if condition="$row['salary'] == 13"} selected {/if}>13K</option>
+                                                    <option value="14" {if condition="$row['salary'] == 14"} selected {/if}>14K</option>
+                                                    <option value="15" {if condition="$row['salary'] == 15"} selected {/if}>15K</option>
+                                                    <option value="16" {if condition="$row['salary'] == 16"} selected {/if}>16K</option>
+                                                    <option value="17" {if condition="$row['salary'] == 17"} selected {/if}>17K</option>
+                                                    <option value="18" {if condition="$row['salary'] == 18"} selected {/if}>18K</option>
+                                                    <option value="19" {if condition="$row['salary'] == 19"} selected {/if}>19K</option>
+                                                    <option value="20" {if condition="$row['salary'] == 20"} selected {/if}>20K</option>
+                                                    <option value="21" {if condition="$row['salary'] == 21"} selected {/if}>21K</option>
+                                                    <option value="22" {if condition="$row['salary'] == 22"} selected {/if}>22K</option>
+                                                    <option value="23" {if condition="$row['salary'] == 23"} selected {/if}>23K</option>
+                                                    <option value="24" {if condition="$row['salary'] == 24"} selected {/if}>24K</option>
+                                                    <option value="25" {if condition="$row['salary'] == 25"} selected {/if}>25K</option>
+                                                    <option value="26" {if condition="$row['salary'] == 26"} selected {/if}>26K</option>
+                                                    <option value="27" {if condition="$row['salary'] == 27"} selected {/if}>27K</option>
+                                                    <option value="28" {if condition="$row['salary'] == 28"} selected {/if}>28K</option>
+                                                    <option value="29" {if condition="$row['salary'] == 29"} selected {/if}>29K</option>
+                                                    <option value="30" {if condition="$row['salary'] == 30"} selected {/if}>30K</option>
+                                                    <option value="31" {if condition="$row['salary'] == 31"} selected {/if}>31K</option>
+                                                    <option value="32" {if condition="$row['salary'] == 32"} selected {/if}>32K</option>
+                                                    <option value="33" {if condition="$row['salary'] == 33"} selected {/if}>33K</option>
+                                                    <option value="34" {if condition="$row['salary'] == 34"} selected {/if}>34K</option>
+                                                    <option value="35" {if condition="$row['salary'] == 35"} selected {/if}>35K</option>
+                                                    <option value="36" {if condition="$row['salary'] == 36"} selected {/if}>36K</option>
+                                                    <option value="37" {if condition="$row['salary'] == 37"} selected {/if}>37K</option>
+                                                    <option value="38" {if condition="$row['salary'] == 38"} selected {/if}>38K</option>
+                                                    <option value="39" {if condition="$row['salary'] == 39"} selected {/if}>39K</option>
+                                                    <option value="40" {if condition="$row['salary'] == 40"} selected {/if}>40K</option>
+                                                    <option value="41" {if condition="$row['salary'] == 41"} selected {/if}>41K</option>
+                                                    <option value="42" {if condition="$row['salary'] == 42"} selected {/if}>42K</option>
+                                                    <option value="43" {if condition="$row['salary'] == 43"} selected {/if}>43K</option>
+                                                    <option value="44" {if condition="$row['salary'] == 44"} selected {/if}>44K</option>
+                                                    <option value="45" {if condition="$row['salary'] == 45"} selected {/if}>45K</option>
+                                                    <option value="46" {if condition="$row['salary'] == 46"} selected {/if}>46K</option>
+                                                    <option value="47" {if condition="$row['salary'] == 47"} selected {/if}>47K</option>
+                                                    <option value="48" {if condition="$row['salary'] == 48"} selected {/if}>48K</option>
+                                                    <option value="49" {if condition="$row['salary'] == 49"} selected {/if}>49K</option>
+                                                    <option value="50" {if condition="$row['salary'] == 50"} selected {/if}>50K</option>
+                                                    <option value="60" {if condition="$row['salary'] == 60"} selected {/if}>60K</option>
+                                                    <option value="70" {if condition="$row['salary'] == 70"} selected {/if}>70K</option>
+                                                    <option value="80" {if condition="$row['salary'] == 80"} selected {/if}>80K</option>
+                                                    <option value="90" {if condition="$row['salary'] == 90"} selected {/if}>90K</option>
+                                                    <option value="100" {if condition="$row['salary'] == 100"} selected {/if}>100K</option>
+                                                    <option value="110" {if condition="$row['salary'] == 110"} selected {/if}>110K</option>
+                                                    <option value="120" {if condition="$row['salary'] == 120"} selected {/if}>120K</option>
+                                                    <option value="130" {if condition="$row['salary'] == 130"} selected {/if}>130K</option>
+                                                    <option value="140" {if condition="$row['salary'] == 140"} selected {/if}>140K</option>
+                                                    <option value="150" {if condition="$row['salary'] == 150"} selected {/if}>150K</option>
+                                                    <option value="160" {if condition="$row['salary'] == 160"} selected {/if}>160K</option>
+                                                    <option value="170" {if condition="$row['salary'] == 170"} selected {/if}>170K</option>
+                                                    <option value="180" {if condition="$row['salary'] == 180"} selected {/if}>180K</option>
+                                                    <option value="190" {if condition="$row['salary'] == 190"} selected {/if}>190K</option>
+                                                    <option value="200" {if condition="$row['salary'] == 200"} selected {/if}>200K</option>
+                                                    <option value="210" {if condition="$row['salary'] == 210"} selected {/if}>210K</option>
+                                                    <option value="220" {if condition="$row['salary'] == 220"} selected {/if}>220K</option>
+                                                    <option value="230" {if condition="$row['salary'] == 230"} selected {/if}>230K</option>
+                                                    <option value="240" {if condition="$row['salary'] == 240"} selected {/if}>240K</option>
+                                                    <option value="250" {if condition="$row['salary'] == 250"} selected {/if}>250K</option>
+                                                </select>
+                                            </dd>
+                                        </dl>
+    
+    
                                     </div>
                                     <div class="form-row">
                                         <dl>
