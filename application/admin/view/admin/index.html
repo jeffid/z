@@ -1,46 +1,105 @@
 {extend name="AdminPublic:public"/}
+{block name="title"}运行状态{/block}
 {block name="admin"}
-<div class="mws-panel grid_8">
+<div class="mws-panel grid_4">
     <div class="mws-panel-header">
-    <span>
-      <i class="icon-table"></i>管理员列表</span>
+        <span>管理员</span>
     </div>
     <div class="mws-panel-body no-padding">
-        <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
-            <form action="/adminuser/index" method="get">
-            </form>
-            <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
-                <thead>
-                <tr role="row">
-                    <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 100px;">ID</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 137px;">手机号</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 124px;">注册时间</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 60px;">状态</th>
-                    
-                </tr>
-                </thead>
-                <tbody role="alert" aria-live="polite" aria-relevant="all">
-                {foreach name="user" item="row"}
-                <tr class="odd">
-                    <td class=" sorting_1">{$row['id']}</td>
-                    <td class=" ">{$row['phone_postfix']}</td>
-                    <td class=" ">{:date( 'Y-m-d H:i:s',$row['addtime'])}</td>
-                    <td class=" ">
-                        {if condition="$row['status'] == 0"} 普通用户
-                        {elseif condition="$row['status']==1"/}HR
-                        {else /} 禁用
-                        {/if}
-                    </td>
-                 
-                </tr>
-                {/foreach}
-                </tbody>
-            </table>
-            <div class="dataTables_paginate paging_full_numbers" id="pages">
-
-            </div>
-        </div>
+        <ul class="mws-summary ">
+            <li>
+                <span class="key"> 管理员账号</span>
+                <span class="val">
+                                    <span class="text-nowrap">{$username}</span>
+                                </span>
+            </li>
+            <li>
+                <span class="key"> 所属权限组</span>
+                <span class="val">
+                                    <span class="text-nowrap">{$group}</span>
+                                </span>
+            </li>
+            <li>
+                <span class="key">当前登录IP</span>
+                <span class="val">
+                                    <span class="text-nowrap">{$cur_ip}</span>
+                                </span>
+            </li>
+            <li>
+                <span class="key">上次登录IP</span>
+                <span class="val">
+                                    <span class="text-nowrap">{$last_ip}</span>
+                                </span>
+            </li>
+            <li>
+                <span class="key">上次登录时间</span>
+                <span class="val">
+                                    <span class="text-nowrap">{:date('Y-m-d H:i:s',$last_time)}</span>
+                                </span>
+            </li>
+            <li>
+                <span class="key">第几次登录</span>
+                <span class="val">
+                                    <span class="text-nowrap">{$count}</span>
+                                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="mws-panel grid_4">
+    <div class="mws-panel-header">
+        <span>前台</span>
+    </div>
+    <div class="mws-panel-body no-padding">
+        <ul class="mws-summary ">
+            <li>
+                <span class="key"> 总用户数</span>
+                <span class="val">
+                                    <span class="text-nowrap">{$total_user}</span>
+                                </span>
+            </li>
+            <li>
+                <span class="key">今日新用户数</span>
+                <span class="val">
+                                    <span class="text-nowrap">{$new_user}</span>
+                                </span>
+            </li>
+            <li>
+                <span class="key">总招聘数</span>
+                <span class="val">
+                                    <span class="text-nowrap">{$total_job}</span>
+                                </span>
+            </li>
+            <li>
+                <span class="key">今日发布招聘数</span>
+                <span class="val">
+                                    <span class="text-nowrap">{$new_job}</span>
+                                </span>
+            </li>
+           
+        </ul>
+    </div>
+</div>
+<div class="mws-panel grid_5">
+    <div class="mws-panel-header">
+        <span>服务器</span>
+    </div>
+    <div class="mws-panel-body no-padding">
+        <ul class="mws-summary ">
+            <li>
+                <span class="key"> 主机名</span>
+                <span class="val">
+                                    <span class="text-nowrap">{$server_name}</span>
+                                </span>
+            </li>
+            <li>
+                <span class="key"> 服务器标识字符串</span>
+                <span class="val">
+                                    <span class="text-nowrap">{$server_software}</span>
+                                </span>
+            </li>
+            
+        </ul>
     </div>
 </div>
 {/block}
-{block name="title"}后台首页{/block}

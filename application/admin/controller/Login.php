@@ -36,8 +36,20 @@ class Login extends Controller
         if (!$info = Db::table("admin")
             ->join('user_role ur','admin.id=ur.uid')
             ->join("role r",'ur.rid=r.id')
-            ->field('admin.username,admin.status,admin.password,admin.id,ur.rid,r.name,r.id as r_id')
-            ->where("username", $request->param('username'))->find()) {
+            ->field([
+                'admin.username',
+                'admin.status',
+                'admin.password',
+                'admin.id',
+                'admin.last_ip',
+                'admin.last_time',
+                'admin.count',
+                'ur.rid',
+                'r.name',
+                'r.id' => 'r_id',
+            ])
+            ->where("username", $request->param('username'))
+            ->find()) {
             return $this->error("用户名有误", "/login/login");
         }
     
@@ -93,6 +105,13 @@ class Login extends Controller
             }
         }
         
+        /*更新管理员登录信息*/
+        Db::table('admin')->where('id',$info['id'])->update([
+            'count'=>$info['count']+1,
+            'last_ip'=>$_SERVER['REMOTE_ADDR'],
+            'last_time'=>time(),
+        ]);
+        
         //3.把当前登录用户的权限信息存储在session里
         Session::set('username', $info['username']);
         Session::set('islogin', 1);
@@ -100,6 +119,11 @@ class Login extends Controller
         Session::set('name', $info['name']);
         Session::set('r_id', $info['r_id']);
         Session::set('nodelist', $nodelist);
+        session('admin',[]);
+        session('admin.id',$info['id']);
+        session('admin.last_ip',$info['last_ip']??'');
+        session('admin.last_time',$info['last_time']??'');
+        session('admin.count',$info['count']??1);
         $this->redirect("/admin/index");
     }
     
@@ -109,6 +133,12 @@ class Login extends Controller
     {
         Session::delete('username');
         Session::delete('islogin');
+        Session::delete('rid');
+        Session::delete('name');
+        Session::delete('r_id');
+        Session::delete('nodelist');
+        session('admin',null);
+    
         $this->success("退出成功", "/login/login");
     }
     

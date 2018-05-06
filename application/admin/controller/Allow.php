@@ -23,6 +23,8 @@ class Allow extends Controller
 //    session_start();
 //        echo '<pre>';
 //        print_r($_SESSION); /*todo 上线前删除*/
+//                print_r($_SERVER);
+//
 //        echo '</pre>';
         if (Session::get("r_id")!=2){
     //        4.检测权限

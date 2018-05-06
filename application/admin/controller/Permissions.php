@@ -42,6 +42,7 @@ class permissions extends Allow
         }
 //        var_dump($data);die;
         $output = array_slice($data, 1, 3);
+        $output['createtime']=time();
         $id = Db::table("admin")->insertGetId($output);
         $outputs = array_slice($data, 0, 1);
         $outputs['uid'] = $id;
