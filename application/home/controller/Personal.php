@@ -71,7 +71,7 @@ class Personal extends Permit0
 //        $status = ['status' => 1];
         if (replaceRecord('personal_Interest', $jid)) {
             // 跳转到职位详情页
-            $this->redirect("/Job/index/jid/{$jid}");
+            $this->redirect($rq->param('url'));
         } else {
             return ['msg' => '添加收藏失败'];
         }

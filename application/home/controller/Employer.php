@@ -212,7 +212,7 @@ class Employer extends Permit1
     {
         $request = request();
         /*列出当前hr_id名下的所有简历投递*/
-        $job = Db::table("personal_deliver")->where('hr_id',session('uid'))->paginate(1);
+        $job = Db::table("personal_deliver")->where('hr_id',session('uid'))->paginate(20);
         return $this->fetch("/employer/received_resume", ['job' => $job, 'data' => $request->param()]);
     }
     
@@ -349,7 +349,7 @@ class Employer extends Permit1
         $img->thumb(60, 60)->save("./uploads/thumbhome/" . $name . "." . $ext);
         $imagess->thumb(60, 60)->save("./uploads/thumbhome/" . $namess . "." . $extss);
         //获取添加内容
-        $data['logo'] = "./uploads/" . $savename;
+        $data['logo'] = "/uploads/" . $savename;
         $data['logos'] = "/uploads/thumbhome/" . $name . "." . $ext;
         
 //        var_dump($data['bg']);die;
@@ -457,7 +457,7 @@ class Employer extends Permit1
             $images = \think\Image::open("./uploads/" . $savenames);
             $images->save("./uploads/thumbhome/" . $names . "." . $exts);
             $images->thumb(60, 60)->save("./uploads/thumbhome/" . $names . "." . $exts);
-            $data['bg'] = "./uploads/" . $savenames;
+            $data['bg'] = "/uploads/" . $savenames;
             $data['bgs'] = "/uploads/thumbhome/" . $names . "." . $exts;
         }else{
             $data['bg']='';
@@ -497,7 +497,7 @@ class Employer extends Permit1
         
         $imagess->thumb(60, 60)->save("./uploads/thumbhome/" . $namess . "." . $extss);
         //获取添加内容
-        $data['logo'] = "./uploads/" . $savename;
+        $data['logo'] = "/uploads/" . $savename;
         $data['logos'] = "/uploads/thumbhome/" . $name . "." . $ext;
         $data['name'] = $request->param("name");
         $data['fullname'] = $request->param("fullname");
@@ -528,11 +528,11 @@ class Employer extends Permit1
             
             if (Db::table('company')->where("id", $id)->update($data)) {
                 if(!empty($bg && $bgs)){
-                    unlink($bg);
+                    unlink(".".$bg);
                     unlink("." . $bgs);
                 }
                 
-                unlink($logo);
+                unlink(".".$logo);
                 unlink("." . $logos);
             }
             Db::table('company_addr')->where("co_id", $id)->update($addr);

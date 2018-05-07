@@ -13,7 +13,7 @@ class Admin extends Allow{
 //        var_dump($_SESSION);
 //        session('admin');
 //        echo  '<pre>';
-//        print_r($_SERVER);
+//        print_r($_SESSION);
 //        echo  '</pre>';
 
         
@@ -25,7 +25,8 @@ class Admin extends Allow{
         /*总招聘数*/
         $total_job=Db::table('job')->count('id');
         /*今日发布招聘数*/
-        $new_job=Db::table('job')->where('timestamp','>',strtotime(date('Y-m-d')))->count('id');
+        $new_job=Db::table('job')->wheretime('timestamp','today')->count('id');
+//        $new_job=Db::table('job')->where('timestamp','>',strtotime(date('Y-m-d')))->count('id');
         
         return $this->fetch("Admin/index",[
             'username'=>session('username'),

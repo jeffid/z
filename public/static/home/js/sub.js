@@ -1,7 +1,7 @@
 window.onload = function () {
     $('.test').click(function (e) {
         $.get('/employee/t', function (res) {
-            console.log(typeof res, res['html']);
+            // console.log(typeof res, res['html']);
             document.querySelector('.update-time').innerHTML = res['html'];
         })
     });
@@ -82,14 +82,14 @@ window.onload = function () {
      * 简历表更新 添加时调用
      * */
     function resumeFormPost(form, data) {
-        console.log(form, data);
+        // console.log(form, data);
         for (var p in data) {
             /*过滤掉空字符属性*/
             if (data.hasOwnProperty(p) && data[p].length < 1) {
                 delete data[p];
             }
         }
-        console.log('submit data: ', data);
+        // console.log('submit data: ', data);
         $.post(form.dataset.action, data, function (res) {
             /*数据成功写入数据库后移除form表单,重新加载展示部分*/
             if (res.msg == 'ok') {
@@ -312,7 +312,7 @@ window.onload = function () {
             
             //招聘信息修改
             case 'form-editjob' : {
-                console.log('88888');
+                // console.log('88888');
                 var d = {
                     id: form['id'].value,
                     job: form['job'].value,
@@ -356,7 +356,6 @@ window.onload = function () {
                     } else {
                         alert("失败");
                     }
-                    // todo 跳转
                 });
                 break;
             }
@@ -369,7 +368,7 @@ window.onload = function () {
                     captcha: form['captcha'].value,
                 }
                 
-                console.log(d);
+                // console.log(d);
                 $.post(form.action, d, function (res) {
                     if (res == 'ok') {
                         alert("修改成功");
@@ -377,7 +376,6 @@ window.onload = function () {
                     } else {
                         alert("失败", res);
                     }
-                    // todo 跳转
                 });
                 break;
             }

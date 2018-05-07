@@ -457,7 +457,6 @@ class Employee extends Permit0
                     /*新文件存入数据库失败后，删除新头像文件*/
                     unlink($realSaveName);
                 }
-                
             }
             /*如果前面没有成功返回，则返回失败信息给前台*/
             return [

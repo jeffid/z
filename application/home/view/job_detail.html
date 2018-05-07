@@ -55,14 +55,14 @@
                         {notempty name="$deliver_status " }
                         <a  href="javascript:;" data-url="" redirect-url="" class="btn btn-startchat">已投递</a>
                         {else/}
-                        <a  href="/personal/deliverAdd/jid/{$jid}" data-url="" redirect-url="" class="btn btn-startchat">立即投递</a>
+                        <a  href="/personal/deliverAdd?jid={$jid}&url={$Request.url}" data-url="" redirect-url="" class="btn btn-startchat">立即投递</a>
                         {/notempty}
                         
                         <div class="op-links">
                             {notempty name="$interest_status " }
-                            <a href="/personal/interestRemove/jid/{$jid}"  data-url="" class="link-like2 active">取消感兴趣</a>
+                            <a href="/personal/interestRemove?jid={$jid}&url={$Request.url}"  data-url="" class="link-like2 active">取消感兴趣</a>
                             {else/}
-                            <a href="/personal/interestAdd/jid/{$jid}"  data-url="" class="link-like2 ">感兴趣</a>
+                            <a href="/personal/interestAdd?jid={$jid}&url={$Request.url}"  data-url="" class="link-like2 ">感兴趣</a>
                             {/notempty}
                             
                             <a ka="job_detail_report" href="javascript:;" class="link-report">举报</a>
@@ -170,14 +170,14 @@
                             {notempty name="$deliver_status " }
                             <a  href="javascript:;" data-url="" redirect-url="" class="btn btn-startchat">已投递</a>
                             {else/}
-                            <a  href="/personal/deliverAdd/jid/{$jid}" data-url="" redirect-url="" class="btn btn-startchat">立即投递</a>
+                            <a  href="/personal/deliverAdd?jid={$jid}&url={$Request.url}" data-url="" redirect-url="" class="btn btn-startchat">立即投递</a>
                             {/notempty}
                             
                             <div class="op-links">
                                 {notempty name="$interest_status " }
-                                <a href="/personal/interestRemove/jid/{$jid}"  data-url="" class="link-like2 active">取消感兴趣</a>
+                                <a href="/personal/interestRemove?jid={$jid}&url={$Request.url}"  data-url="" class="link-like2 active">取消感兴趣</a>
                                 {else/}
-                                <a href="/personal/interestAdd/jid/{$jid}"  data-url="" class="link-like2 ">感兴趣</a>
+                                <a href="/personal/interestAdd?jid={$jid}&url={$Request.url}"  data-url="" class="link-like2 ">感兴趣</a>
                                 {/notempty}
                                 
                                 <a ka="job_detail_report" href="javascript:;" class="link-report">举报</a>

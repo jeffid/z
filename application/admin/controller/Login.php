@@ -43,13 +43,14 @@ class Login extends Controller
                 'admin.id',
                 'admin.last_ip',
                 'admin.last_time',
-                'admin.count',
-                'ur.rid',
-                'r.name',
-                'r.id' => 'r_id',
+                'admin.count', //登录次数
+                'ur.rid', // 登录账号对应的权限组id
+                'r.name', // 权限组名
+                'r.id' => 'r_id', // 权限组id
             ])
             ->where("username", $request->param('username'))
             ->find()) {
+//            var_dump($info);die;
             return $this->error("用户名有误", "/login/login");
         }
     
@@ -124,6 +125,7 @@ class Login extends Controller
         session('admin.last_ip',$info['last_ip']??'');
         session('admin.last_time',$info['last_time']??'');
         session('admin.count',$info['count']??1);
+        session('admin.node',$list);
         $this->redirect("/admin/index");
     }
     
@@ -139,9 +141,8 @@ class Login extends Controller
         Session::delete('nodelist');
         session('admin',null);
     
-        $this->success("退出成功", "/login/login");
+        $this->redirect("/login/login");
     }
     
 }
 
-?>

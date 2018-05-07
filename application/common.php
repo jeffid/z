@@ -106,7 +106,7 @@ function replaceRecord($table, $jid, $status = ['status' => '0'])
         'industry' => 'co_industry',
         'financing' => 'co_financing',
         'employees' => 'co_employees',
-        'logo' => 'co_logo'
+        'logos' => 'co_logo'
     ];
     
     $job = Db::table('job')->where('id', $jid)->field($jobfield)->find();
@@ -231,6 +231,17 @@ function getCategory($data, $pid = 0)
     }
     return $it;
 }
+
+function applyStatus2text($n){
+    $a=[
+        '离职-随时到岗',
+        '在职-暂不考虑',
+        '在职-考虑机会',
+        '在职-月内到岗',
+    ];
+    return $a[$n];
+}
+
 
 /*
  * select id from message_content where type=’global’ and id not in (select message_id from message where receiver_id=A);

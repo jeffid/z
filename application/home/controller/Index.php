@@ -17,10 +17,10 @@ class Index extends Controller
         session('default.avatar', '/static/home/images/avatar/avatar_14.png');
         session('default.logo', '/static/home/images/defaultlogov2.jpg');
 
-        /*轮播数据*/
-        $env = db::table("carousel")->limit(5)->select();
+        /*轮播数据, 降序,拿最新的*/
+        $env = db::table("carousel")->order('id desc')->limit(5)->select();
         /*广告数据*/
-        $ad = db::table("advertising")->limit(2)->select();
+        $ad = db::table("advertising")->order('id desc')->limit(2)->select();
         /*全部分类,平行数据*/
         $allCategory = Db::table('category')->select();
         /*分类目录,多维分类数据*/

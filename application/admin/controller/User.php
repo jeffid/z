@@ -65,7 +65,7 @@ class User extends Allow
         if (Db::table('user')->where('id', "{$id}")->delete()) {
             $this->success("数据删除成功", "/adminuser/index");
         } else {
-            $this->error("数据添加失败", "/adminuser/index");
+            $this->error("数据删除失败", "/adminuser/index");
         }
     }
     
