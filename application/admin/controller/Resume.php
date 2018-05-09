@@ -23,7 +23,7 @@ class Resume extends Allow
         $ed = Db::table('resume_education')->where('uid',$id)->select();
         $ad= Db::table('resume_adventage')->where('uid',$id)->select();
     
-        return $this->fetch("Resume/index", ['info' => $info,'hi'=>$hi,'ed'=>$ed,'ad'=>$ad]);
+        return $this->fetch("resume/index", ['info' => $info,'hi'=>$hi,'ed'=>$ed,'ad'=>$ad]);
     
     
     }

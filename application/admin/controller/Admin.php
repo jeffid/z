@@ -28,7 +28,7 @@ class Admin extends Allow{
         $new_job=Db::table('job')->wheretime('timestamp','today')->count('id');
 //        $new_job=Db::table('job')->where('timestamp','>',strtotime(date('Y-m-d')))->count('id');
         
-        return $this->fetch("Admin/index",[
+        return $this->fetch("admin/index",[
             'username'=>session('username'),
             'group'=>session('name'),
             'count'=>session('admin.count'),

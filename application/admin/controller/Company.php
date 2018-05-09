@@ -11,12 +11,12 @@ class Company extends Allow
     public function getindex()
     {
         $company = Db::table("company")->select();
-        return $this->fetch("/Company/index", ['company' => $company]);
+        return $this->fetch("/company/index", ['company' => $company]);
     }
     
     public function getadd()
     {
-        return $this->fetch("/Company/add");
+        return $this->fetch("/company/add");
     }
     
     public function postInsert()
@@ -207,6 +207,4 @@ class Company extends Allow
             $this->error("删除失败");
         }
     }
-    
-    
 }

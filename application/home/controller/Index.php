@@ -9,6 +9,11 @@ use think\Db;
 
 class Index extends Controller
 {
+    public function index()
+    {
+        return $this->getIndex();
+    }
+    
     public function getIndex()
     {
         /*默认变量组*/
@@ -34,5 +39,6 @@ class Index extends Controller
     
         return $this->fetch("index/index", $d);
     }
+    
     
 }

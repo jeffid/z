@@ -232,6 +232,35 @@ function getCategory($data, $pid = 0)
     return $it;
 }
 
+/*获取存放其它位置的多维数组职业类型数据*/
+function gettest()
+{
+    $ct = \data\Category::getCATEGORY();
+//    $this->setCategory($ct,'0');
+    
+    /*从数据库获取多维分类目录*/
+    $data = Db::table('category')->select();
+    echo '<pre>';
+    print_r($this->getCategory($data));
+}
+
+/*将分类目录(数组格式)存入数据库*/
+function setCategory($data, $pid, $path = '')
+{
+    foreach ($data as $item) {
+        $field = [
+            'name' => $item['name'],
+            'pid' => $pid,
+            'path' => trim($path . ',' . $pid, ',')
+        ];
+        $newPid = Db::table('category')->insertGetId($field);
+        if (count($item['children']) > 0) {
+            $this->category($item['children'], $newPid, $field['path']);
+        }
+    }
+}
+
+
 function applyStatus2text($n){
     $a=[
         '离职-随时到岗',

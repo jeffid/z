@@ -59,6 +59,8 @@ Route::controller("/employer","home/Employer");
 Route::controller("/job","home/Job");
 //网站主页
 Route::controller("/index","home/Index");
+//短链接
+Route::get('/','home/Index/index');
 
 /**********/
 //普通用户个人中心

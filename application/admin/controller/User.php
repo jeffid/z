@@ -16,14 +16,14 @@ class User extends Allow
         $k = $request->param('keywords');
         //获取会员列表数据
         $user = Db::table("user")->where("phone", 'like', "%" . $k . "%")->paginate(3);
-        return $this->fetch("User/index", ['user' => $user, 'data' => $request->param(), 'k' => $k]);
+        return $this->fetch("user/index", ['user' => $user, 'data' => $request->param(), 'k' => $k]);
     }
     
     //添加模板
     public function getAdd()
     {
         //添加模板
-        return $this->fetch("User/add");
+        return $this->fetch("user/add");
     }
     //跳转列表
 //   public function getIndex1(){
@@ -75,7 +75,7 @@ class User extends Allow
         $request = request();
         $id = $request->param('id');
         $info = Db::table('user')->where('id', "{$id}")->find();
-        return $this->fetch("User/edit", ['info' => $info]);
+        return $this->fetch("user/edit", ['info' => $info]);
     }
     
     //执行修改

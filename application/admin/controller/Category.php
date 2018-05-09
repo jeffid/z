@@ -58,7 +58,7 @@ class Category extends Allow
     {
         $cate = Db::table('category')->select();
         
-        return $this->fetch("Category/add", ['cate' => $cate]);
+        return $this->fetch("category/add", ['cate' => $cate]);
     }
     
     //执行添加

@@ -16,7 +16,7 @@ class Login extends Controller
     //加载后台登录界面
     public function getLogin()
     {
-        return $this->fetch("Login/login");
+        return $this->fetch("login/login");
     }
     
     //执行登录
