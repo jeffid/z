@@ -69,7 +69,7 @@ class Personal extends Permit0
         $rq = request();
         $jid = $rq->param('jid');
 //        $status = ['status' => 1];
-        if (replaceRecord('personal_Interest', $jid)) {
+        if (replaceRecord('personal_interest', $jid)) {
             // 跳转到职位详情页
             $this->redirect($rq->param('url'));
         } else {

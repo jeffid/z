@@ -81,7 +81,7 @@ class Carousel extends Allow
         //缩放
         $img->thumb(100,100)->save("./uploads/thumbs/".$name.".".$ext);
         $data['bgs']="/uploads/thumbs/".$name.".".$ext;
-        $data['bg']="/uploads/".$savename;
+        $data['bg']="/uploads/".str_replace('\\','/',$savename);
         $row=Db::table("carousel")->where("id","{$id}")->find();
 //         echo "<pre>";
 //         var_dump($row);die;

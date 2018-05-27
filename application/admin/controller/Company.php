@@ -71,10 +71,10 @@ class Company extends Allow
         $images->thumb(60,60)->save("./uploads/thumb/".$names.".".$exts);
         //获取添加内容
     
-        $data['bg']="./uploads/".$savename;
+        $data['bg']="./uploads/".str_replace('\\','/',$savename);
         $data['bgs']="/uploads/thumb/".$name.".".$ext;
 //        var_dump($data['bg']);die;
-        $data['logo']="./uploads/".$savenames;
+        $data['logo']="./uploads/".str_replace('\\','/',$savenames);
         $data['logos']="/uploads/thumb/".$names.".".$exts;
 //        $data['logo']=$request->param("logo");
         $data['name']=$request->param("name");
@@ -151,9 +151,9 @@ class Company extends Allow
         $img->thumb(60,60)->save("./uploads/thumb/".$name.".".$ext);
         $images->thumb(60,60)->save("./uploads/thumb/".$names.".".$exts);
         //获取添加内容
-        $data['bg']="./uploads/".$savename;
+        $data['bg']="./uploads/".str_replace('\\','/',$savename);
         $data['bgs']="/uploads/thumb/".$name.".".$ext;
-        $data['logo']="./uploads/".$savenames;
+        $data['logo']="./uploads/".str_replace('\\','/',$savenames);
         $data['logos']="/uploads/thumb/".$names.".".$exts;
 //        $data['logo']=$request->param("logo");
         $data['name']=$request->param("name");

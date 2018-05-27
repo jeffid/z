@@ -315,7 +315,7 @@ class Employer extends Permit1
             $images = \think\Image::open("./uploads/" . $savenames);
             $images->save("./uploads/thumbhome/" . $names . "." . $exts);
             $images->thumb(60, 60)->save("./uploads/thumbhome/" . $names . "." . $exts);
-            $data['bg'] = "./uploads/" . $savenames;
+            $data['bg'] = "./uploads/" . str_replace('\\','/',$savenames);
             $data['bgs'] = "/uploads/thumbhome/" . $names . "." . $exts;
         }
        
@@ -349,7 +349,7 @@ class Employer extends Permit1
         $img->thumb(60, 60)->save("./uploads/thumbhome/" . $name . "." . $ext);
         $imagess->thumb(60, 60)->save("./uploads/thumbhome/" . $namess . "." . $extss);
         //获取添加内容
-        $data['logo'] = "/uploads/" . $savename;
+        $data['logo'] = "/uploads/" . str_replace('\\','/',$savename);
         $data['logos'] = "/uploads/thumbhome/" . $name . "." . $ext;
         
 //        var_dump($data['bg']);die;
@@ -369,7 +369,7 @@ class Employer extends Permit1
         $admin['ce_name'] = $request->param("ce_name");
         $admin['profile'] = $request->param("profiles");
         
-        $env['src'] = "/uploads/" . $savenamess;
+        $env['src'] = "/uploads/" . str_replace('\\','/',$savenamess);
         $env['srcs'] = "/uploads/thumbhome/" . $namess . "." . $extss;
 //            Db::table('company')->insertGetId($data);
 //            var_dump($data);
@@ -457,7 +457,7 @@ class Employer extends Permit1
             $images = \think\Image::open("./uploads/" . $savenames);
             $images->save("./uploads/thumbhome/" . $names . "." . $exts);
             $images->thumb(60, 60)->save("./uploads/thumbhome/" . $names . "." . $exts);
-            $data['bg'] = "/uploads/" . $savenames;
+            $data['bg'] = "/uploads/" . str_replace('\\','/',$savenames);
             $data['bgs'] = "/uploads/thumbhome/" . $names . "." . $exts;
         }else{
             $data['bg']='';
@@ -497,7 +497,7 @@ class Employer extends Permit1
         
         $imagess->thumb(60, 60)->save("./uploads/thumbhome/" . $namess . "." . $extss);
         //获取添加内容
-        $data['logo'] = "/uploads/" . $savename;
+        $data['logo'] = "/uploads/" . str_replace('\\','/',$savename);
         $data['logos'] = "/uploads/thumbhome/" . $name . "." . $ext;
         $data['name'] = $request->param("name");
         $data['fullname'] = $request->param("fullname");
@@ -509,7 +509,7 @@ class Employer extends Permit1
         $addr['addr'] = $request->param("addr");
         $admin['ce_name'] = $request->param("ce_name");
         $admin['profile'] = $request->param("profiles");
-        $env['src'] = "/uploads/" . $savenamess;
+        $env['src'] = "/uploads/" . str_replace('\\','/',$savenamess);
         $env['srcs'] = "/uploads/thumbhome/" . $namess . "." . $extss;
 //        var_dump($data['profile']);
 //        var_dump($admin['profile']);die;
