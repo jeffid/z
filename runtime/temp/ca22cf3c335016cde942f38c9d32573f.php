@@ -1,0 +1,83 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\APP\wamp\www\XDL\zhipin\public/../application/admin\view\Login\login.html";i:1525685174;}*/ ?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BOSS直聘管理系统登录</title>
+    <link rel="stylesheet" href="/static/adminlogins/css/admin.css">
+    <link rel="stylesheet" href="/static/admins/css/tc.css">
+    <style>
+        body {
+            background-color: #F2F2F2;
+        }
+        
+        a {
+            cursor: pointer;
+        }
+    
+    </style>
+</head>
+<body>
+
+<div class="newqw">
+    <div id="advs"></div>
+    <div id="logins1">
+        <a href="#"><img src="/static/adminlogins/images/boos.png" alt="" style="float:left"></a>
+        <div id="logins2">管理员登录
+        </div>
+    </div>
+    <div id="advs1"></div>
+    <div id="newbg">
+        
+        
+        <!-- <div id="login4">[English]
+        </div> -->
+        <div id="loginss3">
+            <h3 class="title">BOOS直聘管理系统</h3>
+            <div id="logins5" style="float:left">
+                <!--<img src="/static/adminlogins/images/1.jpg" alt="">-->
+            </div>
+            <div id="login51"></div>
+            <form action="/login/logindo" method='post'>
+                <div id="logins6">
+        <span class="xspan">
+    管理员用户名
+        </span>
+                    <div id="login61">
+                        <input type="text" name="username" id="z" minlength="11" maxlength="11" required>
+                        <img src="/static/adminlogins/images/d.png" alt="">
+                    </div>
+                    <span class="xspan">
+    密码</span>
+                    <div id="login62">
+                        <input type="password" name="password" id="z" minlength="6" maxlength="18" required>
+                        <img src="/static/adminlogins/images/m3.png" alt="">
+                    </div>
+                    <div id="login63" class="xspan">
+                        验证码<br>
+                        <img id="yy" src="<?php echo captcha_src(); ?>" alt=""
+                             onclick='this.src="<?php echo captcha_src(); ?>?rand="+Math.random()' style="height: 37px;">看不清？
+                        <a onclick='a.src="<?php echo captcha_src(); ?>?rand="+Math.random()'>换一张</a><br class="xspan">
+                        输入验证码<br>
+                        <input type="text" name="fcode" id="zz">
+                    </div>
+                    <a href=""><input type="submit" value="登录" id="dds"></a>
+                </div>
+                
+                
+                <!-- sfdgsfgjhjdhj -->
+        </div>
+        <div id="login7">
+            <!-- <a href="reg.php"><img src="/static/adminlogins/images/flogin.png" alt=""></a> -->
+        </div>
+        <div id="logins8"></div>
+        <!-- bghrjj -->
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    var a = document.getElementById('yy');
+</script>
+</html>
+
