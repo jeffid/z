@@ -15,11 +15,13 @@ return [
     // 服务器地址
     'hostname'        => '127.0.0.1',
     // 数据库名
-    'database'        => 'zhipin',
+//    'database'        => 'zhipin',
+    'database'        => 'zp', // linux
     // 用户名
     'username'        => 'root',
     // 密码
-    'password'        => '',//todo
+//    'password'        => '',
+    'password'        => 'waasql20151219',//todo linux
     // 端口
     'hostport'        => '',
     // 连接dsn
