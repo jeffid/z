@@ -244,21 +244,21 @@ return [
     // 发送邮件配置
     'smtp' => [
         'host' => 'smtp.qq.com',
-        'username' => 'ijeck@qq.com',
-        'fromname' => 'waagik',
-        'password' => 'wpubsmmlvcvqehhb'
+        'username' => 'a@qq.com', //todo
+        'fromname' => 'a',
+        'password' => 'a'
     ],
     'smtp3' => [
         'host' => 'smtp.yeah.net',
-        'username' => 'waagik@yeah.net',
-        'fromname' => 'waagik',
-        'password' => 'waagik1'
+        'username' => 'a@yeah.net', //todo
+        'fromname' => 'a',
+        'password' => 'a'
     ],
     'zhipin' => [
         'host' => 'smtp.163.com',
-        'username' => 'zhipin_service@163.com',
-        'fromname' => 'zhipin',
-        'password' => '777pin'
+        'username' => 'a@163.com', //todo
+        'fromname' => 'a',
+        'password' => 'a'
     ],
 
 //    验证码配置

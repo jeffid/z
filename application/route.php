@@ -75,3 +75,8 @@ Route::controller('/employee','home/Employee');
 Route::controller('/search','home/Search');
 //站内信模块
 Route::controller("/msg","home/message");
+
+/********************************************/
+
+//
+
