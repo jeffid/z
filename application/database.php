@@ -13,23 +13,23 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => '127.0.0.1',
+    'hostname'        => '116.85.48.221',
     // 数据库名
-//    'database'        => 'zhipin',
-    'database'        => 'zp', // linux
+    'database'        => 'xd_zhipin_local',
+//    'database'        => 'zp', // linux
     // 用户名
     'username'        => 'root',
     // 密码
-//    'password'        => '',
-    'password'        => 'waasql20151219',//todo linux
+    'password'        => 'Cj7K4aWiX8CHzMi.',
+//    'password'        => 'waasql20160922',//todo linux
     // 端口
-    'hostport'        => '',
+    'hostport'        => '3366',
     // 连接dsn
     'dsn'             => '',
     // 数据库连接参数
     'params'          => [],
     // 数据库编码默认采用utf8
-    'charset'         => 'utf8',
+    'charset'         => 'utf8mb4',
     // 数据库表前缀
     'prefix'          => '',
     // 数据库调试模式

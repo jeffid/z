@@ -60,9 +60,11 @@ Route::controller("/job","home/Job");
 //网站主页
 Route::controller("/index","home/Index");
 //短链接
+//Route::get('/','/index/index');
 //Route::get('/','home/Index/index');
-//Route::get('/','home/Index/getindex');
-Route::get('/','/index/index');
+Route::rule("/","home/Index/getindex",'get');
+//Route::get('/:id','home/Index/getindex');
+
 
 /**********/
 //普通用户个人中心

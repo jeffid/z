@@ -60,9 +60,9 @@ window.onload = function () {
             if (res.code == '000000') {
                 /* 短信发送成功后,进入这里 */
                 $btn.attr('disabled', true);
-                $btn.html(time + ' 秒后重发')
+                $btn.html(time + ' 秒后重发');
                 timer = setInterval(function () {
-                    $btn.html(--time + ' 秒后重发')
+                    $btn.html(--time + ' 秒后重发');
                     if (time === 0) {
                         clearInterval(timer);
                         $btn.html('发送验证码');
@@ -553,8 +553,11 @@ window.onload = function () {
         
         /*初始化*/
         shift();
-        /*开始循环*/
-        next();
+        
+        /*等待间歇时间后再开始循环*/
+        setTimeout(function () {
+            next();
+        }, duration)
         /*监听点击事件*/
         _item.addEventListener('click', function (e) {
             var it = e.target;

@@ -1056,9 +1056,9 @@ CREATE TABLE `company_admin`  (
 -- ----------------------------
 -- Records of company_admin
 -- ----------------------------
-INSERT INTO `company_admin` VALUES (14, 56, '邓华杰', '教育主任');
-INSERT INTO `company_admin` VALUES (15, 57, '邓华杰', 'CEO');
-INSERT INTO `company_admin` VALUES (16, 58, '梁宋琪', '总经理');
+INSERT INTO `company_admin` VALUES (14, 56, '小花', '教育主任');
+INSERT INTO `company_admin` VALUES (15, 57, '小花', 'CEO');
+INSERT INTO `company_admin` VALUES (16, 58, '小琪', '总经理');
 INSERT INTO `company_admin` VALUES (17, 59, '陈锋', '创始人、CEO');
 INSERT INTO `company_admin` VALUES (18, 60, '吴函涛', '现任副总CEO');
 INSERT INTO `company_admin` VALUES (19, 61, '禁区', '工要');
@@ -1386,9 +1386,9 @@ CREATE TABLE `personal_deliver`  (
 -- ----------------------------
 -- Records of personal_deliver
 -- ----------------------------
-INSERT INTO `personal_deliver` VALUES (4, 14, '苏积', 1, 1525661840, 17, 11, 57, NULL, '邓华杰', '伊步科技', 'PHP开发工程师', '北京', '5', '本科', '20', '伊步科技', 'IT', '未融资', '50', '/uploads/20180507\\7f3fc2a4703c66ad5da542931ba31a79.jpg');
-INSERT INTO `personal_deliver` VALUES (5, 14, '苏积', 0, 1525668337, 22, 12, 58, NULL, '梁宋琪', '总经理', '培训经理/主管', '南宁', '2', '不限', '7', '万寿谷集团', '餐饮', '不需要融资', '500', '/uploads/thumbhome/1525660001.jpg');
-INSERT INTO `personal_deliver` VALUES (6, 13, '陈锋', 1, 1525691512, 12, 10, 56, '/uploads/avatar/avatar_5aefd1ed1587b1.04254150.jpeg', '梁嘉伟', '嘟嘟蕾丝总经理', '幼教老师', '深圳', '1', '本科', '0', '嘟嘟', '学前教育', '未融资', '500', '/uploads/thumbhome/1525618898.jpg');
+INSERT INTO `personal_deliver` VALUES (4, 14, '大积', 1, 1525661840, 17, 11, 57, NULL, '小花', '伊步科技', 'PHP开发工程师', '北京', '5', '本科', '20', '伊步科技', 'IT', '未融资', '50', '/uploads/20180507\\7f3fc2a4703c66ad5da542931ba31a79.jpg');
+INSERT INTO `personal_deliver` VALUES (5, 14, '大积', 0, 1525668337, 22, 12, 58, NULL, '小琪', '总经理', '培训经理/主管', '南宁', '2', '不限', '7', '万寿谷集团', '餐饮', '不需要融资', '500', '/uploads/thumbhome/1525660001.jpg');
+INSERT INTO `personal_deliver` VALUES (6, 13, '陈锋', 1, 1525691512, 12, 10, 56, '/uploads/avatar/avatar_5aefd1ed1587b1.04254150.jpeg', '大伟', '嘟嘟蕾丝总经理', '幼教老师', '深圳', '1', '本科', '0', '嘟嘟', '学前教育', '未融资', '500', '/uploads/thumbhome/1525618898.jpg');
 
 -- ----------------------------
 -- Table structure for personal_interest
@@ -1423,8 +1423,8 @@ CREATE TABLE `personal_interest`  (
 -- ----------------------------
 -- Records of personal_interest
 -- ----------------------------
-INSERT INTO `personal_interest` VALUES (9, 14, '苏积', 0, 1525664029, 21, 12, 58, NULL, '梁宋琪', '总经理', '仓库管理', '南宁', '1', '不限', '4', '万寿谷集团', '餐饮', '不需要融资', '500', '/uploads/20180507\\b4656bce56c300e4ccb48ad2353b4a34.jpg');
-INSERT INTO `personal_interest` VALUES (10, 14, '苏积', 0, 1525672605, 23, 13, 59, NULL, '陈锋', '总经理', '团队经理', '济南', '1', '大专', '10', '宜信公司', '互联网金融', '以上市', '999', '/uploads/thumbhome/1525660959.jpg');
+INSERT INTO `personal_interest` VALUES (9, 14, '大积', 0, 1525664029, 21, 12, 58, NULL, '小琪', '总经理', '仓库管理', '南宁', '1', '不限', '4', '万寿谷集团', '餐饮', '不需要融资', '500', '/uploads/20180507\\b4656bce56c300e4ccb48ad2353b4a34.jpg');
+INSERT INTO `personal_interest` VALUES (10, 14, '大积', 0, 1525672605, 23, 13, 59, NULL, '陈锋', '总经理', '团队经理', '济南', '1', '大专', '10', '宜信公司', '互联网金融', '以上市', '999', '/uploads/thumbhome/1525660959.jpg');
 
 -- ----------------------------
 -- Table structure for resume_adventage
@@ -1510,7 +1510,7 @@ CREATE TABLE `resume_info`  (
 -- ----------------------------
 -- Records of resume_info
 -- ----------------------------
-INSERT INTO `resume_info` VALUES (2, 14, '苏积88', 1, 0, '2016', '1995', 'sj123456', '1628506685@qq.com');
+INSERT INTO `resume_info` VALUES (2, 14, '大积88', 1, 0, '2016', '1995', 'sj123456', '1628506685@qq.com');
 INSERT INTO `resume_info` VALUES (3, 16, '888', 1, 2, '2016', '1990', 'wiexin', 'qq@qq.com');
 
 -- ----------------------------
@@ -1616,9 +1616,9 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (10, 56, '+86', '17665311971', '+8617665311971', '4297f44b13955235245b2497399d7a93', 1, 1525607767, '梁嘉伟', '嘟嘟蕾丝总经理', '/uploads/avatar/avatar_5aefd1ed1587b1.04254150.jpeg');
-INSERT INTO `user` VALUES (11, 57, '+86', '17665450001', '+8617665450001', '4297f44b13955235245b2497399d7a93', 1, 1525655819, '邓华杰', 'CEO', NULL);
-INSERT INTO `user` VALUES (12, 58, '+86', '15278358256', '+8615278358256', '4297f44b13955235245b2497399d7a93', 1, 1525657248, '梁宋琪', '总经理', NULL);
+INSERT INTO `user` VALUES (10, 56, '+86', '17665311971', '+8617665311971', '4297f44b13955235245b2497399d7a93', 1, 1525607767, '大伟', '嘟嘟蕾丝总经理', '/uploads/avatar/avatar_5aefd1ed1587b1.04254150.jpeg');
+INSERT INTO `user` VALUES (11, 57, '+86', '17600001111', '+8617600001111', '4297f44b13955235245b2497399d7a93', 1, 1525655819, '小花', 'CEO', NULL);
+INSERT INTO `user` VALUES (12, 58, '+86', '15278358256', '+8615278358256', '4297f44b13955235245b2497399d7a93', 1, 1525657248, '小琪', '总经理', NULL);
 INSERT INTO `user` VALUES (13, 59, '+86', '18520024254', '+8618520024254', '4297f44b13955235245b2497399d7a93', 0, 1525658324, '陈锋', '总经理', NULL);
 INSERT INTO `user` VALUES (15, 60, '+86', '18664087670', '+8618664087670', NULL, 1, 1525664985, '吴涵涛', 'CEO', NULL);
 INSERT INTO `user` VALUES (16, NULL, '+86', '18732072790', '+8618732072790', '4297f44b13955235245b2497399d7a93', 0, 1525673204, '888', NULL, '/uploads/avatar/avatar_5aefed849a4555.52716446.jpeg');

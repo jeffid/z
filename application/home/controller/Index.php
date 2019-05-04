@@ -14,8 +14,9 @@ class Index extends Controller
         return $this->getIndex();
     }
     
-    public function getIndex()
+    public function getIndex($id='')
     {
+//        var_dump($id);
         /*默认变量组*/
         session('default', []);
         /*默认头像*/
