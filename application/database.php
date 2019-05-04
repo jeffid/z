@@ -13,14 +13,14 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => '116.85.48.221',
+    'hostname'        => '',
     // 数据库名
     'database'        => 'xd_zhipin_local',
 //    'database'        => 'zp', // linux
     // 用户名
     'username'        => 'root',
     // 密码
-    'password'        => 'Cj7K4aWiX8CHzMi.',
+    'password'        => '.',
 //    'password'        => 'waasql20160922',//todo linux
     // 端口
     'hostport'        => '3366',
